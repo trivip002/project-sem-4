@@ -1,0 +1,337 @@
+.table .thead-dark th{
+    background-color: #343a40 !important;
+}
+.table-wrapper{
+    min-height: 300px;
+}
+.table-wrapper.no-record{
+    height: auto !important;
+}
+.custom-table{
+    border: 3px solid #6E7884;
+    border-top: none;
+    bottom: 0;
+    justify-content: start !important;
+}
+
+.custom-table {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 25px);/*25px for .title-header*/
+    justify-content: start;
+}
+.custom-table-body{
+    display: block;
+    width: 100%;
+    justify-content: start;
+    overflow-y: auto;
+}
+.custom-table-row{
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    min-height: 25px;
+}
+.custom-table-header, .custom-table-cell{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.custom-table, .custom-table-header, .custom-table-body{
+    flex-direction: column;
+}
+
+.custom-table-header {
+    background: #6E7884;
+    color: white;
+    min-height: 72px;
+}
+.custom-table-header.include-group-btn{
+    min-height: 110px;
+}
+
+.custom-table-row {
+    flex-direction: row;
+}
+.custom-table-cell {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 3px 5px;
+
+}
+.custom-table-body .custom-table-row .custom-table-cell{
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.custom-table-market-priority .custom-table-body .custom-table-row .custom-table-cell:last-child {
+    word-break: inherit;
+}
+.custom-table-body .custom-table-row .custom-table-cell > span,
+.custom-table-body .custom-table-row .custom-table-cell > p
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.custom-table-body .custom-table-row:nth-child(2n+1) .custom-table-cell {
+    background: #ededed;
+}
+.custom-table-body .custom-table-row.selected{
+    cursor: default !important;
+}
+.custom-table-body .custom-table-row.selected .custom-table-cell {
+    /*background: linear-gradient(to bottom,rgba(210,210,210,1) 0,rgba(160,160,160,1) 52%,rgba(160,160,160,1) 52%,rgba(160,160,160,1) 53%,rgba(210,210,210,1) 100%);*/
+    background : linear-gradient(to bottom,rgba(249,241,219,1) 0,rgba(249,222,152,1) 52%,rgba(249,222,152,1) 52%,rgba(244,213,139,1) 53%,rgba(249,229,177,1) 100%);
+}
+.custom-table-body .custom-table-row:hover .custom-table-cell{
+    background-color: #cecece;
+}
+/*group col*/
+.custom-table .custom-table-group-col{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex:1;
+}
+/*end group col*/
+.custom-table .custom-table-group-col > label{
+    flex-basis: 100%;
+    min-height: 25px;
+    margin: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox-col{
+    max-width: 30px;
+}
+.no-col{
+    max-width: 50px;
+}
+.group-btn-row{
+    height: 3.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #a5a5a5;
+}
+.scroll-table{
+    padding-right: 10px;
+}
+.scroll-table.scroll-table-ie{
+    padding-right: 17px;
+}
+
+.title-header {
+    overflow: hidden;
+    background: #343a40;
+    color: #fff;
+    padding: 5px;
+    height: 25px;
+}
+.title-left {
+    float: left;
+}
+.title-right {
+    float: right;
+}
+.custom-table-row .custom-table-cell{
+    min-height: 25px;
+}
+.custom-table-body .custom-table-row .custom-table-cell .inline-word {
+    width: 100%;
+    display: inline-block;
+    word-break: break-all;
+}
+.btn-core {
+    color: #000;
+    border-color: #ffb80c;
+    background: #ffc63d;
+}
+
+.btn-core:not([disabled]):hover {
+    color: #000;
+    border-color: #e6a60b;
+    background: #ffb80c;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.grow-2 {
+    flex-grow: 2 !important;
+}
+
+.cdk-global-scrollblock {
+    overflow: hidden !important;
+}
+
+.k-flex-0 {
+    flex: 0 !important;
+}
+
+.k-flex-1 {
+    flex: 1 !important;
+}
+
+.k-flex-2 {
+    flex: 2 !important;
+}
+
+.k-flex-3 {
+    flex: 3 !important;
+}
+
+.k-flex-4 {
+    flex: 4 !important;
+}
+
+.k-flex-5 {
+    flex: 5 !important;
+}
+
+.k-flex-6 {
+    flex: 6 !important;
+}
+
+.k-flex-8 {
+    flex: 8 !important;
+}
+
+.ng-touched.ng-invalid {
+@extend .is-invalid;
+}
+.ls-custom-modal {
+    top: 10%;
+    max-width: 500px;
+    height: 300px;
+
+}
+.ls-custom-modal-auto {
+    top: 10%;
+    max-width: 950px;
+}
+.modal-max-width{
+    max-width: 1100px;
+}
+.tab-event .nav-tabs {
+    border-bottom: 0px solid #dee2e6;
+}
+
+.paging-history-dialog .pagination {
+    margin-left: 40px;
+}
+.nav.nav-tabs {
+    padding-left: 10px;
+}
+
+.theme-custom-modal {
+    width: 300px!important;
+}
+
+.custom-modal {
+    width: auto;
+}
+
+@media (min-width: 993px){
+    .modal-betfair-account-info {
+        max-width: 1370px !important;
+        margin: 1.75rem auto;
+    }
+}
+.table-block{
+    height: calc(100vh - 100px);
+    max-width: 700px;
+}
+
+.role-management-block{
+    max-width: 1500px;
+}
+
+@media (max-width: 768px) {
+    .table-block {
+        min-width: 400px;
+    }
+}
+.table-wrapper {
+    height: 100%;
+}
+.add-bnt {
+    margin-left: 30px;
+}
+.table-block {
+    height: calc(100vh - 100px);
+}
+.custom-position {
+    position: relative;
+}
+.add-btn {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.group-btn-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.group-btn-row-custom {
+    height: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+.group-btn-row-custom-remove {
+    height: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.custom-table-header.include-group-btn{
+    height: 100px !important;
+}
+.holding {
+    display: inline-table;
+    margin-left: -10px;
+}
+.work-break {
+    word-break: normal;
+    display: inline-block;
+    width: 100%;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+
+}
+.modal-header{
+    background: #343a40;
+    color: white;
+}
+.btn-secondary{
+    background: #545b62;
+}
+.btn-primary{
+    background: #ffb80c;
+}
