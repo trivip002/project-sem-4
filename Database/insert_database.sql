@@ -14,5 +14,5 @@ VALUES ('CAN_ACCESS_TO_ADMIN_PAGE','can access admin page'),
 INSERT INTO role_permission(role_id,permission_id)
 VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(2,2);
 INSERT INTO user(user_name,user_email,password,state,role_id)
-VALUES ('admin','trivip002@gmail.com','$2y$12$Y2z5MxWeL6VlC38CrsG1sex0gafgJoosL8aLdVu9dycubvdIYiv3a',1,1),
-	('user','trivip003@gmail.com','$2y$12$Y2z5MxWeL6VlC38CrsG1sex0gafgJoosL8aLdVu9dycubvdIYiv3a',1,2);
+VALUES ('admin','trivip002@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,1),
+	('user','trivip003@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,2);

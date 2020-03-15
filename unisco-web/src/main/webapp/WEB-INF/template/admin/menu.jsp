@@ -1,4 +1,4 @@
-<%@ page import="com.example.utils.Principal" %><%--
+<%@ page import="com.unisco.utils.Principal" %><%--
   Created by IntelliJ IDEA.
   User: trivip002
   Date: 2/16/2020
