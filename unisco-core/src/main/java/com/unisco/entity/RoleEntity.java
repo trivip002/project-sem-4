@@ -1,10 +1,7 @@
 package com.unisco.entity;
 
 import com.unisco.constant.RoleCode;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
