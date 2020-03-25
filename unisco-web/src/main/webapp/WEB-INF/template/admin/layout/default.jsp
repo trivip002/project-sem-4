@@ -71,8 +71,6 @@
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
         <!-- ChartJS -->
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/chart.js/Chart.min.js"/>'></script>
-        <!-- Sparkline -->
-        <script type='text/javascript' src='<c:url value="/static/admin/plugins/sparklines/sparkline.js"/>'></script>
         <!-- JQVMap -->
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/jqvmap/jquery.vmap.min.js"/>'></script>
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/jqvmap/maps/jquery.vmap.usa.js"/>'></script>
