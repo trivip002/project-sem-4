@@ -11,7 +11,7 @@
     <modules>
         <module>unisco-core</module>
         <module>unisco-web</module>
-    </modules>
+    </modules>   
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
