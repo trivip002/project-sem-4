@@ -30,8 +30,6 @@
         <link rel="stylesheet" href="<c:url value='/static/admin/dist/css/adminlte.min.css' />" />
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="<c:url value='/static/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' />" />
-        <!-- Daterange picker -->
-        <link rel="stylesheet" href="<c:url value='/static/admin/plugins/daterangepicker/daterangepicker.css' />" />
         <!-- summernote -->
         <link rel="stylesheet" href="<c:url value='/static/admin/plugins/summernote/summernote-bs4.css' />" />
         <!-- Google Font: Source Sans Pro -->
@@ -78,7 +76,6 @@
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/jquery-knob/jquery.knob.min.js"/>'></script>
         <!-- daterangepicker -->
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/moment/moment.min.js"/>'></script>
-        <script type='text/javascript' src='<c:url value="/static/admin/plugins/daterangepicker/daterangepicker.js"/>'></script>
         <!-- Tempusdominus Bootstrap 4 -->
         <script type='text/javascript' src='<c:url value="/static/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"/>'></script>
         <!-- Summernote -->

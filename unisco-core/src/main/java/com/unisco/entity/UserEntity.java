@@ -28,22 +28,69 @@ public class UserEntity implements Serializable {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "display_name")
+    private String displayName;
+
+    @Column(name = "full_name")
+    private String fullName;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "telephone")
+    private String telephone;
+
+    @Column(name = "credit_card")
+    private String creditCard;
+
+    @Column(name = "card_type")
+    private String cardType;
+
+    @Column(name = "card_exp_mo")
+    private String cardExpMo;
+
+    @Column(name = "card_exp_ye")
+    private String cardExpYe;
+
+    @Column(name = "card_csv")
+    private String cardCsv;
+
+
     @Column(name = "user_email")
     private String userEmail;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "state")
-    private int state;
-
+    //relation between user & role
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private RoleEntity role;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "teacherAccount")
-    private Set<TeacherEntity> lstTeachers = new HashSet<>();
+    //relation between user & course => wishlist
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "wishlist",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")})
+    private Set<CourseEntity> course1 = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "studentAccount")
-    private Set<StudentEntity> lstStudent = new HashSet<>();
+
+    //relation between user & order
+    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "user")
+    private Set<OrderEntity> order = new HashSet<>();
+    //relation between user & post
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<BlogEntity> post = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<BlogCommentEntity> blogComments;
+
+    @OneToMany(mappedBy = "user")
+    private Set<ReviewEntity> reviews;
 }
