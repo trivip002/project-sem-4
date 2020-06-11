@@ -68,6 +68,9 @@ public class UserEntity implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "user_avatar")
+    private String userAvatar;
+
     //relation between user & role
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
