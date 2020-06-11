@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>unisco-core</module>
-        <module>unisco-web</module>
+        <module>unisco-web</module> 
     </modules>   
 
     <properties>
