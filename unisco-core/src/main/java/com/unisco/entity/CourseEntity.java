@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "course")
-public class CourseEntity implements Serializable {
+public class CourseEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 6839526878218764625L;
     @Id
@@ -45,6 +46,8 @@ public class CourseEntity implements Serializable {
     @Column(name = "course_thumbnail")
     private String courseThumbnail;
 
+    @Column(name = "is_active")
+    private int isActive;
 
     //relation between category & course
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -73,4 +76,8 @@ public class CourseEntity implements Serializable {
 
     @OneToMany(mappedBy = "course")
     private Set<PromotionDetailEntity> promotionDetails;
+
+    //relation between course & order
+    @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "course")
+    private Set<OrderEntity> orders = new HashSet<>();
 }

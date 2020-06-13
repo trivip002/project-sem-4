@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import com.unisco.entity.composite.BlogCommentKey;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BlogCommentEntity implements Serializable {
+public class BlogCommentEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 4877677026393633231L;
 
     @EmbeddedId

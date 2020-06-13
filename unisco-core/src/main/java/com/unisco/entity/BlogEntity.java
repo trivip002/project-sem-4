@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BlogEntity implements Serializable {
+public class BlogEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 8196399101297019371L;
     @Id
     @Column(name = "blog_id")
@@ -31,11 +32,11 @@ public class BlogEntity implements Serializable {
     @Column(name = "blog_img")
     private String blogImg;
 
-    @Column(name = "blog_video_url")
-    private String blogVideoUrl;
-
     @Column(name = "blog_content",columnDefinition="TEXT")
     private String blogContent;
+
+    @Column(name = "is_active")
+    private int isActive;
 
     //relation between user & post
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

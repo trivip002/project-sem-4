@@ -1,6 +1,7 @@
 package com.unisco.entity;
 
 import com.unisco.constant.RoleCode;
+import com.unisco.entity.base.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "role")
-public class RoleEntity implements Serializable {
+public class RoleEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -1340259575898785336L;
 
     @Id

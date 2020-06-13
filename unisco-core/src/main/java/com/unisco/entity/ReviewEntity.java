@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import com.unisco.entity.composite.ReviewKey;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "review")
-public class ReviewEntity implements Serializable {
+public class ReviewEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 7978715630748859716L;
 
     @EmbeddedId

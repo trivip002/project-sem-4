@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BlogCategoryEntity implements Serializable {
+public class BlogCategoryEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 8491876919744814710L;
     @Id
