@@ -71,6 +71,9 @@ public class UserEntity implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "user_avatar")
+    private String userAvatar;
+
     //relation between user & role
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
@@ -81,7 +84,7 @@ public class UserEntity implements Serializable {
     @JoinTable(name = "wishlist",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "course_id")})
-    private Set<CourseEntity> course1 = new HashSet<>();
+    private Set<CourseEntity> course = new HashSet<>();
 
 
     //relation between user & order

@@ -42,9 +42,10 @@ public class BlogEntity implements Serializable {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    //relation between post & blogPost_category
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "blog")
-    private Set<BlogCategoryEntity> blogCategory = new HashSet<>();
+    //relation between blog & blog_category
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "blog_cate_id")
+    private BlogCategoryEntity blog;
 
     @OneToMany(mappedBy = "blog")
     private Set<BlogCommentEntity> blogComments;

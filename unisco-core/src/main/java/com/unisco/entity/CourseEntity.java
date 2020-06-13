@@ -65,7 +65,7 @@ public class CourseEntity implements Serializable {
     private Set<PromotionEntity> promotion = new HashSet<>();
 
     //relation between user & course => wishlist
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "course1")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "course")
     private Set<UserEntity> user = new HashSet<>();
 
     @OneToMany(mappedBy = "course")

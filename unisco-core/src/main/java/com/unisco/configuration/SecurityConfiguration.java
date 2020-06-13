@@ -1,6 +1,6 @@
 package com.unisco.configuration;
 
-import com.unisco.constant.PermissionCode;
+import com.unisco.constant.RoleCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -47,10 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home")
-                .hasAnyAuthority(PermissionCode.CAN_ACCESS_TO_ADMIN_PAGE.toString(),
-                        PermissionCode.CAN_ACCESS_TO_USER_PAGE.toString())
+                .hasAnyAuthority(RoleCode.ROLE_ADMIN.toString(),
+                        RoleCode.ROLE_USER.toString())
                 .antMatchers("/admin/**")
-                .hasAuthority(PermissionCode.CAN_ACCESS_TO_ADMIN_PAGE.toString())
+                .hasAuthority(RoleCode.ROLE_ADMIN.toString())
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .and().exceptionHandling().accessDeniedPage("/access_denied");
