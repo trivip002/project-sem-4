@@ -25,6 +25,9 @@ public class UserEntity implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "is_active")
+    private int isActive;
+
     @Column(name = "user_name")
     private String userName;
 
