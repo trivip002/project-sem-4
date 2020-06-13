@@ -29,21 +29,11 @@ public class AuthorizationAspect {
                 .substring(0,  (joinPoint.getSignature().toString().split("\\.")[joinPoint.getSignature().toString().split("\\.").length - 1]).lastIndexOf('('));
         Optional<Method> method = Arrays.stream(Class.forName(joinPoint.getSignature().getDeclaringType().getName()).getMethods()).filter(item -> item.getName().equalsIgnoreCase(methodName)).findFirst();
         method.ifPresent(value -> {
-            String[] permissions = value.getAnnotation(Authorization.class).hasAnyPermission();
-            String permission = value.getAnnotation(Authorization.class).hasPermission();
             String[] roles = value.getAnnotation(Authorization.class).hasAnyRole();
             String role = value.getAnnotation(Authorization.class).hasRole();
             UserEntity userEntity = userService.findOneByUserName(Principal.getPrincipal());
             if (userEntity == null) {
                 throw new RuntimeException("USER_NOT_LOGIN");
-            } else if (permissions.length != 0) {
-                if (!userService.checkPermissionForUser(userEntity, permissions)) {
-                    throw new RuntimeException("USER_NOT_HAVE_ANY_PERMISSION");
-                }
-            } else if (!permission.isEmpty()) {
-                if (!userService.checkPermissionForUser(userEntity, permission)) {
-                    throw new RuntimeException("USER_NOT_HAVE_PERMISSION");
-                }
             } else if (roles.length != 0) {
                 if (!userService.checkRoleForUser(userEntity, roles)) {
                     throw new RuntimeException("USER_NOT_HAVE_ANY_ROLE");

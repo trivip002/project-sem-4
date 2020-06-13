@@ -81,7 +81,7 @@ public class UserEntity implements Serializable {
     @JoinTable(name = "wishlist",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "course_id")})
-    private Set<CourseEntity> course1 = new HashSet<>();
+    private Set<CourseEntity> course = new HashSet<>();
 
 
     //relation between user & order
