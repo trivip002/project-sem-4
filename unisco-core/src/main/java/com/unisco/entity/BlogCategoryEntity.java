@@ -29,8 +29,7 @@ public class BlogCategoryEntity implements Serializable {
     @Column(name = "blog_cate_content")
     private String blogCateContent;
 
-    //relation between post & blogPost_category
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "blog_id")
+    //relation between blog & blog_category
+    @OneToMany(mappedBy = "blog")
     private Set<BlogEntity> blog = new HashSet<>();
 }

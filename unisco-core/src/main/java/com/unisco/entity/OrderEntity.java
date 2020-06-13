@@ -24,6 +24,9 @@ public class OrderEntity implements Serializable {
     @Column(name = "order_date")
     private Date orderDate;
 
+    @Column(name = "unit_price")
+    private float unitPrice;
+
     @Column(name = "order_status")
     private boolean orderStatus;
 
