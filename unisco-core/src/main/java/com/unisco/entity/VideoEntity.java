@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class VideoEntity implements Serializable {
+public class VideoEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 928136466631731381L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

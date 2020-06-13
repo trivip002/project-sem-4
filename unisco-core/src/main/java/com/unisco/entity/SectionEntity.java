@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SectionEntity implements Serializable {
+public class SectionEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -6540524629751310444L;
     @Id
@@ -31,7 +32,7 @@ public class SectionEntity implements Serializable {
     private String sectionDescription;
 
     @Column(name = "section_duration")
-    private int sectionDuration;
+    private String sectionDuration;
 
     //relation between course & section
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -1,6 +1,7 @@
 package com.unisco.entity;
 
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "promotion")
-public class PromotionEntity implements Serializable {
+public class PromotionEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 2044733886941122318L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,12 +28,6 @@ public class PromotionEntity implements Serializable {
 
     @Column(name= "promotion_code")
     private String promotionCode;
-
-    @Column(name = "start_date")
-    private Date startDate;
-
-    @Column(name = "end_date")
-    private Date endDate;
 
     @Column(name = "is_active")
     private boolean isActive;

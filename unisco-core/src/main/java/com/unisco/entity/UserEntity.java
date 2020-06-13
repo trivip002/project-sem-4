@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
-public class UserEntity implements Serializable {
+public class UserEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -7971218994857937734L;
 
@@ -89,7 +90,8 @@ public class UserEntity implements Serializable {
 
     //relation between user & order
     @OneToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER, mappedBy = "user")
-    private Set<OrderEntity> order = new HashSet<>();
+    private Set<OrderEntity> orders = new HashSet<>();
+
     //relation between user & post
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Set<BlogEntity> post = new HashSet<>();
