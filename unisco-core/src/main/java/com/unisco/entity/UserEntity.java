@@ -26,7 +26,7 @@ public class UserEntity extends BaseEntity implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
     private int isActive;
 
     @Column(name = "user_name")

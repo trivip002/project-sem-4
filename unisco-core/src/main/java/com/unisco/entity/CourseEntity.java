@@ -46,7 +46,7 @@ public class CourseEntity extends BaseEntity implements Serializable {
     @Column(name = "course_thumbnail")
     private String courseThumbnail;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
     private int isActive;
 
     //relation between category & course

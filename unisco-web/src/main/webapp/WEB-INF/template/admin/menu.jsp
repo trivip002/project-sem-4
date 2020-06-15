@@ -7,72 +7,101 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/tag.jsp"%>
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#/" class="brand-link">
-        <img src='<c:url value="/static/admin/dist/img/AdminLTELogo.png"/>' alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src='<c:url value="/static/admin/dist/img/user8-128x128.jpg"/>' class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#/" class="d-block"><%=Principal.getPrincipal()%></a>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" roleEntity="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <%--<li class="nav-item">
-                    <a href="{{item.href}}" class="nav-link" ng-class="{active : activeMenu === item}">
-                        <i class="nav-icon fas {{item.icon}}"></i>
-                        <p>
-                            {{ item.value }}
-                        </p>
-                    </a>
-                </li>--%>
-                <li class="nav-item">
-                    <a href="#/" class="nav-link" id="home-menu">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Home
-                        </p>
+<!-- Left Sidebar Start -->
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu" >
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="instructor_dashboard.html" class="menu--link active" title="Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
                     </a>
                 </li>
-                <security:authorize access="hasAnyAuthority('CAN_READ_USER')" >
-                    <li class="nav-item">
-                        <a href="#/user" class="nav-link" id="user-menu">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                User Management
-                            </p>
-                        </a>
-                    </li>
-                </security:authorize>
-                <security:authorize access="hasAnyAuthority('CAN_READ_ROLE')" >
-                    <li class="nav-item">
-                        <a href="#/role" class="nav-link" id="role-menu">
-                            <i class="nav-icon fas fa-user-tag"></i>
-                            <p>
-                                Role Management
-                            </p>
-                        </a>
-                    </li>
-                </security:authorize>
-
+                <li class="menu--item">
+                    <a href="instructor_courses.html" class="menu--link" title="Courses">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Courses</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Analyics</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="create_new_course.html" class="menu--link" title="Create Course">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Create Course</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_messages.html" class="menu--link" title="Messages">
+                        <i class='uil uil-comments menu--icon'></i>
+                        <span class="menu--label">Messages</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_notifications.html" class="menu--link" title="Notifications">
+                        <i class='uil uil-bell menu--icon'></i>
+                        <span class="menu--label">Notifications</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
+                        <i class='uil uil-award menu--icon'></i>
+                        <span class="menu--label">My Certificates</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_all_reviews.html" class="menu--link" title="Reviews">
+                        <i class='uil uil-star menu--icon'></i>
+                        <span class="menu--label">Reviews</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_earning.html" class="menu--link" title="Earning">
+                        <i class='uil uil-dollar-sign menu--icon'></i>
+                        <span class="menu--label">Earning</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_payout.html" class="menu--link" title="Payout">
+                        <i class='uil uil-wallet menu--icon'></i>
+                        <span class="menu--label">Payout</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_statements.html" class="menu--link" title="Statements">
+                        <i class='uil uil-file-alt menu--icon'></i>
+                        <span class="menu--label">Statements</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_verification.html" class="menu--link" title="Verification">
+                        <i class='uil uil-check-circle menu--icon'></i>
+                        <span class="menu--label">Verification</span>
+                    </a>
+                </li>
             </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+        </div>
+        <div class="left_section pt-2">
+            <ul>
+                <li class="menu--item">
+                    <a href="setting.html" class="menu--link" title="Setting">
+                        <i class='uil uil-cog menu--icon'></i>
+                        <span class="menu--label">Setting</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="feedback.html" class="menu--link" title="Send Feedback">
+                        <i class='uil uil-comment-alt-exclamation menu--icon'></i>
+                        <span class="menu--label">Send Feedback</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!-- /.sidebar -->
-</aside>
+</nav>
+<!-- Left Sidebar End -->
