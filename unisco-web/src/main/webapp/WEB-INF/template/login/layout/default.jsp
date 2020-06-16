@@ -14,30 +14,35 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>${pageTitle}</title>
         <stripes:layout-component name="html_login"/>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="<c:url value='/static/admin/plugins/fontawesome-free/css/all.min.css' />" />
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- icheck bootstrap -->
-        <link rel="stylesheet" href="<c:url value='/static/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css' />" />
-        <!-- Theme style -->
-        <link rel="stylesheet" href="<c:url value='/static/admin/dist/css/adminlte.min.css' />" />
-        <!-- Google Font: Source Sans Pro -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png"  href="<c:url value='/static/assets/images/fav.png' />" />
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href="<c:url value='/static/vendor/unicons-2.0.1/css/unicons.css' />" rel='stylesheet'>
+        <link href="<c:url value='/static/assets/css/vertical-responsive-menu.min.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/style.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/responsive.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/night-mode.css' />" rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet" >
+        <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet" >
+        <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />"  >
     </head>
-    <body class="hold-transition login-page">
+    <body>
 
         <stripes:layout-component name="contents"/>
 
-        <!-- jQuery -->
-        <script type='text/javascript' src='<c:url value="/static/admin/plugins/jquery/jquery.min.js"/>'></script>
-        <!-- Bootstrap 4 -->
-        <script type='text/javascript' src='<c:url value="/static/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
-        <!-- AdminLTE App -->
-        <script type='text/javascript' src='<c:url value="/static/admin/dist/js/adminlte.min.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
+        <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
+        <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>'></script>
+        <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/custom.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/night-mode.js"/>'></script>
     </body>
     </html>
 </stripes:layout-definition>

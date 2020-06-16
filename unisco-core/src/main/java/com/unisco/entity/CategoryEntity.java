@@ -1,5 +1,6 @@
 package com.unisco.entity;
 
+import com.unisco.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,25 +13,21 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "category")
-public class CategoryEntity implements Serializable {
+public class CategoryEntity extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 7896853902091984174L;
-
+    private static final long serialVersionUID = -5097744609119504785L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "category_id")
-    private Long categoryId;
+    @Column(name = "cate_id")
+    private Long cateId;
 
-    @Column(name = "category_code")
-    private String categoryCode;
+    @Column(name = "cate_name")
+    private String cateName;
 
-    @Column(name = "category_name")
-    private String categoryName;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "category")
-    private Set<NewsEntity> lstNews = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "category")
+    private Set<CourseEntity> course = new HashSet<>();
 }

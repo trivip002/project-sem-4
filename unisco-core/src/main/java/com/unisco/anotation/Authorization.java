@@ -13,8 +13,4 @@ public @interface Authorization {
 
     String[] hasAnyRole() default {};
 
-    String hasPermission() default "";
-
-    String[] hasAnyPermission() default {};
-
 }
