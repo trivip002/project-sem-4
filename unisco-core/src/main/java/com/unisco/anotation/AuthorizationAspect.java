@@ -31,7 +31,7 @@ public class AuthorizationAspect {
         method.ifPresent(value -> {
             String[] roles = value.getAnnotation(Authorization.class).hasAnyRole();
             String role = value.getAnnotation(Authorization.class).hasRole();
-            UserEntity userEntity = userService.findOneByUserName(Principal.getPrincipal());
+            UserEntity userEntity = userService.getOneByUserName(Principal.getPrincipal());
             if (userEntity == null) {
                 throw new RuntimeException("USER_NOT_LOGIN");
             } else if (roles.length != 0) {

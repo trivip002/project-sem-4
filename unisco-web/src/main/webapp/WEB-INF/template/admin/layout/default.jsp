@@ -37,6 +37,9 @@
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />"  >
+        <link href="<c:url value='/static/assets/css/custom.css' />" rel="stylesheet">
+        <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/paginathing.js"/>'></script>
 
     </head>
     <body>
@@ -61,7 +64,6 @@
 
 
     <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
-    <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
     <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
     <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>'></script>
     <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>'></script>

@@ -22,12 +22,12 @@ public class BlogCommentEntity extends BaseEntity implements Serializable {
     @EmbeddedId
     BlogCommentKey id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapsId("user_id")
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapsId("blog_id")
     @JoinColumn(name = "blog_id")
     private BlogEntity blog;

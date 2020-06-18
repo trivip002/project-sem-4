@@ -11,21 +11,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="item_f1">
+                <div class="item_f1" style="margin-left: 300px;">
                     <a href="terms_of_use.html">Copyright Policy</a>
                     <a href="terms_of_use.html">Terms</a>
                     <a href="terms_of_use.html">Privacy Policy</a>
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="footer_bottm">
+                <div class="footer_bottm" style="margin-left: 300px;">
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="fotb_left">
                                 <li>
                                     <a href="index.html">
                                         <div class="footer_logo">
-                                            <img src="images/logo1.svg" alt="">
+                                            <img src="<c:url value='/static/assets/images/logo1.svg' />" alt="">
                                         </div>
                                     </a>
                                 </li>
