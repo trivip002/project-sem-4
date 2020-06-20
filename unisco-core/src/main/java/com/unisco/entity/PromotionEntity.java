@@ -29,8 +29,8 @@ public class PromotionEntity extends BaseEntity implements Serializable {
     @Column(name= "promotion_code")
     private String promotionCode;
 
-    @Column(name = "is_active")
-    private boolean isActive;
+    @Column(name = "is_active", nullable = false)
+    private int isActive;
 
     //relation between promotion & course
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "promotion")

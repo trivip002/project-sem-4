@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,7 +34,7 @@ public class BlogEntity extends BaseEntity implements Serializable {
     @Column(name = "blog_content",columnDefinition="TEXT")
     private String blogContent;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
     private int isActive;
 
     //relation between user & post
