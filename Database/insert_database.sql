@@ -21,6 +21,9 @@ VALUES('1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consect
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqclY8Jk4AU6LKSa0CDu1H7TJK_AtELBeiUKgI9u70LO25408X&usqp=CAU',
         1);
 
+INSERT INTO cate_course(course_id, cate_id)
+VALUES(1,1), (2,2);
+
 INSERT INTO section(section_description, section_duration, section_title, course_id)
 VALUES('1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
         '45', 'First Section', 1),
