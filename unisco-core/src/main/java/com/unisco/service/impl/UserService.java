@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,8 +26,13 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserEntity findOneByUserName(String userName) {
+    public UserEntity getOneByUserName(String userName) {
         return userRepository.findOneByUserName(userName);
+    }
+
+    @Override
+    public List<UserEntity> getAll() {
+        return userRepository.findAll();
     }
 
 

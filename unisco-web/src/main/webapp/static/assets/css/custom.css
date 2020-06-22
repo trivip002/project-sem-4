@@ -1,0 +1,24 @@
+.page-item.active .page-link{
+    background-color: #ed2a26;
+    border-color: #ed2a26;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.pagination-container{
+    display: flex;
+    justify-content: center;
+}
+.modal-header{
+    background: #ed2a26;
+}
+.modal-header p{
+    color: #333333;
+}

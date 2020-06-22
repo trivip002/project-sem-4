@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.unisco.utils.Principal" %><%--
   Created by IntelliJ IDEA.
   User: hugh.intern
   Date: 2/12/2020
@@ -109,20 +109,20 @@
             </li>
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
-                    <img src="images/hd_dp.jpg" alt="">
+                    <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                 </a>
                 <div class="menu dropdown_account">
                     <div class="channel_my">
                         <div class="profile_link">
-                            <img src="images/hd_dp.jpg" alt="">
+                            <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                             <div class="pd_content">
                                 <div class="rhte85">
-                                    <h6>Joginder Singh</h6>
+                                    <h6><%=Principal.getPrincipal()%></h6>
                                     <div class="mef78" title="Verify">
                                         <i class='uil uil-check-circle'></i>
                                     </div>
                                 </div>
-                                <span>gambol943@gmail.com</span>
+                                <span><%=Principal.getPrincipal()%></span>
                             </div>
                         </div>
                         <a href="my_instructor_profile_view.html" class="dp_link_12">View Instructor Profile</a>

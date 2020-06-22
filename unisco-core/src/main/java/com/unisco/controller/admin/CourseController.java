@@ -1,24 +1,23 @@
 package com.unisco.controller.admin;
 
-import com.unisco.service.impl.UserService;
+import com.unisco.service.impl.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller(value = "homeControllerOfAdmin")
-@RequestMapping(value = "/admin")
-public class HomeController {
+@Controller(value = "courseControllerOfAdmin")
+@RequestMapping(value = "/admin/course")
+public class CourseController {
 
     @Autowired
-    private UserService userService;
+    private CourseService courseService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView adminPage() {
-        ModelAndView mav = new ModelAndView("admin/home");
-        mav.addObject("listUser", userService.getAll());
-        return mav;
+    public ModelAndView coursePage(){
+        ModelAndView view = new ModelAndView("/admin/course");
+        view.addObject("listCourse", courseService.getAll());
+        return view;
     }
-
 }

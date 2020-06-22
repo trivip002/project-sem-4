@@ -32,9 +32,6 @@ public class UserEntity extends BaseEntity implements Serializable {
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "display_name")
-    private String displayName;
-
     @Column(name = "full_name")
     private String fullName;
 
@@ -96,9 +93,9 @@ public class UserEntity extends BaseEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Set<BlogEntity> post = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private Set<BlogCommentEntity> blogComments;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private Set<ReviewEntity> reviews;
 }

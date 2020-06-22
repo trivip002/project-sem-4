@@ -14,8 +14,8 @@
             <ul>
                 <li class="menu--item">
                     <a href="instructor_dashboard.html" class="menu--link active" title="Dashboard">
-                        <i class="uil uil-apps menu--icon"></i>
-                        <span class="menu--label">Dashboard</span>
+                        <i class="uil uil-user menu--icon"></i>
+                        <span class="menu--label">User Management</span>
                     </a>
                 </li>
                 <li class="menu--item">
@@ -26,62 +26,38 @@
                 </li>
                 <li class="menu--item">
                     <a href="instructor_analyics.html" class="menu--link" title="Analyics">
-                        <i class='uil uil-analysis menu--icon'></i>
-                        <span class="menu--label">Analyics</span>
+                        <i class='uil uil-wallet menu--icon'></i>
+                        <span class="menu--label">Section</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="create_new_course.html" class="menu--link" title="Create Course">
-                        <i class='uil uil-plus-circle menu--icon'></i>
-                        <span class="menu--label">Create Course</span>
+                        <i class='uil uil-video menu--icon'></i>
+                        <span class="menu--label">Video</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="instructor_messages.html" class="menu--link" title="Messages">
-                        <i class='uil uil-comments menu--icon'></i>
-                        <span class="menu--label">Messages</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_notifications.html" class="menu--link" title="Notifications">
-                        <i class='uil uil-bell menu--icon'></i>
-                        <span class="menu--label">Notifications</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
-                        <i class='uil uil-award menu--icon'></i>
-                        <span class="menu--label">My Certificates</span>
+                        <i class='uil uil-star menu--icon'></i>
+                        <span class="menu--label">Comment & Reviews</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="instructor_all_reviews.html" class="menu--link" title="Reviews">
-                        <i class='uil uil-star menu--icon'></i>
-                        <span class="menu--label">Reviews</span>
+                        <i class='uil uil-comments menu--icon'></i>
+                        <span class="menu--label">Blog comment</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="instructor_earning.html" class="menu--link" title="Earning">
                         <i class='uil uil-dollar-sign menu--icon'></i>
-                        <span class="menu--label">Earning</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_payout.html" class="menu--link" title="Payout">
-                        <i class='uil uil-wallet menu--icon'></i>
-                        <span class="menu--label">Payout</span>
+                        <span class="menu--label">Promotions</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="instructor_statements.html" class="menu--link" title="Statements">
                         <i class='uil uil-file-alt menu--icon'></i>
-                        <span class="menu--label">Statements</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_verification.html" class="menu--link" title="Verification">
-                        <i class='uil uil-check-circle menu--icon'></i>
-                        <span class="menu--label">Verification</span>
+                        <span class="menu--label">Order</span>
                     </a>
                 </li>
             </ul>

@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String userName)
             throws UsernameNotFoundException {
-        UserEntity userEntity = userService.findOneByUserName(userName);
+        UserEntity userEntity = userService.getOneByUserName(userName);
         if (userEntity == null) {
             throw new UsernameNotFoundException("Username not found");
         }
