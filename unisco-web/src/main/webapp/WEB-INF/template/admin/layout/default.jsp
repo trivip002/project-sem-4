@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/tag.jsp"%>
 <stripes:layout-definition>
-    <html>
+<html>
     <head>
         <title>${pageTitle}</title>
         <!-- Tell the browser to be responsive to screen width -->
@@ -51,24 +51,23 @@
         </stripes:layout-component>
         <!-- Begin wrapper -->
         <div class="wrapper">
-        <div class="pageContent">
-        <stripes:layout-component name="contents"/>
-        </div>
 
-        <stripes:layout-component name="footer">
-            <jsp:include page="../footer.jsp"/>
-        </stripes:layout-component>
+            <div class="pageContent">
+                <stripes:layout-component name="contents"/>
+            </div>
+
+            <stripes:layout-component name="footer">
+                <jsp:include page="../footer.jsp"/>
+            </stripes:layout-component>
         <!-- /.control-sidebar -->
         </div>
     </body>
-
-
-    <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
-    <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
-    <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>'></script>
-    <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>'></script>
-    <script src='<c:url value="/static/assets/js/custom1.js"/>'></script>
-    <script src='<c:url value="/static/assets/js/night-mode.js"/>'></script>
-    </html>
+        <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
+        <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
+        <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>'></script>
+        <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/custom1.js"/>'></script>
+        <script src='<c:url value="/static/assets/js/night-mode.js"/>'></script>
+</html>
 </stripes:layout-definition>
 

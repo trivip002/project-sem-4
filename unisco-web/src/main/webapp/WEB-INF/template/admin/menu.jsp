@@ -13,7 +13,14 @@
         <div class="left_section">
             <ul>
                 <li class="menu--item">
-                    <a href="instructor_dashboard.html" class="menu--link active" title="Dashboard">
+                    <a href="<c:url value="/admin/dashboard" /> " class="menu--link active" title="Mgmt_Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="<c:url value="/admin/user"/> " class="menu--link" title="Mgmt_Users">
                         <i class="uil uil-user menu--icon"></i>
                         <span class="menu--label">User Management</span>
                     </a>

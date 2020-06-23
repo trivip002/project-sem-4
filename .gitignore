@@ -1,2 +1,4 @@
 .idea
 *.iml
+*.gitignore
+unisco-web/src/main/resources/application.properties
