@@ -62,7 +62,11 @@
         </div>
     </body>
 
+    <script>
+    UPLOADCARE_PUBLIC_KEY = 'c952b0c21db79a8e1007';
+    </script>
 
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
     <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
     <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>'></script>
     <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>'></script>

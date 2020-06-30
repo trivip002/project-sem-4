@@ -31,8 +31,23 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserEntity getOneById(Long userId) {
+        return userRepository.findOne(userId);
+    }
+
+    @Override
     public List<UserEntity> getAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public String updateByUser(UserEntity userEntity) {
+        try{
+            userRepository.save(userEntity);
+            return "Update Success";
+        }catch (Exception e){
+            return "Update Fail";
+        }
     }
 
 

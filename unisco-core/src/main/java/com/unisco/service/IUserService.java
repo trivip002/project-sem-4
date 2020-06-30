@@ -14,7 +14,11 @@ public interface IUserService {
 
     UserEntity getOneByUserName(String userName);
 
+    UserEntity getOneById(Long userId);
+
     List<UserEntity> getAll();
+
+    String updateByUser(UserEntity userEntity);
 
     Set<String> getRoleOfUser(UserEntity userEntity);
 
