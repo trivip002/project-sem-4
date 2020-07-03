@@ -49,7 +49,13 @@
                                         <td>${item.userAvatar!=null?item.userAvatar:"N/A"}</td>
                                         <td style="text-align: center">
                                             <button type="button" class="upload_btn update_btn_click"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-edit-alt"></i></button>
-                                            <button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button>
+                                            <c:if test = "${item.isActive == 0}">
+                                                <button type="button" class="upload_btn active_inactive_btn" value="${item.isActive==1?0:1}"><i class="uil uil-plus-circle"></i></button>
+                                            </c:if>
+                                            <c:if test = "${item.isActive == 1}">
+                                                <button type="button" class="upload_btn active_inactive_btn" value="${item.isActive==1?0:1}"><i class="uil uil-trash-alt"></i></button>
+                                            </c:if>
+
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -80,46 +86,6 @@
                     <!--Body-->
                     <div class="modal-body">
                         <form id="form-update">
-                            <div class="ui search focus mt-40">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="username" value="" id="user_name" required="" maxlength="64" placeholder="User Name">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="fullname" value="" id="full_name" required="" maxlength="64" placeholder="Full Name">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="email" name="emailaddress" value="" id="user_email" required="" maxlength="64" placeholder="Email Address">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="password" name="password" value="" id="password" required="" maxlength="64" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="phonenumber" value="" id="telephone" required="" maxlength="10" placeholder="Phone Number">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="address" value="" id="address" required="" maxlength="10" placeholder="Address">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="city" value="" id="city" required="" maxlength="10" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="country" value="" id="country" required="" maxlength="10" placeholder="Country">
-                                </div>
-                            </div>
                             <div class="ui search focus mt-15">
                                 <div class="ui left icon input swdh11 swdh19">
                                     <div class="upload__input">
@@ -154,51 +120,80 @@
                     pageNumbers: true
                 });
             });
-            var dataEdit = {};
             var openFile = function(event) {
                 var input = event.target;
                 var reader = new FileReader();
-                reader.onload = function() {
-                    dataEdit['stringBase64'] = reader.result;
-                };
                 reader.readAsDataURL(input.files[0]);
-                dataEdit['imageName'] = input.files[0].name;
                 $('.custom-file-label').text(input.files[0].name);
             };
             $('#btn-update').click(function () {
-                dataEdit['userName'] = $('#user_name').val();
-                dataEdit['fullName'] = $('#full_name').val();
-                dataEdit['email'] = $('#user_email').val();
-                dataEdit['password'] = $('#password').val();
-                dataEdit['telephone'] = $('#telephone').val();
-                dataEdit['address'] = $('#address').val();
-                dataEdit['city'] = $('#city').val();
-                dataEdit['country'] = $('#country').val();
-                console.log(dataEdit);
+                var form = $('#form-update')[0];
+                var data = new FormData(form);
+                run_waitMe();
                 $.ajax({
                       url: "/api/user/edit",
+                      enctype: 'multipart/form-data',
                       method: "POST",
-                      dataType: 'json',
-                      contentType:'application/json',
-                      data: JSON.stringify(dataEdit),
+                      //dataType: 'json',
+                      //contentType:'application/json',
+                      processData: false,
+                      contentType: false,
+                      cache: false,
+                      timeout: 1000000,
+                      data: data,
                       success: function(result) {
-                          console.log(result);
+                          $('.containerLoading').waitMe('hide');
+                          window.location.href = "";
                       }
                   });
             });
             $('.update_btn_click').click(function () {
                 var userId = $(this).closest("tr").find('.user-id').text();
-                dataEdit['userId'] = userId;
                 $.ajax({
                     url: "/api/user",
                     method: "GET",
                     data: {"userId":userId},
                     success: function(result) {
-                        $('#centralModalDanger').find('.modal-body').empty();
-                        $('#centralModalDanger').find('.modal-body').append(result);
+                        $('#centralModalDanger').find('.modal-body #form-update').empty();
+                        $('#centralModalDanger').find('.modal-body #form-update').append(result);
                     }
                 });
             });
+            $('.active_inactive_btn').click(function () {
+                var userId = $(this).closest("tr").find('.user-id').text();
+                var status = $(this).attr('value');
+                var data = new FormData();
+                data.append("userId",userId);
+                data.append("status",status);
+                run_waitMe();
+                $.ajax({
+                    url: "/api/user",
+                    method: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    success: function(result) {
+                      $('.containerLoading').waitMe('hide');
+                      window.location.href = "";
+                    }
+                });
+            });
+            function run_waitMe(){
+                var maxSize = '';
+                var textPos = 'vertical';
+                $('.containerLoading').waitMe({
+                    effect: 'bounce',
+                    text: 'loading',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#000',
+                    maxSize: maxSize,
+                    waitTime: -1,
+                    source: "<c:url value='/static/assets/images/img.svg' />",
+                    textPos: textPos,
+                    fontSize: '18px',
+                    onClose: function(el) {}
+                });
+            }
         </script>
     </stripes:layout-component>
 </stripes:layout-render>

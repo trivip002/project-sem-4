@@ -50,6 +50,14 @@ public class UserService implements IUserService {
         }
     }
 
+    @Override
+    public String changeStatus(int status, Long userId) {
+        UserEntity userEntity = userRepository.findOne(userId);
+        userEntity.setIsActive(status);
+        userRepository.save(userEntity);
+        return "success";
+    }
+
 
     @Override
     public Set<String> getRoleOfUser(UserEntity userEntity) {

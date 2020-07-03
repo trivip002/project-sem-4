@@ -1,34 +1,36 @@
 package com.unisco.utils;
 
-import net.sourceforge.stripes.util.Base64;
+import lombok.extern.java.Log;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
+@Log
 public class FileUtils {
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "F:/image/";
-    public static void writeOrUpdateFileByBase64(String base64, String name) {
-        FileOutputStream outputStream = null;
-        try {
-            String location = UPLOADED_FOLDER + name;
-            File file = new File(location);
-            if (file.exists()) {
-                file.delete();
+    private static String UPLOADED_FOLDER = "F:/upload/";
+    public static void uploadFile(MultipartFile fileupload) {
+        try{
+            File directory = new File(UPLOADED_FOLDER);
+            File file = new File(UPLOADED_FOLDER+ fileupload.getOriginalFilename());
+            String fileName = fileupload.getOriginalFilename();
+            if(!directory.exists()){
+                directory.mkdir();
             }
-            outputStream = new FileOutputStream(location);
-            byte[] decodedByte = Base64.decode(base64.split(",")[1]);
-            outputStream.write(decodedByte);
-        } catch (IOException e) {
-            System.out.println("error");
-        } finally {
-            try {
-                if (outputStream != null)
-                    outputStream.close();
-            } catch (IOException e) {
-                System.out.println("error");
+            if(file.exists()){
+                fileName = fileName.split("\\.")[0] +  "-" + UUID.randomUUID().toString() + "." + fileName.split("\\.")[1];
             }
+            String uploadFilePath = UPLOADED_FOLDER + fileName;
+            byte[] bytes = fileupload.getBytes();
+            Path path = Paths.get(uploadFilePath);
+            Files.write(path, bytes);
+        }catch (IOException e){
+            log.info("upload file error");
         }
     }
 }

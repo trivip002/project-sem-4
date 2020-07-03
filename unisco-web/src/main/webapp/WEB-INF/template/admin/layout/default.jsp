@@ -31,34 +31,37 @@
         <link href="<c:url value='/static/assets/css/instructor-responsive.css' />" rel="stylesheet">
         <link href="<c:url value='/static/assets/css/night-mode.css' />" rel="stylesheet">
 
-        <!-- Vendor Stylesheets -->
+        <!-- Vendor Stylesheets -->uil uil-trash-alt
         <link href="<c:url value='/static/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />"  >
+        <link href="<c:url value='/static/assets/css/waitMe.css' />" rel="stylesheet">
         <link href="<c:url value='/static/assets/css/custom.css' />" rel="stylesheet">
         <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
         <script src='<c:url value="/static/assets/js/paginathing.js"/>'></script>
-
+        <script src='<c:url value="/static/assets/js/waitMe.js"/>'></script>
     </head>
     <body>
-        <stripes:layout-component name="header">
-            <jsp:include page="../header.jsp"/>
-        </stripes:layout-component>
-        <stripes:layout-component name="header">
-            <jsp:include page="../menu.jsp"/>
-        </stripes:layout-component>
-        <!-- Begin wrapper -->
-        <div class="wrapper">
-        <div class="pageContent">
-        <stripes:layout-component name="contents"/>
-        </div>
+        <div class="containerLoading">
+            <stripes:layout-component name="header">
+                <jsp:include page="../header.jsp"/>
+            </stripes:layout-component>
+            <stripes:layout-component name="header">
+                <jsp:include page="../menu.jsp"/>
+            </stripes:layout-component>
+            <!-- Begin wrapper -->
+            <div class="wrapper">
+            <div class="pageContent">
+            <stripes:layout-component name="contents"/>
+            </div>
 
-        <stripes:layout-component name="footer">
-            <jsp:include page="../footer.jsp"/>
-        </stripes:layout-component>
-        <!-- /.control-sidebar -->
+            <stripes:layout-component name="footer">
+                <jsp:include page="../footer.jsp"/>
+            </stripes:layout-component>
+            <!-- /.control-sidebar -->
+            </div>
         </div>
     </body>
 

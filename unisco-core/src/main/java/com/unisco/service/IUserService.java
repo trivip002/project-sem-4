@@ -20,6 +20,8 @@ public interface IUserService {
 
     String updateByUser(UserEntity userEntity);
 
+    String changeStatus(int status, Long userId);
+
     Set<String> getRoleOfUser(UserEntity userEntity);
 
     boolean checkRoleForUser(UserEntity userEntity, String[] roles);

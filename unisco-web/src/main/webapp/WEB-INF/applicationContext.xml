@@ -25,4 +25,5 @@
     </bean>
 
     <mvc:resources mapping="/static/**" location="/static/" />
+    <mvc:resources mapping="/upload/**" location="file:F://upload/" />
 </beans>
