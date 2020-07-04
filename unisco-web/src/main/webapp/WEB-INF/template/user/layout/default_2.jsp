@@ -38,10 +38,10 @@
     </head>
     <body>
         <stripes:layout-component name="header">
-            <jsp:include page="../header.jsp"/>
+            <jsp:include page="../header_2.jsp"/>
         </stripes:layout-component>
 
-        <div class="wrapper wrapper__minify">
+        <div class="wrapper _bg4586 _new89">
             <stripes:layout-component name="contents"/>
             <stripes:layout-component name="footer">
                 <jsp:include page="../footer.jsp"/>
