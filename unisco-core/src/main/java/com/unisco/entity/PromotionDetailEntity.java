@@ -28,6 +28,4 @@ public class PromotionDetailEntity extends BaseEntity implements Serializable {
     @JoinColumn(name = "promotion_id")
     private PromotionEntity promotion;
 
-    @Column(name = "discount_price")
-    private float discountPrice;
 }

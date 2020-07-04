@@ -19,9 +19,6 @@
                             <li>
                                 <button type="button" class="upload_btn"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-plus-circle"></i></button>
                             </li>
-                            <li>
-                                <button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button>
-                            </li>
                         </ul>
                     </div>
                     <div class="col-lg-12 col-md-12">
@@ -31,6 +28,7 @@
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">User Name</th>
+                                    <th scope="col">Role Name</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">City</th>
@@ -38,6 +36,7 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Avatar</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +44,7 @@
                                     <tr>
                                         <td>${item.userId}</td>
                                         <td>${item.userName!=null?item.userName:"N/A"}</td>
+                                        <td>${item.role.roleName!=null?item.role.roleName:"N/A"}</td>
                                         <td>${item.fullName!=null?item.fullName:"N/A"}</td>
                                         <td>${item.address!=null?item.address:"N/A"}</td>
                                         <td>${item.city!=null?item.city:"N/A"}</td>
@@ -52,6 +52,10 @@
                                         <td>${item.telephone!=null?item.telephone:"N/A"}</td>
                                         <td>${item.userEmail!=null?item.userEmail:"N/A"}</td>
                                         <td>${item.userAvatar!=null?item.userAvatar:"N/A"}</td>
+                                        <td>
+                                            <a><button type="button" class="upload_btn"><i class="uil uil-edit"></i></button></a>
+                                            <a><button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button></a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
