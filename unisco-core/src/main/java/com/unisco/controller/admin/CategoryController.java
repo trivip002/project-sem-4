@@ -28,7 +28,7 @@ public class CategoryController {
         ModelAndView mav = new ModelAndView("redirect:/admin/category/");
         CategoryEntity cates;
         if(cateId != null){
-            cates =categoryService.findOneByCateId(cateId);
+            cates = categoryService.findOneByCateId(cateId);
         }else {
             cates= new CategoryEntity();
         }
