@@ -29,6 +29,9 @@ public class PromotionEntity extends BaseEntity implements Serializable {
     @Column(name= "promotion_code")
     private String promotionCode;
 
+    @Column(name = "discount_price")
+    private float discountPrice;
+
     @Column(name = "is_active", nullable = false)
     private int isActive;
 

@@ -19,6 +19,7 @@ import java.util.Set;
 public class BlogEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 8196399101297019371L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "blog_id")
     private Long blogId;
 

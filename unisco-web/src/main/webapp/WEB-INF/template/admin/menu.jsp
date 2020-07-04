@@ -14,68 +14,78 @@
             <ul>
                 <li class="menu--item">
                     <a href="instructor_dashboard.html" class="menu--link active" title="Dashboard">
+                        <i class="uil uil-chart menu--icon"></i>
+                        <span class="menu--label">Dash Board</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/admin/" class="menu--link" title="User">
                         <i class="uil uil-user menu--icon"></i>
                         <span class="menu--label">User Management</span>
                     </a>
                 </li>
                 <li class="menu--item">
+                    <a href="/admin/role/" class="menu--link" title="Role">
+                        <i class="uil uil-user menu--icon"></i>
+                        <span class="menu--label">Role Management</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_dashboard.html" class="menu--link" title="Order">
+                        <i class="uil uil-shopping-cart-alt menu--icon"></i>
+                        <span class="menu--label">Order</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/admin/category/" class="menu--link" title="Courses Category">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Course Category</span>
+                    </a>
+                </li>
+                <li class="menu--item">
                     <a href="instructor_courses.html" class="menu--link" title="Courses">
                         <i class='uil uil-book-alt menu--icon'></i>
-                        <span class="menu--label">Courses</span>
+                        <span class="menu--label">Course</span>
                     </a>
                 </li>
                 <li class="menu--item">
-                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
-                        <i class='uil uil-wallet menu--icon'></i>
-                        <span class="menu--label">Section</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="create_new_course.html" class="menu--link" title="Create Course">
-                        <i class='uil uil-video menu--icon'></i>
-                        <span class="menu--label">Video</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_messages.html" class="menu--link" title="Messages">
+                    <a href="/admin/review/" class="menu--link" title="Messages">
                         <i class='uil uil-star menu--icon'></i>
-                        <span class="menu--label">Comment & Reviews</span>
+                        <span class="menu--label">Reviews</span>
                     </a>
                 </li>
                 <li class="menu--item">
-                    <a href="instructor_all_reviews.html" class="menu--link" title="Reviews">
+                    <a href="/admin/promotion/" class="menu--link" title="Analyics">
+                        <i class='uil uil-dollar-sign menu--icon'></i>
+                        <span class="menu--label">Promotion</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/admin/promotionDetail/" class="menu--link" title="Promotion">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Promotion Detail</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="/admin/blogCategory/" class="menu--link" title="Blog Category">
+                        <i class='uil uil-comments menu--icon'></i>
+                        <span class="menu--label">Blog Category</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/admin/blog/" class="menu--link" title="Blog">
+                        <i class='uil uil-comments menu--icon'></i>
+                        <span class="menu--label">Blogs</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/admin/blogComment/" class="menu--link" title="Comment">
                         <i class='uil uil-comments menu--icon'></i>
                         <span class="menu--label">Blog comment</span>
                     </a>
                 </li>
-                <li class="menu--item">
-                    <a href="instructor_earning.html" class="menu--link" title="Earning">
-                        <i class='uil uil-dollar-sign menu--icon'></i>
-                        <span class="menu--label">Promotions</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_statements.html" class="menu--link" title="Statements">
-                        <i class='uil uil-file-alt menu--icon'></i>
-                        <span class="menu--label">Order</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="left_section pt-2">
-            <ul>
-                <li class="menu--item">
-                    <a href="setting.html" class="menu--link" title="Setting">
-                        <i class='uil uil-cog menu--icon'></i>
-                        <span class="menu--label">Setting</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="feedback.html" class="menu--link" title="Send Feedback">
-                        <i class='uil uil-comment-alt-exclamation menu--icon'></i>
-                        <span class="menu--label">Send Feedback</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
