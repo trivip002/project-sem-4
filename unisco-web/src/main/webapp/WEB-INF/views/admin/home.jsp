@@ -36,7 +36,6 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Avatar</th>
-                                    <th scope="col">Actions</th>
                                     <th style="text-align: center" scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -53,10 +52,6 @@
                                         <td>${item.telephone!=null?item.telephone:"N/A"}</td>
                                         <td>${item.userEmail!=null?item.userEmail:"N/A"}</td>
                                         <td>${item.userAvatar!=null?item.userAvatar:"N/A"}</td>
-                                        <td>
-                                            <a><button type="button" class="upload_btn"><i class="uil uil-edit"></i></button></a>
-                                            <a><button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button></a>
-                                        </td>
                                         <td style="text-align: center">
                                             <button type="button" class="upload_btn update_btn_click"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-edit-alt"></i></button>
                                             <c:if test = "${item.isActive == 0}">

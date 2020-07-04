@@ -31,7 +31,7 @@
         <link href="<c:url value='/static/assets/css/instructor-responsive.css' />" rel="stylesheet">
         <link href="<c:url value='/static/assets/css/night-mode.css' />" rel="stylesheet">
 
-        <!-- Vendor Stylesheets -->uil uil-trash-alt
+        <!-- Vendor Stylesheets -->
         <link href="<c:url value='/static/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
