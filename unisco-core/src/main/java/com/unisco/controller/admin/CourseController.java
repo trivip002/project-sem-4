@@ -49,46 +49,46 @@ public class CourseController {
         return view;
     }
 
-//    @RequestMapping(value = "/{course_id}/edit", method = RequestMethod.GET)
-//    public ModelAndView showEditCourseForm(@PathVariable("course_id") Long id){
-//        ModelAndView view = new ModelAndView("/admin/course_edit");
-//
-//        CourseEntity courseEdit = courseService.getById(id);
-//        List<SectionEntity> listSectionEdit = sectionService.getAll();
-//        int count = 0;
-//
-//        for (SectionEntity sectionEntity : listSectionEdit
-//             ) {
-//            if (sectionEntity.getCourse().getCourseId().equals(courseEdit.getCourseId())){
-//                count += 1;
-//            }
-//        }
-//
-//        Map<Integer, String> listLang = new HashMap<Integer, String>();
-//        listLang.put(1, "English");
-//        listLang.put(2, "Spanish");
-//        listLang.put(3, "Portuguese");
-//        listLang.put(4, "Japanese");
-//        listLang.put(5, "Deutsch");
-//        listLang.put(6, "French");
-//        listLang.put(7, "Hindi");
-//        listLang.put(8, "Italian");
-//        listLang.put(9, "Polski");
-//        listLang.put(10, "Thai");
-//        listLang.put(11, "Romania");
-//        listLang.put(12, "Telugu");
-//        listLang.put(13, "Marathi");
-//
-//
-//
-//        view.addObject("courseEdit", courseEdit);
-//        view.addObject("listCateEdit", categoryService.getAll());
-//        view.addObject("listSectionEdit", listSectionEdit);
-//        view.addObject("listVideoEdit", videoService.getAll());
-//        view.addObject("listCount", count);
-//        view.addObject("listLang", listLang);
-//        return view;
-//    }
+    @RequestMapping(value = "/{course_id}/edit", method = RequestMethod.GET)
+    public ModelAndView showEditCourseForm(@PathVariable("course_id") Long id){
+        ModelAndView view = new ModelAndView("/admin/course_edit");
+
+        CourseEntity courseEdit = courseService.getById(id);
+        List<SectionEntity> listSectionEdit = sectionService.getAll();
+        int count = 0;
+
+        for (SectionEntity sectionEntity : listSectionEdit
+             ) {
+            if (sectionEntity.getCourse().getCourseId().equals(courseEdit.getCourseId())){
+                count += 1;
+            }
+        }
+
+        Map<Integer, String> listLang = new HashMap<Integer, String>();
+        listLang.put(1, "English");
+        listLang.put(2, "Spanish");
+        listLang.put(3, "Portuguese");
+        listLang.put(4, "Japanese");
+        listLang.put(5, "Deutsch");
+        listLang.put(6, "French");
+        listLang.put(7, "Hindi");
+        listLang.put(8, "Italian");
+        listLang.put(9, "Polski");
+        listLang.put(10, "Thai");
+        listLang.put(11, "Romania");
+        listLang.put(12, "Telugu");
+        listLang.put(13, "Marathi");
+
+
+
+        view.addObject("courseEdit", courseEdit);
+        view.addObject("listCateEdit", categoryService.getAll());
+        view.addObject("listSectionEdit", listSectionEdit);
+        view.addObject("listVideoEdit", videoService.getAll());
+        view.addObject("listCount", count);
+        view.addObject("listLang", listLang);
+        return view;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public  ModelAndView showCreate(){
