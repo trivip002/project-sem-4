@@ -43,6 +43,24 @@
         <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
         <script src='<c:url value="/static/assets/js/paginathing.js"/>'></script>
         <script src='<c:url value="/static/assets/js/waitMe.js"/>'></script>
+        <script>
+            function run_waitMe(){
+                var maxSize = '';
+                var textPos = 'vertical';
+                $('.containerLoading').waitMe({
+                effect: 'bounce',
+                text: 'loading',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#000',
+                maxSize: maxSize,
+                waitTime: -1,
+                source: "<c:url value='/static/assets/images/img.svg'/>",
+                textPos: textPos,
+                fontSize: '18px',
+                onClose: function(el) {}
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="containerLoading">
@@ -85,7 +103,7 @@
     <script>
     var dataCreate1={};
     $('#add-course-tab').steps({
-    onFinish: function () {
+/*    onFinish: function () {
     dataCreate1['courseName'] =  $('#courseName').val();
     dataCreate1['courseSubtitle'] =  $('#courseSubtitle').val();
     dataCreate1['courseDescription'] =  CKEDITOR.instances.id_course_description.getData();
@@ -96,7 +114,7 @@
     dataCreate1['courseStatus'] = $('#courseStatus').val();
     dataCreate1['courseThumbnail'] = $('#inputGroupFile04').val();
     console.log(dataCreate1);
-    }
+    }*/
     });
     </script>
     </html>

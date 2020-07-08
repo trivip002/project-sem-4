@@ -52,7 +52,7 @@
                                                             <div class="ui search focus mt-30 lbel25">
                                                                 <label>Course Name*</label>
                                                                 <div class="ui left icon input swdh19">
-                                                                    <input type="text" class="prompt srch_explore" maxlength="60" onfocus="true"  value="${courseEdit.courseName}">
+                                                                    <input type="text" class="prompt srch_explore" maxlength="60" onfocus="true" id="course-name"  value="${courseEdit.courseName}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -60,7 +60,7 @@
                                                             <div class="ui search focus mt-30 lbel25">
                                                                 <label>Course Subtitle*</label>
                                                                 <div class="ui left icon input swdh19">
-                                                                    <input type="text" class="prompt srch_explore" maxlength="60" value="${courseEdit.courseSubtitle}">
+                                                                    <input type="text" class="prompt srch_explore" maxlength="60" id="course-subtitle" value="${courseEdit.courseSubtitle}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@
                                                             <div class="mt-30 lbel25">
                                                                 <label>Course Category*</label>
                                                             </div>
-                                                            <select class="ui hj145 dropdown cntry152 prompt srch_explore mdb-select md-form" multiple>
+                                                            <select id="course-category" class="ui hj145 dropdown cntry152 prompt srch_explore mdb-select md-form" multiple>
                                                                 <option value="">Select Category</option>
                                                                 <c:forEach items="${courseEdit.category}" var="c">
                                                                     <option value="${c.cateId}" selected>${c.cateName}</option>
@@ -109,7 +109,7 @@
                                                             </div>
                                                             <div class="ui search focus">
                                                                 <div class="ui left icon input swdh19">
-                                                                    <input class="prompt srch_explore" type="text" placeholder="Insert your course Duration." name="courseDuration" data-purpose="edit-course-duration" maxlength="60" id="course[Duration]" value="${courseEdit.courseDuration}">
+                                                                    <input class="prompt srch_explore" type="text" placeholder="Insert your course Duration." name="courseDuration" data-purpose="edit-course-duration" maxlength="60" id="course-duration" value="${courseEdit.courseDuration}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,7 +123,7 @@
                                                             </div>
                                                             <div class="ui search focus mt-30 lbel25">
                                                                 <div class="ui left icon input swdh19">
-                                                                    <input class="prompt srch_explore" type="text" placeholder="Insert your course Price." name="coursePrice" data-purpose="edit-course-price" maxlength="60" id="course[Price]" value="${courseEdit.coursePrice}">
+                                                                    <input class="prompt srch_explore" type="text" placeholder="Insert your course Price." name="coursePrice" data-purpose="edit-course-price" maxlength="60" id="course-price" value="${courseEdit.coursePrice}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -496,7 +496,7 @@
                                 <div class="step-footer step-tab-pager">
                                     <button data-direction="prev" class="btn btn-default steps_btn">PREVIOUS</button>
                                     <button data-direction="next" class="btn btn-default steps_btn">NEXT</button>
-                                    <button data-direction="finish" type="submit" class="btn btn-default steps_btn">FINISH</button>
+                                    <button id="finish-btn" data-direction="finish" type="submit" class="btn btn-default steps_btn">FINISH</button>
                                 </div>
                             </div>
                         </div>
@@ -518,7 +518,6 @@
                     uiColor : '#f7f7f7'
                 });
             //process edit data
-            var dataEdit = new FormData();
             var dataSections = [];
             var dataCreateSection = {};
             var editSectionObj;
@@ -540,15 +539,16 @@
                     });
                 });
                 $('#list-video tr').each(function (a,b) {
-                   dataVideos.push({
-                       id:$('.video-id', b).text(),
-                       name:$('.video-name',b).text(),
-                       belong:$('.belong-to',b).attr("data-sectionId"),
-                       url:$('.video-url',b).text(),
-                       status: 'old'
-                   }) ;
+                    if(($('.belong-to',b).attr("data-sectionId"))){
+                        dataVideos.push({
+                            id:$('.video-id', b).text(),
+                            name:$('.video-name',b).text(),
+                            sectionId:$('.belong-to',b).attr("data-sectionId"),
+                            url:$('.video-url',b).text(),
+                            status: 'old'
+                        }) ;
+                    }
                 });
-                console.log(dataVideos);
             });
 
             $('#btn-save-video').on("click", function () {
@@ -559,10 +559,11 @@
                dataCreateVideo = {
                    id: (parseInt(maxId)+1).toString(),
                    name: $('#video-name').val(),
-                   belong: $('#belong-to').val(),
-                   url: $('#inputGroupFile06').val(),
+                   sectionId: $('#belong-to').val(),
+                   url: $('#inputGroupFile06')[0].files[0].name,
                    status: 'new'
                };
+                var selectedSection = $('#belong-to option:selected').text();
                if ($('#video-name').val()!=""){
                    dataVideos.push(dataCreateVideo);
                    $('#video-name').val("");
@@ -572,8 +573,8 @@
                    $('#list-video tr:last').after('<tr id="video-'+ dataCreateVideo["id"] +'">\n' +
                        '     <td class="text-center video-id">'+ dataCreateVideo["id"] +'</td>\n' +
                        '     <td class="cell-ta video-name">'+ dataCreateVideo["name"] +'</td>\n' +
-                       '     <td class="text-center belong-to" data-sectionId="'+ dataCreateVideo["belong"] +'">'+ dataCreateVideo["belong"] +'</td>\n' +
-                       '     <td class="text-center video-url"><a href="#" id="btnPreview" data-toggle="modal" data-target="#previewModal_'+ dataCreateVideo["id"] +'">'+ dataCreateVideo["name"] +'</a></td>\n' +
+                       '     <td class="text-center belong-to" data-sectionId="'+ dataCreateVideo["sectionId"] +'">'+ selectedSection +'</td>\n' +
+                       '     <td class="text-center video-url"><a href="#" id="btnPreview" data-toggle="modal" data-target="#previewModal_'+ dataCreateVideo["id"] +'">'+ dataCreateVideo["url"] +'</a></td>\n' +
                        '    <div class="modal" id="previewModal_'+ dataCreateVideo["id"] +'">\n' +
                        '     <div class="modal-dialog">\n' +
                        '       <div class="modal-content">\n' +
@@ -597,7 +598,6 @@
                        '     </td>\n' +
                        '   </tr>');
                }
-                console.log(dataVideos);
             });
 
             $('#btn-save-section').on("click", function () {
@@ -635,7 +635,6 @@
                         '</tr>');
                     $('#belong-to option:last').after('<option value="'+dataCreateSection["id"]+'">'+dataCreateSection["title"]+'</option>');
                 }
-                console.log(dataSections);
             });
 
             $('#video-edit').click(function () {
@@ -696,6 +695,8 @@
                 $('#section-'+editSectionObj["id"]).find('.section-desc').text(editSectionObj["description"]);
             });
 
+            var courseThumbnail = "";
+            var courseFileThumbnail;
             var openFileThumb = function(event) {
                 var input = event.target;
                 var reader = new FileReader();
@@ -703,7 +704,8 @@
                     $('#course_thumbnail').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(input.files[0]);
-                dataEdit.append('courseThumbnail',input.files[0]);
+                courseThumbnail = input.files[0].name;
+                courseFileThumbnail = input.files[0];
                 $('#lblInputGroupFile04').text(input.files[0].name);
             };
 
@@ -711,7 +713,6 @@
                 var input = event.target;
                 var reader = new FileReader();
                 reader.readAsDataURL(input.files[0]);
-                dataEdit.append('courseVideo',input.files[0]);
                 $('#lblInputGroupFile06').text(input.files[0].name);
             };
 
@@ -721,6 +722,54 @@
             });
             $('.modal').on('hidden.bs.modal', function () {
                 $('.modal iframe').attr("src", $(".modal iframe").attr("src"));
+            });
+
+            //click on finish
+            $('#finish-btn').click(function(){
+                run_waitMe();
+                var formData = new FormData();
+                var listCate = $('#course-category').val().filter(function(elem, index, self) {
+                    return index === self.indexOf(elem);
+                });
+                var dataBiding = {
+                    'courseId': ${courseEdit.courseId},
+                    'courseName': $('#course-name').val(),
+                    'courseSubtitle': $('#course-subtitle').val(),
+                    'courseDescription': CKEDITOR.instances.edit_description_1.getData(),
+                    'courseLanguage': $('#courseLanguage').val(),
+                    'courseCategories': listCate,
+                    'courseDuration': $('#course-duration').val(),
+                    'coursePrice': $('#course-price').val(),
+                    'courseThumbnail': courseThumbnail,
+                    'dataSections':dataSections,
+                    'dataVideos': dataVideos
+                };
+                console.log(dataBiding);
+                $.ajax({
+                    url: "/api/course/edit",
+                    method: "POST",
+                    processData: false,
+                    contentType: 'application/json',
+                    data: JSON.stringify(dataBiding),
+                    success: function(result) {
+                        if(courseFileThumbnail){
+                            formData.append('courseFileThumbnail',courseFileThumbnail);
+                            $.ajax({
+                                url: "/api/course/upload",
+                                method: "POST",
+                                enctype: 'multipart/form-data',
+                                processData: false,
+                                contentType: false,
+                                data: formData,
+                                success: function() {
+                                    $('.containerLoading').waitMe('hide');
+                                    window.location.href = "";
+                                }
+                            });
+                        }
+                        $('.containerLoading').waitMe('hide');
+                    }
+                });
             });
         </script>
 

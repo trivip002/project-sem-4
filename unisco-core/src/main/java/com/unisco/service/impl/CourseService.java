@@ -32,11 +32,7 @@ public class CourseService implements ICourseService {
 
     @Override
     public void saveOrUpdate(CourseEntity courseEntity) {
-        if(getById(courseEntity.getCourseId()) == null){
-            courseRepository.save(courseEntity);
-        } else {
-            courseRepository.save(courseEntity);
-        }
+        courseRepository.save(courseEntity);
     }
 
     @Override

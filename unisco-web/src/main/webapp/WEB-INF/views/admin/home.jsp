@@ -186,22 +186,7 @@
                     }
                 });
             });
-            function run_waitMe(){
-                var maxSize = '';
-                var textPos = 'vertical';
-                $('.containerLoading').waitMe({
-                    effect: 'bounce',
-                    text: 'loading',
-                    bg: 'rgba(255,255,255,0.7)',
-                    color: '#000',
-                    maxSize: maxSize,
-                    waitTime: -1,
-                    source: "<c:url value='/static/assets/images/img.svg' />",
-                    textPos: textPos,
-                    fontSize: '18px',
-                    onClose: function(el) {}
-                });
-            }
+
         </script>
     </stripes:layout-component>
 </stripes:layout-render>

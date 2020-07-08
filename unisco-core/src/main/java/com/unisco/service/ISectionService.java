@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ISectionService {
     List<SectionEntity> getAll();
+    SectionEntity getOneById(Long id);
+    void saveOrUpdate(SectionEntity sectionEntity);
 }

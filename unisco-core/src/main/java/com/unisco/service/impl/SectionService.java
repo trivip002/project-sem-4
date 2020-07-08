@@ -18,4 +18,14 @@ public class SectionService implements ISectionService {
     public List<SectionEntity> getAll() {
         return sectionRepository.findAll();
     }
+
+    @Override
+    public SectionEntity getOneById(Long id) {
+        return sectionRepository.findOne(id);
+    }
+
+    @Override
+    public void saveOrUpdate(SectionEntity sectionEntity) {
+        sectionRepository.save(sectionEntity);
+    }
 }

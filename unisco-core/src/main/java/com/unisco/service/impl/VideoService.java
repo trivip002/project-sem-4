@@ -18,4 +18,14 @@ public class VideoService implements IVideoService {
     public List<VideoEntity> getAll() {
         return videoRepository.findAll();
     }
+
+    @Override
+    public VideoEntity getOneById(Long id) {
+        return videoRepository.findOne(id);
+    }
+
+    @Override
+    public void saveOrUpdate(VideoEntity videoEntity) {
+        videoRepository.save(videoEntity);
+    }
 }
