@@ -33,6 +33,8 @@
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/bootstrap-rating.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/theme.css' />" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />" >
         <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>' ></script>
     </head>
@@ -54,6 +56,8 @@
         <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>' ></script>
         <script src='<c:url value="/static/assets/js/custom.js"/>'></script>
         <script src='<c:url value="/static/assets/js/night-mode.js"/>' ></script>
+        <script src='<c:url value="/static/assets/js/bootstrap-rating.js"/>' ></script>
+        <script src='<c:url value="/static/assets/js/theme.js"/>' ></script>
     </body>
     </html>
 </stripes:layout-definition>

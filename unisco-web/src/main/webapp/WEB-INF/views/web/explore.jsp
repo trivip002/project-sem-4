@@ -9,103 +9,18 @@
                             <div class="explore_search">
                                 <div class="ui search focus">
                                     <div class="ui left icon input swdh11">
-                                        <input class="prompt srch_explore" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">
-                                        <i class="uil uil-search-alt icon icon2"></i>
+<%--                                        <input class="prompt srch_explore" name="key" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">--%>
+<%--                                        --%>
+<%--                                        <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>--%>
+<%--                                        <i class="uil uil-search-alt icon icon2"></i>--%>
+                                        <div class="review_search" style="width: 100%;">
+<%--                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search courses...">--%>
+<%--                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>--%>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <!-- <div class="section3125 mb-15 mt-50">
-                            <h4 class="item_title">Live Streams</h4>
-                            <a href="live_streams.html" class="see150">See all</a>
-                            <div class="la5lo1">
-                                <div class="owl-carousel live_stream owl-theme">
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-1.jpg" alt="">
-                                                <h4>John Doe</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-2.jpg" alt="">
-                                                <h4>Jassica</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-9.jpg" alt="">
-                                                <h4>Edututs+</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-3.jpg" alt="">
-                                                <h4>Joginder Singh</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-4.jpg" alt="">
-                                                <h4>Zoena</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-5.jpg" alt="">
-                                                <h4>Albert Dua</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-6.jpg" alt="">
-                                                <h4>Ridhima</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-7.jpg" alt="">
-                                                <h4>Amritpal</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="stream_1">
-                                            <a href="live_output.html" class="stream_bg">
-                                                <img src="images/left-imgs/img-8.jpg" alt="">
-                                                <h4>Jimmy</h4>
-                                                <p>live<span></span></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="col-md-12">
                         <div class="_14d25">
@@ -113,7 +28,7 @@
                                 <c:forEach items="${listCourse}" var="c">
                                 <div class="col-lg-3 col-md-4">
                                     <div class="fcrse_1 mt-30">
-                                        <a href="course_detail_view.html" class="fcrse_img">
+                                        <a href="<c:url value="/explore/course?courseId=${c.courseId}"/>" class="fcrse_img">
                                             <img src="${c.courseThumbnail}" alt="">
                                             <div class="course-overlay">
                                                 <div class="badge_seller">Bestseller</div>
@@ -129,7 +44,7 @@
                                             <div class="eps_dots more_dropdown">
                                                 <a href="#"><i class="uil uil-heart-alt"></i></a>
                                             </div>
-                                            <a href="course_detail_view.html" class="crse14s">${c.courseName}</a>
+                                            <a href="<c:url value="/explore/course?courseId=${c.courseId}"/>" class="crse14s">${c.courseName}</a>
                                             <a href="#" class="crse-cate">
                                                 <c:forEach items="${c.category}" var="ca">
                                                     ${ca.cateName.concat(" |")}
@@ -143,20 +58,19 @@
                                     </div>
                                 </div>
                                 </c:forEach>
-<%--                                <div class="col-md-12">--%>
-<%--                                    <div class="main-loader mt-50">--%>
-<%--                                        <div class="spinner">--%>
-<%--                                            <div class="bounce1"></div>--%>
-<%--                                            <div class="bounce2"></div>--%>
-<%--                                            <div class="bounce3"></div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            $('#btnSearch').click(function () {
+                var searchStr;
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/explore/search?key=" +searchStr;
+                console.log(searchStr);
+            });
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>
