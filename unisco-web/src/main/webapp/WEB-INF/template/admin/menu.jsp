@@ -12,86 +12,95 @@
     <div class="left_section menu_left" id="js-menu" >
         <div class="left_section">
             <ul>
-                <li class="menu--item">
-                    <a href="<c:url value="/admin/category/"/>" class="menu--link" title="Dashboard">
-                        <i class="uil uil-car-sideview menu--icon"></i>
-                        <span class="menu--label">Category</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="<c:url value="#"/>" class="menu--link" title="Dashboard">
-                        <i class="uil uil-chart menu--icon"></i>
-                        <span class="menu--label">Dash Board</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/" class="menu--link" title="User">
-                        <i class="uil uil-user menu--icon"></i>
-                        <span class="menu--label">User Management</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="<c:url value="/admin/course/"/>" class="menu--link" title="Courses">
-                        <i class='uil uil-book-alt menu--icon'></i>
-                        <span class="menu--label">Courses</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_dashboard.html" class="menu--link" title="Order">
-                        <i class="uil uil-shopping-cart-alt menu--icon"></i>
-                        <span class="menu--label">Order</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/category/" class="menu--link" title="Courses Category">
-                        <i class='uil uil-book-alt menu--icon'></i>
-                        <span class="menu--label">Course Category</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_courses.html" class="menu--link" title="Courses">
-                        <i class='uil uil-book-alt menu--icon'></i>
-                        <span class="menu--label">Course</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/review/" class="menu--link" title="Messages">
-                        <i class='uil uil-star menu--icon'></i>
-                        <span class="menu--label">Reviews</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/promotion/" class="menu--link" title="Analyics">
-                        <i class='uil uil-dollar-sign menu--icon'></i>
-                        <span class="menu--label">Promotion</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/promotionDetail/" class="menu--link" title="Promotion">
-                        <i class='uil uil-analysis menu--icon'></i>
-                        <span class="menu--label">Promotion Detail</span>
-                    </a>
-                </li>
+                <security:authorize access="hasRole('ROLE_ADMIN')">
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/category/"/>" class="menu--link" title="Dashboard">
+                            <i class="uil uil-car-sideview menu--icon"></i>
+                            <span class="menu--label">Category</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="#"/>" class="menu--link" title="Dashboard">
+                            <i class="uil uil-chart menu--icon"></i>
+                            <span class="menu--label">Dash Board</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/" class="menu--link" title="User">
+                            <i class="uil uil-user menu--icon"></i>
+                            <span class="menu--label">User Management</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/course/"/>" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Courses</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_dashboard.html" class="menu--link" title="Order">
+                            <i class="uil uil-shopping-cart-alt menu--icon"></i>
+                            <span class="menu--label">Order</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/category/" class="menu--link" title="Courses Category">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Course Category</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_courses.html" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Course</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/review/" class="menu--link" title="Messages">
+                            <i class='uil uil-star menu--icon'></i>
+                            <span class="menu--label">Reviews</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/promotion/" class="menu--link" title="Analyics">
+                            <i class='uil uil-dollar-sign menu--icon'></i>
+                            <span class="menu--label">Promotion</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/promotionDetail/" class="menu--link" title="Promotion">
+                            <i class='uil uil-analysis menu--icon'></i>
+                            <span class="menu--label">Promotion Detail</span>
+                        </a>
+                    </li>
 
-                <li class="menu--item">
-                    <a href="/admin/blogCategory/" class="menu--link" title="Blog Category">
-                        <i class='uil uil-comments menu--icon'></i>
-                        <span class="menu--label">Blog Category</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/blog/" class="menu--link" title="Blog">
-                        <i class='uil uil-comments menu--icon'></i>
-                        <span class="menu--label">Blogs</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/admin/blogComment/" class="menu--link" title="Comment">
-                        <i class='uil uil-comments menu--icon'></i>
-                        <span class="menu--label">Blog comment</span>
-                    </a>
-                </li>
-
+                    <li class="menu--item">
+                        <a href="/admin/blogCategory/" class="menu--link" title="Blog Category">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Blog Category</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/blog/" class="menu--link" title="Blog">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Blogs</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/blogComment/" class="menu--link" title="Comment">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Blog comment</span>
+                        </a>
+                    </li>
+                </security:authorize>
+                <security:authorize access="hasRole('ROLE_INSTRUCTOR')">
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/course/"/>" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Courses</span>
+                        </a>
+                    </li>
+                </security:authorize>
             </ul>
         </div>
     </div>

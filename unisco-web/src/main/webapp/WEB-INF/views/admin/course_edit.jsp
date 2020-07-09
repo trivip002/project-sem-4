@@ -1,6 +1,7 @@
 <%@include file="/common/tag.jsp"%>
 <stripes:layout-render name="../../template/admin/layout/default.jsp" pageTitle="Edit Page" pageCss="style.css">
     <stripes:layout-component name="contents">
+        <div id="course-id" data-id="${courseEdit.courseId}"></div>
         <div class="sa4d25">
             <div class="container">
                 <div class="row">
@@ -134,7 +135,7 @@
                                                             <div class="col-lg-3 col-md-4 col-sm-6">
                                                                 <div class="ui search focus mt-30 lbel25">
                                                                     <div class="ui left icon input swdh19">
-                                                                        <select class="ui hj145 dropdown cntry152 prompt srch_explore">
+                                                                        <select id="course_active" class="ui hj145 dropdown cntry152 prompt srch_explore">
                                                                             <option value="1" ${courseEdit.isActive==1?"selected":""}>Active</option>
                                                                             <option value="0" ${courseEdit.isActive==0?"selected":""}>Inactive</option>
                                                                         </select>
@@ -160,7 +161,7 @@
                                                             <div class="view_all_dt">
                                                                 <div class="view_img_left">
                                                                     <div class="view__img">
-                                                                        <img id="course_thumbnail" src="${courseEdit.courseImg}" alt="">
+                                                                        <img id="course_thumbnail" src="<c:url value="/upload/avatar.jpg"/>" alt="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="view_img_right">
@@ -602,37 +603,58 @@
 
             $('#btn-save-section').on("click", function () {
                 var maxId = 0;
-                dataSections.forEach(item=>{
-                    item.id > maxId ? maxId = item.id:'';
-                });
+                if(dataSections.length != 0){
+                    dataSections.forEach(item=>{
+                        item.id > maxId ? maxId = item.id:'';
+                    });
+                }
                 dataCreateSection = {
-                    id: (parseInt(maxId)+1).toString(),
+                    id: dataSections.length==0?1:(parseInt(maxId)+1).toString(),
                     title : $('#section_title').val(),
                     duration: $('#section_duration').val(),
                     description: CKEDITOR.instances.id_part_description.getData(),
                     status: 'new'
                 };
-                if ($('#section_title').val()!=""){
+                if ($('#section_title').val()!==""){
                     dataSections.push(dataCreateSection);
+                    console.log(dataSections);
                     $('#section_title').val("");
                     $('#section_duration').val("");
                     CKEDITOR.instances.id_part_description.setData("");
+                    if(dataSections.length!==1){
+                        $('#list-section tr:last').after('<tr id="section-'+dataCreateSection["id"]+'">\n' +
+                            '   <td class="text-center section-id" >'+dataCreateSection["id"]+'</td>\n' +
+                            '   <td class="cell-ta section-title">'+dataCreateSection["title"]+'</td>\n' +
+                            '\n' +
+                            '   <td class="text-center section-duration">\n' +
+                            '       '+dataCreateSection["duration"]+'\n' +
+                            '   </td>\n' +
+                            '   <td class="text-center section-desc">\n' +
+                            '       '+dataCreateSection["description"]+'\n' +
+                            '   </td>\n' +
+                            '   <td class="text-center">\n' +
+                            '       <a href="#" title="'+dataCreateSection["id"]+'" class="gray-s section-edit" data-toggle="modal" data-target="#edit-section-modal"><i class="uil uil-edit-alt"></i></a>\n' +
+                            '       <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>\n' +
+                            '   </td>\n' +
+                            '</tr>');
+                    }else{
+                        $('#list-section').append('<tr id="section-'+dataCreateSection["id"]+'">\n' +
+                            '   <td class="text-center section-id" >'+dataCreateSection["id"]+'</td>\n' +
+                            '   <td class="cell-ta section-title">'+dataCreateSection["title"]+'</td>\n' +
+                            '\n' +
+                            '   <td class="text-center section-duration">\n' +
+                            '       '+dataCreateSection["duration"]+'\n' +
+                            '   </td>\n' +
+                            '   <td class="text-center section-desc">\n' +
+                            '       '+dataCreateSection["description"]+'\n' +
+                            '   </td>\n' +
+                            '   <td class="text-center">\n' +
+                            '       <a href="#" title="'+dataCreateSection["id"]+'" class="gray-s section-edit" data-toggle="modal" data-target="#edit-section-modal"><i class="uil uil-edit-alt"></i></a>\n' +
+                            '       <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>\n' +
+                            '   </td>\n' +
+                            '</tr>');
+                    }
 
-                    $('#list-section tr:last').after('<tr id="section-'+dataCreateSection["id"]+'">\n' +
-                        '   <td class="text-center section-id" >'+dataCreateSection["id"]+'</td>\n' +
-                        '   <td class="cell-ta section-title">'+dataCreateSection["title"]+'</td>\n' +
-                        '\n' +
-                        '   <td class="text-center section-duration">\n' +
-                        '       '+dataCreateSection["duration"]+'\n' +
-                        '   </td>\n' +
-                        '   <td class="text-center section-desc">\n' +
-                        '       '+dataCreateSection["description"]+'\n' +
-                        '   </td>\n' +
-                        '   <td class="text-center">\n' +
-                        '       <a href="#" title="'+dataCreateSection["id"]+'" class="gray-s section-edit" data-toggle="modal" data-target="#edit-section-modal"><i class="uil uil-edit-alt"></i></a>\n' +
-                        '       <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>\n' +
-                        '   </td>\n' +
-                        '</tr>');
                     $('#belong-to option:last').after('<option value="'+dataCreateSection["id"]+'">'+dataCreateSection["title"]+'</option>');
                 }
             });
@@ -732,11 +754,12 @@
                     return index === self.indexOf(elem);
                 });
                 var dataBiding = {
-                    'courseId': ${courseEdit.courseId},
+                    'courseId': $('#course-id').attr('data-id')==''?null:$('#course-id').attr('data-id'),
                     'courseName': $('#course-name').val(),
                     'courseSubtitle': $('#course-subtitle').val(),
                     'courseDescription': CKEDITOR.instances.edit_description_1.getData(),
                     'courseLanguage': $('#courseLanguage').val(),
+                    'courseActive': $('#course_active').val(),
                     'courseCategories': listCate,
                     'courseDuration': $('#course-duration').val(),
                     'coursePrice': $('#course-price').val(),

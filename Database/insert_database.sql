@@ -2,11 +2,13 @@ USE test;
 
 INSERT INTO role(role_code,role_name)
 VALUES ('ROLE_ADMIN','admin role'),
-('ROLE_USER','user role');
+('ROLE_USER','user role'),
+('ROLE_INSTRUCTOR','instructor');
 
 INSERT INTO user(user_name,password, is_active, role_id)
 VALUES ('admin','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,1),
-	('user','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,2);
+	('user','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,2),
+	('trivip002','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,3);
 
 INSERT INTO category(cate_name)
 VALUES('Javascript'), ('Python'), ('PHP'), ('Java'), ('Algorithm'), ('Design Pattern'), ('C#'), ('NodeJs');

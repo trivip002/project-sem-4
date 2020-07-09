@@ -8,6 +8,7 @@ import com.unisco.service.impl.CategoryService;
 import com.unisco.service.impl.CourseService;
 import com.unisco.service.impl.SectionService;
 import com.unisco.service.impl.VideoService;
+import com.unisco.utils.Principal;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,25 +39,31 @@ public class CourseApiController {
     private VideoService videoService;
 
     @PostMapping(value = "/upload")
-    public Object uploadFile(MultipartFile courseFileThumbnail){
+    public Object uploadFile(MultipartFile courseFileThumbnail) {
         return null;
     }
 
     @PostMapping(value = "/edit")
     public String updateCourse(@RequestBody DataBiding dataBiding) {
         //edit course
-        CourseEntity courseEntity = courseService.getById(dataBiding.courseId);
+        CourseEntity courseEntity = dataBiding.getCourseId() != null ? courseService.getById(dataBiding.courseId) : new CourseEntity();
         courseEntity.setCourseName(dataBiding.getCourseName());
         courseEntity.setCourseSubtitle(dataBiding.getCourseSubtitle());
         courseEntity.setCourseDescription(dataBiding.getCourseDescription());
         courseEntity.setCourseLanguage(dataBiding.getCourseLanguage());
         courseEntity.setCourseDuration(dataBiding.getCourseDuration());
         courseEntity.setCourseThumbnail(dataBiding.getCourseThumbnail());
+        courseEntity.setCoursePrice(dataBiding.getCoursePrice());
+        courseEntity.setIsActive(dataBiding.getCourseActive());
+        if(courseEntity.getCourseId()==null){
+            courseEntity.setCreatedBy(Principal.getPrincipal());
+        }
+        courseEntity.setModifiedBy(Principal.getPrincipal());
         courseService.saveOrUpdate(courseEntity);
         Set<CategoryEntity> categoryEntities = new HashSet<>();
         courseEntity.setCategory(categoryEntities);
         courseService.saveOrUpdate(courseEntity);
-        dataBiding.courseCategories.forEach(item-> categoryEntities.add(categoryService.getById(item)));
+        dataBiding.courseCategories.forEach(item -> categoryEntities.add(categoryService.getById(item)));
         courseEntity.setCategory(categoryEntities);
         courseService.saveOrUpdate(courseEntity);
         Set<SectionEntity> sectionEntities = new HashSet<>();
@@ -73,11 +80,11 @@ public class CourseApiController {
             sectionService.saveOrUpdate(sectionEntity);
             sectionEntity.setCourse(courseEntity);
             sectionService.saveOrUpdate(sectionEntity);
-            dataBiding.dataVideos.forEach(videoItem->{
-                VideoEntity videoEntity = videoItem.status.equals("new")? new VideoEntity(): videoService.getOneById(videoItem.getId());
+            dataBiding.dataVideos.forEach(videoItem -> {
+                VideoEntity videoEntity = videoItem.status.equals("new") ? new VideoEntity() : videoService.getOneById(videoItem.getId());
                 videoEntity.setVideoName(videoItem.getName());
                 videoEntity.setVideoUrl(videoItem.getUrl());
-                if(videoItem.getSectionId().equals(item.getId())){
+                if (videoItem.getSectionId().equals(item.getId())) {
                     videoService.saveOrUpdate(videoEntity);
                     videoEntity.setSection(sectionEntity);
                 }
@@ -87,7 +94,8 @@ public class CourseApiController {
         return "success";
     }
 
-    @Getter@Setter
+    @Getter
+    @Setter
     private static class RequestParamSection {
         private Long id;
         private String title;
@@ -96,7 +104,8 @@ public class CourseApiController {
         private String status;
     }
 
-    @Getter@Setter
+    @Getter
+    @Setter
     private static class RequestParamVideo {
         private Long id;
         private String name;
@@ -105,13 +114,16 @@ public class CourseApiController {
         private String status;
     }
 
-    @Setter@Getter
+    @Setter
+    @Getter
     private static class DataBiding {
         private Long courseId;
         private String courseName;
         private String courseSubtitle;
         private String courseDescription;
         private String courseLanguage;
+        private float coursePrice;
+        private int courseActive;
         private List<Long> courseCategories;
         private String courseDuration;
         private String courseThumbnail;
