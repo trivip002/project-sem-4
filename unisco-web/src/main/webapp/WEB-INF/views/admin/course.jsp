@@ -14,7 +14,7 @@
                                 <h1>Jump Into Course Creation</h1>
                             </div>
                             <div class="card_dash_right1">
-                                <a href="/admin/course/create"><button class="create_btn_dash">Create Your Course</button></a>
+                                <a href="/admin/course/edit"><button class="create_btn_dash">Create Your Course</button></a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                                 </td>
                                                 <td class="text-center"><b class="course_active">${i.isActive==1?"Active":"Inactive"}</b></td>
                                                 <td class="text-center">
-                                                    <a href="/admin/course/${i.courseId}/edit" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                    <a href="/admin/course/edit?courseId=${i.courseId}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
                                                     <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                                 </td>
                                             </tr>

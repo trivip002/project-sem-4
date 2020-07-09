@@ -40,4 +40,9 @@ public class CourseService implements ICourseService {
         return courseRepository.findByCourseNameLike(key);
     }
 
+    @Override
+    public List<CourseEntity> getByUserName(String userName) {
+        return courseRepository.findByCreatedBy(userName);
+    }
+
 }

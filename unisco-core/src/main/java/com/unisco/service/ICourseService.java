@@ -15,5 +15,7 @@ public interface ICourseService {
     void saveOrUpdate(CourseEntity courseEntity);
 
     List<CourseEntity> getByNameLike(String key);
+
+    List<CourseEntity> getByUserName(String userName);
 }
 

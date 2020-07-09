@@ -12,4 +12,6 @@ public interface CourseRepository extends JpaRepository<CourseEntity,Long> {
     List<CourseEntity> findByCategory(CategoryEntity cate);
 
     List<CourseEntity> findByCourseNameLike(String key);
+
+    List<CourseEntity> findByCreatedBy(String createdBy);
 }
