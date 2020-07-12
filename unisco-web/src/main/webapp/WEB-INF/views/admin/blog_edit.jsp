@@ -22,22 +22,30 @@
                 <div class="sa4d25">
                     <form class="course__form" method="post"  action="<c:url value='/admin/blog/create'/>">
                         <div class="col-lg-10">
-                            <input type="hidden" name="blogId" value="${blogEdit.blogId}">
+                            <input type="hidden" name="blogId" value="${blogEdit.blogId}"/>
+                            <h3>Blog Category:</h3>
+                            <div class="ui left icon input">
+                                <select   name="blogCateTitle">
+                                    <c:forEach items="${listBlogCategory}" var="item">
+                                        <option value="${item.blogCateId}">${item.blogCateTitle}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                             <h3>Title:</h3>
                             <div class="ui form swdh339">
-                                <input type="text" class="prompt srch_explore" name="blogTitle" value="${blogEdit.blogTitle}"/>
+                                <input type="text" class="prompt srch_explore" name="blogTitle" value="${blogEdit.blogTitle}" required/>
                             </div>
                             <h3>Meta Title:</h3>
                             <div class="ui form swdh339">
-                                <input type="text" class="prompt srch_explore" name="blogMetaTitle" value="${blogEdit.blogMetaTitle}" />
+                                <input type="text" class="prompt srch_explore" name="blogMetaTitle" value="${blogEdit.blogMetaTitle}" required />
                             </div>
                             <h3>Image:</h3>
                             <div class="ui left icon input">
-                                <input type="text" class="prompt srch_explore" name="blogImg" value="${blogEdit.blogImg}"/>
+                                <input type="text" class="prompt srch_explore" name="blogImg" value="${blogEdit.blogImg}" required/>
                             </div>
                             <h3>Content:</h3>
                             <div class="ui form swdh339">
-                                <input type="text" class="prompt srch_explore" name="blogContent" value="${blogEdit.blogContent}"/>
+                                <input type="text" class="prompt srch_explore" name="blogContent" value="${blogEdit.blogContent}" required/>
                             </div>
                             <h3>Status:</h3>
                             <select class="ui dropdown border-dark" name="isActive" required >

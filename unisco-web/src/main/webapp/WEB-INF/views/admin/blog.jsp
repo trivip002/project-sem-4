@@ -12,15 +12,16 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Blog</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
                                     <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search blog title..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -37,9 +38,7 @@
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Meta Title</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Content</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -49,9 +48,7 @@
                                     <tr >
                                         <td >${item.blogId}</td>
                                         <td class=" text-truncate" style="max-width: 100px">${item.blogTitle}</td>
-                                        <td class=" text-truncate" style="max-width: 100px">${item.blogMetaTitle}</td>
                                         <td>${item.blogImg}</td>
-                                        <td class=" text-truncate" style="max-width: 100px">${item.blogContent}</td>
                                         <td>${item.isActive==1?"Active":"Inactive"}</td>
                                         <td>
                                             <a href="<c:url value="/admin/blog/edit/${item.blogId}"/>"><button type="button" class="upload_btn"><i class="uil uil-edit"></i></button></a>
@@ -75,7 +72,7 @@
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <p class="heading lead" style="color: white">ADD BLOG CATEGORY</p>
+                        <p class="heading lead" style="color: white">ADD BLOG</p>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="white-text">&times;</span>
@@ -86,6 +83,14 @@
                     <div class="modal-body">
                         <form method="post"  action="<c:url value='/admin/blog/create'/>">
                             <input type="hidden" name="blogId" value="">
+                            <h3>Blog Category:</h3>
+                            <div class="ui left icon input">
+                                <select   name="blogCateTitle">
+                                    <c:forEach items="${listBlogCategory}" var="it">
+                                        <option value="${it.blogCateId}">${it.blogCateTitle}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                             <h3>Title:</h3>
                             <div class="ui form swdh339">
                                 <textarea type="text" class="prompt srch_explore" name="blogTitle" value="${blogEdit}" rows="1" required></textarea>
@@ -96,7 +101,7 @@
                             </div>
                             <h3>Image:</h3>
                             <div class="ui left icon input">
-                                <input type="text" class="prompt srch_explore" name="blogImg" value="${blogEdit}"/>
+                                <input type="text" class="prompt srch_explore" name="blogImg" value="${blogEdit}" required/>
                             </div>
                             <h3>Content:</h3>
                             <div class="ui form swdh339">
@@ -132,5 +137,14 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+            var searchStr;
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/admin/blog/search?searchStr=" +searchStr;
+                console.log(searchStr);
+            });
+        </script>
+
     </stripes:layout-component>
 </stripes:layout-render>

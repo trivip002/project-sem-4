@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BlogCategoryRepository extends JpaRepository<BlogCategoryEntity,Long> {
     List<BlogCategoryEntity> findAll();
+    List<BlogCategoryEntity> findByBlogCateTitleLike(String key);
 }

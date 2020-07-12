@@ -51,5 +51,15 @@ public class RoleController {
         return mav;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView searchRole(@RequestParam(value = "searchStr", required = false) String key){
+        ModelAndView view = new ModelAndView("/admin/role");
+        if (key==null){
+            view.addObject("listRole", roleService.getAll());
+        } else {
+            view.addObject("listRole", roleService.getByNameLike("%"+key+"%"));
+        }
+        return view;
+    }
 
 }

@@ -5,11 +5,6 @@
         <div class="sa4d25">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="st_title"><i class="uil uil-analysis"></i> Edit - </h2>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-12">
                         <div class="course_tabs_1">
                             <div id="add-course-tab" class="step-app">

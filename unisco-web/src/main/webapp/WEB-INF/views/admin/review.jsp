@@ -12,15 +12,16 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Reviews</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
                                     <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search review by course..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +33,6 @@
                             <table class="table ucp-table earning__table">
                                 <thead class="thead-s">
                                 <tr>
-                                    <th scope="col">Id</th>
                                     <th scope="col">User</th>
                                     <th scope="col">Course</th>
                                     <th scope="col">Content</th>
@@ -42,10 +42,9 @@
                                 <tbody>
                                 <c:forEach items="${listReview}" var="item">
                                     <tr>
-                                        <td>${item.id.userId}</td>
-                                        <td>${item.user.userName!=null?item.user.userName:"N/A"}</td>
-                                        <td>${item.course.courseName!=null?item.course.courseName:"N/A"}</td>
-                                        <td>${item.reviewContent!=null?item.reviewContent:"N/A"}</td>
+                                        <td><a href="/admin/">${item.user.userName!=null?item.user.userName:"N/A"}</a></td>
+                                        <td><a href="/admin/course/">${item.course.courseName!=null?item.course.courseName:"N/A"}</a></td>
+                                        <td class=" text-truncate" style="max-width: 100px">${item.reviewContent!=null?item.reviewContent:"N/A"}</td>
                                         <td>${item.rating!=null?item.rating:"N/A"}</td>
                                     </tr>
                                 </c:forEach>
@@ -56,5 +55,14 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            var searchStr;
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/admin/review/search?searchStr=" +searchStr;
+                console.log(searchStr);
+            });
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

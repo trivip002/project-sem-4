@@ -47,4 +47,15 @@ public class PromotionController {
         return mav;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView searchPromotion(@RequestParam(value = "searchStr", required = false) String key){
+        ModelAndView view = new ModelAndView("/admin/promotion");
+        if (key==null){
+            view.addObject("listPromotion", promotionService.getAll());
+        } else {
+            view.addObject("listPromotion", promotionService.getByNameLike("%"+key+"%"));
+        }
+        return view;
+    }
+
 }

@@ -3,6 +3,7 @@
     <stripes:layout-component name="contents">
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Users</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
@@ -10,14 +11,11 @@
                                 <div class="explore_search">
                                     <div class="ui search focus">
                                         <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Document Number">
+                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
                                             <i class="uil uil-search-alt icon icon8"></i>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li>
-                                <button type="button" class="upload_btn"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-plus-circle"></i></button>
                             </li>
                         </ul>
                     </div>
@@ -30,12 +28,10 @@
                                     <th scope="col">User Name</th>
                                     <th scope="col">Role Name</th>
                                     <th scope="col">Full Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">Country</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Avatar</th>
+                                    <th scope="col">Status</th>
                                     <th style="text-align: center" scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -46,21 +42,12 @@
                                         <td>${item.userName!=null?item.userName:"N/A"}</td>
                                         <td>${item.role.roleName!=null?item.role.roleName:"N/A"}</td>
                                         <td>${item.fullName!=null?item.fullName:"N/A"}</td>
-                                        <td>${item.address!=null?item.address:"N/A"}</td>
-                                        <td>${item.city!=null?item.city:"N/A"}</td>
-                                        <td>${item.country!=null?item.country:"N/A"}</td>
                                         <td>${item.telephone!=null?item.telephone:"N/A"}</td>
                                         <td>${item.userEmail!=null?item.userEmail:"N/A"}</td>
                                         <td>${item.userAvatar!=null?item.userAvatar:"N/A"}</td>
+                                        <td>${item.isActive==1?"Active":"Inactive"}</td>
                                         <td style="text-align: center">
                                             <button type="button" class="upload_btn update_btn_click"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-edit-alt"></i></button>
-                                            <c:if test = "${item.isActive == 0}">
-                                                <button type="button" class="upload_btn active_inactive_btn" value="${item.isActive==1?0:1}"><i class="uil uil-plus-circle"></i></button>
-                                            </c:if>
-                                            <c:if test = "${item.isActive == 1}">
-                                                <button type="button" class="upload_btn active_inactive_btn" value="${item.isActive==1?0:1}"><i class="uil uil-trash-alt"></i></button>
-                                            </c:if>
-
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -76,12 +63,12 @@
         <!-- Central Modal Medium Danger -->
         <div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-danger" role="document">
+            <div class="modal-dialog modal-notify modal-danger modal-lg modal-dialog-scrollable" role="document">
                 <!--Content-->
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
-                        <p class="heading lead">Update User</p>
+                        <p class="heading lead">UPDATE USER</p>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="white-text">&times;</span>

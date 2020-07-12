@@ -44,4 +44,15 @@ public class CategoryController {
         return mav;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView search(@RequestParam(value = "searchStr", required = false) String key){
+        ModelAndView view = new ModelAndView("/admin/category");
+        if (key==null){
+            view.addObject("listCategory", categoryService.getAll());
+        } else {
+            view.addObject("listCategory", categoryService.getByNameLike("%"+key+"%"));
+        }
+        return view;
+    }
+
 }

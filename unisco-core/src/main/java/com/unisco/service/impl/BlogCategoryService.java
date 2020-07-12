@@ -22,4 +22,9 @@ public class BlogCategoryService {
     public BlogCategoryEntity save(BlogCategoryEntity blogCate){
         return blogCategoryRepository.save(blogCate);
     }
+
+    public List<BlogCategoryEntity> getByNameLike(String blogCateTitle) {
+        return blogCategoryRepository.findByBlogCateTitleLike(blogCateTitle);
+    }
+
 }

@@ -24,11 +24,11 @@
             <input type="hidden" name="promotionId" value="${promoEdit.promotionId}">
             <h3>Promotion Code:</h3>
                     <div class="ui left icon input">
-            <input type="text" name="promotionCode" value="${promoEdit.promotionCode}"/>
+            <input type="text" name="promotionCode" value="${promoEdit.promotionCode}" required/>
                     </div>
                 <h3>Discount Price:</h3>
                 <div class="ui left icon input">
-                    <input type="number"  name="discountPrice" step="0.01" value="${promoEdit.discountPrice}" /><br>
+                    <input type="number"  name="discountPrice" step="0.01" value="${promoEdit.discountPrice}" required /><br>
                 </div>
             <h3>Status:</h3>
             <select class="ui dropdown border-dark" name="isActive" required >

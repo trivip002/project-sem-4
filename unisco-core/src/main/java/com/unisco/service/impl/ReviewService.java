@@ -20,4 +20,7 @@ public class ReviewService implements IReviewService {
         return reviewRepository.findAll();
     }
 
+    public List<ReviewEntity> getByNameLike(String review) {
+        return reviewRepository.findByCourse_CourseNameLike(review);
+    }
 }

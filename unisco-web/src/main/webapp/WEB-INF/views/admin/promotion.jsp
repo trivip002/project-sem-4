@@ -12,15 +12,16 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Promotion</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
                                     <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search promotion code..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -84,14 +85,14 @@
                             <input type="hidden" name="promotionId" value="">
                             <h3>Promotion Code:</h3>
                             <div class="ui left icon input">
-                            <input type="text"  name="promotionCode" value="${promoEdit}" /><br>
+                            <input type="text"  name="promotionCode" value="${promoEdit}" required/><br>
                             </div>
                             <h3>Discount Price:</h3>
                             <div class="ui left icon input">
-                                <input type="number"  name="discountPrice" step="0.01" value="${promoEdit}" /><br>
+                                <input type="number"  name="discountPrice" step="0.01" value="${promoEdit}" required /><br>
                             </div>
                             <h3>Status:</h3>
-                            <select class="ui dropdown border-dark" name="isActive" value="${promoEdit}">
+                            <select class="ui dropdown border-dark" name="isActive" value="${promoEdit}" required>
                                 <option value="">Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
@@ -118,6 +119,15 @@
                     activeClass: 'active',
                     pageNumbers: true
                 });
+            });
+        </script>
+
+        <script type="text/javascript">
+            var searchStr;
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/admin/promotion/search?searchStr=" +searchStr;
+                console.log(searchStr);
             });
         </script>
     </stripes:layout-component>

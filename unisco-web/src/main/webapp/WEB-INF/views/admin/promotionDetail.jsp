@@ -11,21 +11,22 @@
     <stripes:layout-component name="contents">
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Promotion Detail</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
                                     <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search by Promotion Code..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <button type="button" class="upload_btn"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-plus-circle"></i></button>
+                                <button id="add-btn" type="button" class="upload_btn"  data-toggle="modal" data-target="#centralModalDanger"><i class="uil uil-plus-circle"></i></button>
                             </li>
                         </ul>
                     </div>
@@ -38,19 +39,15 @@
                                     <th scope="col">Course Name</th>
                                     <th scope="col">Course Price</th>
                                     <th scope="col">Discount Price</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${listPromotionDetail}" var="item">
                                     <tr>
-                                        <td>${item.promotion.promotionCode}</td>
-                                        <td>${item.course.courseName}</td>
+                                        <td><a href="/admin/promotion/">${item.promotion.promotionCode}</a></td>
+                                        <td><a href="/admin/course/">${item.course.courseName}</a></td>
                                         <td>${item.course.coursePrice}</td>
                                         <td>${item.promotion.discountPrice}</td>
-                                        <td>
-                                      update
-                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -61,6 +58,7 @@
             </div>
         </div>
         </div>
+
 
         <!-- Central Modal Medium Danger -->
         <div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -79,29 +77,27 @@
 
                     <!--Body-->
                     <div class="modal-body">
-                        <form method="post"  action="<c:url value='/admin/promotionDetail/create'/>">
-                            <input type="hidden" name="promotionId" value="">
+                            <input type="hidden" name="promotionId" value=""/>
+                            <input type="hidden" name="courseId" value=""/>
                             <h3>Promotion Code:</h3>
                             <div class="ui left icon input">
-                                <select   name="promotionCode">
+                                <select id="promotion-selection" name="promotionCode">
                                     <c:forEach items="${listPromotion}" var="item">
-                                        <option>${item.promotionCode}</option>
+                                        <option value="${item.promotionId}">${item.promotionCode}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <br/>
-                            <input type="hidden" name="courseId" value="">
                             <h3>Course Name:</h3>
-                            <div class="ui left icon input">
-                                <select name="courseName" >
+                            <div id="course-content" class="ui left icon input">
+                                <select class="course-name" name="courseName" >
                                     <c:forEach items="${listCourse}" var="item">
-                                        <option>${item.courseName}</option>
+                                        <option value="${item.courseId}">${item.courseName}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <br/> <br/>
-                            <input type="submit" class="btn btn-danger" value="Add"/>
-                        </form>
+                            <input id="submit-btn" type="submit" class="btn btn-danger" value="Add"/>
                     </div>
 
                     <!--Footer-->
@@ -124,5 +120,56 @@
             });
         </script>
 
+        <script type="text/javascript">
+            var searchStr;
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/admin/promotionDetail/search?searchStr=" +searchStr;
+                console.log(searchStr);
+            });
+            $(document).ready(function () {
+                $('#add-btn').click(function () {
+                    $.ajax({
+                        url: "/api/promotion-detail/get-courses",
+                        method: "GET",
+                        data: {promotionId:1},
+                        success: function(result) {
+                            $('#course-content').empty();
+                            $('#course-content').append(result);
+                        }
+                    });
+                });
+                $('#promotion-selection').change(function () {
+                    $.ajax({
+                        url: "/api/promotion-detail/get-courses",
+                        method: "GET",
+/*                        processData: false,
+                        contentType: false,*/
+                        data: {promotionId:$(this).val()},
+                        success: function(result) {
+                            $('#course-content').empty();
+                            $('#course-content').append(result);
+                        }
+                    });
+                });
+                $('#submit-btn').click(function () {
+                    var formData = new FormData();
+                    formData.append('promotionId', $('#promotion-selection').val());
+                    formData.append('courseId', $('#course-content').find('.course-name').val());
+                    $.ajax({
+                        url: "/api/promotion-detail",
+                        method: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: formData,
+                        success: function(result) {
+                            if(result=='success'){
+                                window.location.href="";
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

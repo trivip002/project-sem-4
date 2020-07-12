@@ -12,15 +12,16 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Course Category</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
                                     <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search category Name..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@
                             <input type="hidden" name="cateId" value="">
                             <h3>Category Name:</h3>
                             <div class="ui left icon input">
-                            <input type="text" class="prompt srch_explore" name="cateName" value="${categoryEdit}" />
+                            <input type="text" class="prompt srch_explore" name="cateName" value="${categoryEdit}" required/>
                             </div>
                                 <br><br>
                             <input type="submit" class="btn btn-danger" value="Add"/>
@@ -106,5 +107,14 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+            var searchStr;
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/admin/category/search?searchStr=" +searchStr;
+                console.log(searchStr);
+            });
+        </script>
+
     </stripes:layout-component>
 </stripes:layout-render>

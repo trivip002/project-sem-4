@@ -47,22 +47,6 @@ public class UserEntity extends BaseEntity implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
-    @Column(name = "credit_card")
-    private String creditCard;
-
-    @Column(name = "card_type")
-    private String cardType;
-
-    @Column(name = "card_exp_mo")
-    private String cardExpMo;
-
-    @Column(name = "card_exp_ye")
-    private String cardExpYe;
-
-    @Column(name = "card_csv")
-    private String cardCsv;
-
-
     @Column(name = "user_email")
     private String userEmail;
 

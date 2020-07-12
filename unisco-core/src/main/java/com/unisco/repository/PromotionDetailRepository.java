@@ -8,4 +8,6 @@ import java.util.List;
 public interface PromotionDetailRepository extends JpaRepository<PromotionDetailEntity, Long>{
     List<PromotionDetailEntity> findAll();
     PromotionDetailEntity findOneByCourseAndPromotion(CourseEntity course, PromotionEntity promotion);
+    List<PromotionDetailEntity> findByPromotion_PromotionCodeLike(String key);
+    List<PromotionDetailEntity> findByPromotion(PromotionEntity promotionEntity);
 }

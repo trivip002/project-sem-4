@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.unisco.utils.Principal" %><%--
   Created by IntelliJ IDEA.
   User: hugh.intern
   Date: 2/12/2020
@@ -35,65 +35,58 @@
     </div>
     <div class="header_right">
         <ul>
-            <!-- <li>
-                <a href="create_new_course.html" class="upload_btn">Create New Course</a>
-            </li> -->
             <li>
-                <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i><!-- <span class="noti_count">9+</span> --></a>
+                <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i></a>
             </li>
-<%--            <li>--%>
-<%--                <a href="index.html" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">9+</span></a>--%>
-<%--            </li>--%>
-            <!-- <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-envelope-alt'></i><span class="noti_count">3</span></a>
+            <li class="ui dropdown">
+                <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
                 <div class="menu dropdown_ms">
                     <a href="#" class="channel_my item">
                         <div class="profile_link">
-                            <img src="images/left-imgs/img-6.jpg" alt="">
+                            <img src="https://www.freecodecamp.org/news/content/images/2020/03/gpython.jpg" alt="">
                             <div class="pd_content">
-                                <h6>Zoena Singh</h6>
-                                <p>Hi! Sir, How are you. I ask you one thing please explain it this video price.</p>
-                                <span class="nm_time">2 min ago</span>
+                                <h6>Python</h6>
+                                <p>The completet course of HTML,CSS,JS,REACT!</p>
+                                <span class="nm_time" style="float: right">$20</span>
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-5.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Joy Dua</h6>
-                                <p>Hello, I paid you video tutorial but did not play error 404.</p>
-                                <span class="nm_time">10 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-8.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Jass</h6>
-                                <p>Thanks Sir, Such a nice video.</p>
-                                <span class="nm_time">25 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="vbm_btn" href="instructor_messages.html">View All <i class='uil uil-arrow-right'></i></a>
+                    <a class="vbm_btn" href="/cart">View Cart <i class='uil uil-arrow-right'></i></a>
                 </div>
-            </li> -->
+            </li>
+            <li>
+                <a href="<c:url value="/sign_up"/>" class="option_links"><button class="Get_btn">Sign Up</button></a>
+            </li>
             <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
-                <div class="menu dropdown_mn">
-                    <a href="#" class="channel_my item">
+                <a href="#" class="opts_account">
+                    <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                </a>
+                <div class="menu dropdown_account" >
+                    <div class="channel_my">
                         <div class="profile_link">
-                            <img src="images/left-imgs/img-1.jpg" alt="">
+                            <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                             <div class="pd_content">
-                                <h6>Rock William</h6>
-                                <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
-                                <span class="nm_time">2 min ago</span>
+                                <div class="rhte85">
+                                    <h6>Hello <%=Principal.getPrincipal()%></h6>
+                                    <div class="mef78" title="Verify">
+                                        <i class='uil uil-check-circle'></i>
+                                    </div>
+                                </div>
+                                <span><%=Principal.getPrincipal()%></span>
                             </div>
                         </div>
-                    </a>
-                    <a class="vbm_btn" href="instructor_notifications.html">View All <i class='uil uil-arrow-right'></i></a>
+                        <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                    </div>
+                    <div class="night_mode_switch__btn">
+                        <a href="#" id="night-mode" class="btn-night-mode">
+                            Night mode
+                            <span class="btn-night-mode-switch">
+									<span class="uk-switch-button"></span>
+								</span>
+                        </a>
+                    </div>
+                    <a href="/membership" class="item channel_item">Paid Memberships</a>
+                    <a href="/logout/" class="item channel_item">Sign Out</a>
                 </div>
             </li>
         </ul>
@@ -223,74 +216,17 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="left_section">
-            <h6 class="left_title">SUBSCRIPTIONS</h6>
-            <ul>
-                <li class="menu--item">
-                    <a href="instructor_profile_view.html" class="menu--link user_img">
-                        <img src="images/left-imgs/img-1.jpg" alt="">
-                        Rock Smith
-                        <div class="alrt_dot"></div>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_profile_view.html" class="menu--link user_img">
-                        <img src="images/left-imgs/img-2.jpg" alt="">
-                        Jassica William
-                    </a>
-                    <div class="alrt_dot"></div>
-                </li>
-                <li class="menu--item">
-                    <a href="all_instructor.html" class="menu--link" title="Browse Instructors">
-                      <i class='uil uil-plus-circle menu--icon'></i>
-                      <span class="menu--label">Browse Instructors</span>
-                    </a>
-                </li>
-            </ul>
-        </div> -->
+
         <div class="left_section pt-2">
             <ul>
-                <!-- <li class="menu--item">
-                    <a href="setting.html" class="menu--link" title="Setting">
-                        <i class='uil uil-cog menu--icon'></i>
-                        <span class="menu--label">Setting</span>
-                    </a>
-                </li> -->
                 <li class="menu--item">
                     <a href="help.html" class="menu--link" title="Help">
                         <i class='uil uil-question-circle menu--icon'></i>
                         <span class="menu--label">Help</span>
                     </a>
                 </li>
-                <!-- <li class="menu--item">
-                    <a href="report_history.html" class="menu--link" title="Report History">
-                        <i class='uil uil-windsock menu--icon'></i>
-                        <span class="menu--label">Report History</span>
-                    </a>
-                </li> -->
-                <!-- <li class="menu--item">
-                    <a href="feedback.html" class="menu--link" title="Send Feedback">
-                        <i class='uil uil-comment-alt-exclamation menu--icon'></i>
-                        <span class="menu--label">Send Feedback</span>
-                    </a>
-                </li> -->
             </ul>
         </div>
-        <!-- <div class="left_footer">
-            <ul>
-                <li><a href="about_us.html">About</a></li>
-                <li><a href="press.html">Press</a></li>
-                <li><a href="contact_us.html">Contact Us</a></li>
-                <li><a href="coming_soon.html">Advertise</a></li>
-                <li><a href="coming_soon.html">Developers</a></li>
-                <li><a href="terms_of_use.html">Copyright</a></li>
-                <li><a href="terms_of_use.html">Privacy Policy</a></li>
-                <li><a href="terms_of_use.html">Terms</a></li>
-            </ul>
-            <div class="left_footer_content">
-                <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
-            </div>
-        </div> -->
     </div>
 </nav>
 <!-- Left Sidebar End -->

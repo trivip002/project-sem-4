@@ -35,16 +35,17 @@ public class PromotionDetailController {
         return mav;
     }
 
-
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView Create(@RequestParam("promotionId") Long promotionId,@RequestParam("courseId") Long courseId,@RequestParam("promotionCode") PromotionEntity promotionCode, @RequestParam("courseName") CourseEntity courseName) {
+  /*  @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView Create(@RequestParam("promotionId") Long promotionId,@RequestParam("courseId") Long courseId,@RequestParam("promotionCode") String promotionCode, @RequestParam("courseName") String courseName) {
         ModelAndView mav = new ModelAndView("redirect:/admin/promotionDetail/");
         PromotionDetailEntity promotionDetails= new PromotionDetailEntity();
-        promotionDetails.setPromotion(promotionCode);
-        promotionDetails.setCourse(courseName);
+        PromotionEntity promotion =new PromotionEntity();
+        CourseEntity course = new CourseEntity();
+        promotion.setPromotionCode(promotionCode);
+        course.setCourseName(courseName);
         promotionDetailService.save(promotionDetails);
         return mav;
-    }
+    }*/
 
 
 /* @RequestMapping(value = "/edit/{promotionId}",method = RequestMethod.GET )
@@ -54,5 +55,15 @@ public class PromotionDetailController {
         return mav;
     }*/
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView searchReview(@RequestParam(value = "searchStr", required = false) String key){
+        ModelAndView view = new ModelAndView("/admin/promotionDetail");
+        if (key==null){
+            view.addObject("listPromotionDetail", promotionDetailService.getAll());
+        } else {
+            view.addObject("listPromotionDetail", promotionDetailService.getByNameLike("%"+key+"%"));
+        }
+        return view;
+    }
 
 }

@@ -18,4 +18,7 @@ public class PromotionService {
     public PromotionEntity save(PromotionEntity promo){
         return promotionRepository.save(promo);
     }
+    public List<PromotionEntity> getByNameLike(String promotionCode) {
+        return promotionRepository.findByPromotionCodeLike(promotionCode);
+    }
 }
