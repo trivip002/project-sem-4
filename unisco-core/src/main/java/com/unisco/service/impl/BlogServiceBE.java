@@ -24,6 +24,11 @@ public class BlogServiceBE implements IBlogServiceBE {
         return blogRepositoryBE.findOne(id);
     }
 
+    @Override
+    public List<BlogEntity> findByBlogTitleLikeOrBlogContentLike(String title, String content) {
+        return blogRepositoryBE.findByBlogTitleLikeOrBlogContentLike(title,content);
+    }
+
 
 
     @Override
@@ -34,4 +39,6 @@ public class BlogServiceBE implements IBlogServiceBE {
     public BlogCategoryEntity findOneById(Long id) {
         return null;
     }
+    @Override
+    public List<BlogCategoryEntity> findByBlogCateTitleLikeOrBlogCateContent(String title, String content) {return null; }
 }

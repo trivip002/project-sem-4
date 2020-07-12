@@ -17,4 +17,6 @@ public interface IBlogServiceBE {
     BlogCategoryEntity findOneById(Long id);
     BlogEntity findOneBEById(Long id);
 
+    List<BlogEntity> findByBlogTitleLikeOrBlogContentLike(String title, String content);
+    List<BlogCategoryEntity> findByBlogCateTitleLikeOrBlogCateContent(String title, String content);
 }

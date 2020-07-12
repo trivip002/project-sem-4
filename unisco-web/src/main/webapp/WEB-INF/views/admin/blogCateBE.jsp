@@ -1,9 +1,10 @@
-﻿<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿<%--<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@include file="/common/tag.jsp"%>
 <stripes:layout-render name="../../template/admin/layout/default.jsp" pageTitle="${title}" pageCss="style.css">
 	<stripes:layout-component name="contents">
 
 		<!-- Body Start -->
+		<input type="hidden" name="entireView" value="blogCateBE"/>
 		<div class="sa4d25">
 			<div class="container-fluid">			
 				<div class="row">
@@ -20,7 +21,7 @@
 							<div class="search120">
 								<div class="ui search">
 									<div class="ui left icon input swdh10">
-										<input class="prompt srch10" name="Search" type="text" placeholder="Search">
+										<input class="prompt srch10" name="search" type="text" placeholder="Search"/>
 										<i class='uil uil-search-alt icon icon1'></i>
 									</div>
 									<button class="btn btn-outline-info btn-v" type="submit">Search</button>
@@ -46,25 +47,17 @@
 													<th class="text-center" scope="col">blogCateId</th>
 													<th>blogCateTitle</th>
 													<th  scope="col">blogCateContent</th>
-                                                    <th class="text-center">createdDate</th>
-                                                    <th class="text-center">modifiedDate</th>
-                                                    <th class="text-center">createdBy</th>
-                                                    <th class="text-center">modifiedBy</th>
 													<th class="text-center" scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach items="${lstBlogCate}" var="item">
+											<c:forEach items="${lstBlog}" var="item">
 														<tr>
-															<td class="text-center blogCateId" id="blogCateId" data-blogCateId="${item.blogCateId}">${item.blogCateId}</td>
-															<td class="blogCateTitle" id="blogCateTitle" data-blogCateTitle="${item.blogCateTitle}">${item.blogCateTitle}</td>
-															<td class="blogCateContent" id="blogCateContent">${item.blogCateContent}</td>
-															<td class="text-center createdDate" id="createdDate">${item.createdDate}</td>
-															<td class="text-center modifiedDate" id="modifiedDate">${item.modifiedDate}</td>
-															<td class="text-center createdBy" id="createdBy">${item.createdBy}</td>
-															<td class="text-center modifiedBy" id="modifiedBy">${item.modifiedBy}</td>
+															<td class="text-center" name = "blogCateId" id="blogCateId" data-blogCateId="${item.blogCateId}">${item.blogCateId}</td>
+															<td name = "blogCateTitle" id="blogCateTitle" data-blogCateTitle="${item.blogCateTitle}">${item.blogCateTitle}</td>
+															<td name = "blogCateContent" id="blogCateContent">${item.blogCateContent}</td>
 															<td class="text-center">
-																<a href="<c:url value='/admin/blogCateBE/${item.blogCateId}' />" type="submit" title="Edit" class="btn btn-outline-primary btn-edit"><i class="uil uil-edit-alt"></i></a>
+																<a href="<c:url value='/admin/blogCateBE/${item.blogCateId}'/>" type="submit" title="Edit" class="btn btn-outline-primary btn-edit"><i class="uil uil-edit-alt"></i></a>
 																<button title="Details" class="btn btn-outline-info"><i class="uil-expand-arrows"></i></button>
 															</td>
 														</tr>

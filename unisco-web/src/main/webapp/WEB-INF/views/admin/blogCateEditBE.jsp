@@ -21,29 +21,29 @@
 									<div class="general_info10">
 										<div class="row">
 											<div class="col-lg-6 col-md-6">
-													<div class="ui search focus mt-30 lbel25">
-														<div class="ui left icon input swdh19">
-															<input class="prompt srch_explore" type="hidden" name="blogCateId" value="${lstBlogCateEdit.blogCateId}"/>
-														</div>
+												<div class="ui search focus mt-30 lbel25">
+													<div class="ui left icon input swdh19">
+														<input class="prompt srch_explore" type="hidden" name="blogCateId" value="${lstBlogCateEdit.blogCateId}"/>
 													</div>
-													<div class="ui search focus mt-30 lbel25">
-														<div class="ui left icon input swdh19">
-															<input class="prompt srch_explore" type="text" name="blogCateTitle" value="${lstBlogCateEdit.blogCateTitle}" />
-														</div>
+												</div>
+												<div class="ui search focus mt-30 lbel25">
+													<div class="ui left icon input swdh19">
+														<input class="prompt srch_explore" type="text" name="blogCateTitle" value="${lstBlogCateEdit.blogCateTitle}" />
 													</div>
-													<div class="ui search focus mt-30 lbel25">
-														<div class="ui left icon input swdh19">
-															<input class="prompt srch_explore" type="text" name="blogCateContent" value="${lstBlogCateEdit.blogCateContent}" />
-														</div>
+												</div>
+												<div class="ui search focus mt-30 lbel25">
+													<div class="ui left icon input swdh19">
+														<input class="prompt srch_explore" type="text" name="blogCateContent" value="${lstBlogCateEdit.blogCateContent}" />
 													</div>
+												</div>
 											</div>
-									</div>
+										</div>
+
+										<div class="step-footer step-tab-pager ui search focus mt-30 lbel25">
+											<button type="submit" data-direction="prev" class="btn btn-outline-danger btn-v">Update</button>
+										</div>
 									</div>
 								</div>
-								<br/>
-									<div class="step-footer step-tab-pager">
-										<button type="submit" data-direction="prev" class="btn btn-outline-danger btn-v">Update</button>
-									</div>
 								</form>
 
 							</div>
@@ -52,9 +52,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
 		<!-- Body End -->
 
 		<script type="text/javascript">

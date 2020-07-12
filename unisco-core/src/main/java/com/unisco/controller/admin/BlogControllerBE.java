@@ -6,16 +6,25 @@ import com.unisco.service.impl.BlogCateServiceBE;
 import com.unisco.service.impl.BlogServiceBE;
 import com.unisco.service.impl.UserService;
 import com.unisco.utils.Principal;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.java.Log;
 import org.hibernate.*;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.Console;
+import java.util.ArrayList;
 import java.util.List;
 
-
-@Controller(value = "blogControllerOfAdmin")
+@Log
+@Controller(value = "blogvwControllerOfAdmin")
 @RequestMapping(value = "/admin")
 public class BlogControllerBE {
 
@@ -31,26 +40,49 @@ public class BlogControllerBE {
     @Autowired
     SessionFactory sessionFactory;
 
-    Session session = null;
-    Transaction transaction = null;
-    BlogCategoryEntity bc = null;
-    BlogEntity be = null;
+    Session session;
+    Transaction transaction;
+    BlogCategoryEntity bc;
+    BlogEntity be;
+    ModelAndView mav = new ModelAndView();
+    Criteria criteria;
+    Criterion title, content;
+    LogicalExpression logicalExpression;
+    List list;
 
 
-    /*blog cate*/
-
-    @RequestMapping(value = "/blogCateBE", method = RequestMethod.GET)
-    public ModelAndView vBlogCate() {
-        ModelAndView mav = new ModelAndView("admin/blogCateBE");
-        mav.addObject("lstBlogCate", blogCateService.getAll());
+    @RequestMapping(value = {"/{name}BE","/{name}BE/{id}"}, method = RequestMethod.GET)
+    public ModelAndView vBlogCate(@RequestParam(defaultValue = "", required = false) String search, @PathVariable(value = "name", required = true) String name, @PathVariable(value = "id", required = false) Long id) {
+        mav.setViewName("admin/"+name+"BE");
+        if (id != null) {mav.setViewName("admin/"+name+"EditBE");}
+        if (name.equals("blogCate")) {
+            if (id != null){
+                mav.addObject("lstBlogCateEdit", blogCateService.findOneById(id));
+            }
+            list = blogCateService.findByBlogCateTitleLikeOrBlogCateContent("%"+search+"%","%"+search+"%");
+        } else if (name.equals("blog")) {
+            if (id != null){
+                mav.addObject("lstBlogEdit", blogService.findOneBEById(id));
+            }
+            list = blogService.findByBlogTitleLikeOrBlogContentLike("%"+search+"%", "%"+search+"%");
+        } else if (name.equals("blogFG")){
+            list = blogService.findByBlogTitleLikeOrBlogContentLike("%"+search+"%", "%"+search+"%");
+        }
+        mav.addObject("selectBlogCate", blogCateService.getAll());
         mav.addObject("email", userService.getOneByUserName(Principal.getPrincipal()).getUserEmail());
-        mav.addObject("title","Blog Categories");
+        mav.addObject("title", ""+name);
+        mav.addObject("lstBlog", list);
+
         return mav;
     }
 
+
+
+
+
+
     @RequestMapping(value = "/blogCateBE", method = RequestMethod.POST)
     public String souBlogCate(@ModelAttribute("saveOrUpdate") BlogCategoryEntity blogCategoryEntity){
-
         session = sessionFactory.openSession();
         transaction = session.beginTransaction();
         if (blogCategoryEntity.getBlogCateId() != null) { bc = (BlogCategoryEntity) session.load(BlogCategoryEntity.class, blogCategoryEntity.getBlogCateId());}
@@ -65,65 +97,31 @@ public class BlogControllerBE {
 
     }
 
-    @RequestMapping(value = "/blogCateBE/{id}", method = RequestMethod.GET)
-    public ModelAndView blogCateEdit(@PathVariable("id") Long id){
-        ModelAndView mav = new ModelAndView("admin/blogCateEditBE");
-        mav.addObject("lstBlogCateEdit", blogCateService.findOneById(id));
-        return mav;
-    }
-
-
-
-    /*blog*/
-
-    @RequestMapping(value = "/blogBE", method = RequestMethod.GET)
-    public ModelAndView vBlog() {
-        ModelAndView mav = new ModelAndView("admin/blogBE");
-        mav.addObject("lstBlog", blogService.getAllBE());
-        mav.addObject("email", userService.getOneByUserName(Principal.getPrincipal()).getUserEmail());
-        mav.addObject("title","Blog");
-        return mav;
-    }
 
     @RequestMapping(value = "/blogBE", method = RequestMethod.POST)
     public String souBlog(@ModelAttribute("saveOrUpdate") BlogEntity blogEntity){
-
         session = sessionFactory.openSession();
         transaction = session.beginTransaction();
-        if (blogEntity.getBlogId() != null) { be = (BlogEntity) session.get(BlogEntity.class, blogEntity.getBlogId());}
         be = new BlogEntity();
         be.setBlogId(blogEntity.getBlogId());
         be.setBlogTitle(blogEntity.getBlogTitle());
         be.setBlogContent(blogEntity.getBlogContent());
+        be.setIsActive(blogEntity.getIsActive());
         session.saveOrUpdate(be);
         transaction.commit();
         session.close();
         return "redirect:blogBE";
 
     }
-
-    @RequestMapping(value = "/blogBE/{id}", method = RequestMethod.GET)
-    public ModelAndView blogEdit(@PathVariable("id") Long id){
-        ModelAndView mav = new ModelAndView("admin/blogEditBE");
-        mav.addObject("lstBlogEdit", blogService.findOneBEById(id));
-        return mav;
+    @Getter@Setter
+    class RequestBlog{
+        RequestBlog(){}
+        private Long blogId;
+        private String blogTitle;
+        private String blogMetaTitle;
+        private String blogImg;
+        private String blogContent;
+        private Long categoryId;
+        private int isActive = 0;
     }
-
-
-    @RequestMapping(value = "/blogCateBE", method = RequestMethod.GET)
-    public String search(@RequestParam String Search){
-        Query query = session.createQuery("FROM BlogCategoryEntity bc WHERE bc.blogCateTitle LIKE "+Search);
-        List<BlogCategoryEntity> entityList = query.list();
-        ModelAndView mav = new ModelAndView("admin/blogCateBE");
-        mav.addObject("lst",entityList);
-        return "blogCateBE";
-    }
-
-
-
-
-
-
-
-
 }

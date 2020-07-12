@@ -32,7 +32,11 @@
         <link href="<c:url value='/static/assets/css/night-mode.css' />" rel="stylesheet">
         <link href="<c:url value="/static/assets/css/jquery-steps.css"/>" rel="stylesheet">
 
-        <!-- Vendor Stylesheets -->
+    <link href="<c:url value='/static/assets/css/style.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/assets/css/responsive.css' />" rel="stylesheet">
+
+
+    <!-- Vendor Stylesheets -->
         <link href="<c:url value='/static/vendor/fontawesome-free/css/all.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
@@ -40,6 +44,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />"  >
         <link href="<c:url value='/static/assets/css/waitMe.css' />" rel="stylesheet">
         <link href="<c:url value='/static/assets/css/custom.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/assets/css/v-custom.css' />" rel="stylesheet">
         <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>'></script>
         <script src='<c:url value="/static/assets/js/paginathing.js"/>'></script>
         <script src='<c:url value="/static/assets/js/waitMe.js"/>'></script>

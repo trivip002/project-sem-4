@@ -31,7 +31,7 @@
     <div class="header_right" >
         <ul>
             <li>
-                <a href="create_new_course.html" class="upload_btn">Create New Course</a>
+                <a href="create_new_course.html" class="upload_btn">Create New ${title}</a>
             </li>
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
@@ -48,7 +48,7 @@
                                         <i class='uil uil-check-circle'></i>
                                     </div>
                                 </div>
-                                <span><%--<%=Principal.getPrincipal()%>--%>admin@email.com</span>
+                                <span>${email}&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                             </div>
                         </div>
                         <a href="my_instructor_profile_view.html" class="dp_link_12">View Profile</a>
@@ -61,7 +61,7 @@
 								</span>
                         </a>
                     </div>
-                    <a href="instructor_dashboard.html" class="item channel_item">Dashboard</a><%--
+                    <a href="<c:url value='/admin/home'/>" class="item channel_item">Dashboard</a><%--
                     <a href="membership.html" class="item channel_item">Paid Memberships</a>--%>
                     <a href="setting.html" class="item channel_item">Setting</a>
                     <a href="help.html" class="item channel_item">Help</a><%--
