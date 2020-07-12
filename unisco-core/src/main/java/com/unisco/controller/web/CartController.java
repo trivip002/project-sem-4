@@ -13,5 +13,10 @@ public class CartController {
         ModelAndView mav = new ModelAndView("/web/cart_view");
         return mav;
     }
+    @RequestMapping(value = "/cart-checkout", method = RequestMethod.GET)
+    public ModelAndView checkoutPage(){
+        ModelAndView mav = new ModelAndView("/web/course_checkout");
+        return mav;
+    }
 
 }

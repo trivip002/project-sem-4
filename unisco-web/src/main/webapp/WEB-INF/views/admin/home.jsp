@@ -115,9 +115,6 @@
             var openFile = function(event) {
                 var input = event.target;
                 var reader = new FileReader();
-                reader.onload(function () {
-
-                });
                 reader.readAsDataURL(input.files[0]);
                 $('.custom-file-label').text(input.files[0].name);
             };

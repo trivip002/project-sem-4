@@ -13,8 +13,8 @@
                                             <img src="${course.courseImg}" alt="${course.courseImg}">
                                             <div class="course-overlay">
                                                 <div class="badge_seller">Bestseller</div>
-<%--                                                <span class="play_btn1"><i class="uil uil-play"></i></span>--%>
-<%--                                                <span class="_215b02">Preview this course</span>--%>
+                                                    <%--                                                <span class="play_btn1"><i class="uil uil-play"></i></span>--%>
+                                                    <%--                                                <span class="_215b02">Preview this course</span>--%>
                                             </div>
                                         </a>
                                     </div>
@@ -32,28 +32,28 @@
                                         <h2>${course.courseName}</h2>
                                         <span class="_215b04">${course.courseSubtitle}</span>
                                     </div>
-<%--                                    <div class="_215b05">--%>
-<%--                                        <div class="crse_reviews mr-2">--%>
-<%--                                            <i class="uil uil-star"></i>4.5--%>
-<%--                                        </div>--%>
-<%--                                        (81,665 ratings)--%>
-<%--                                    </div>--%>
-<%--                                    <div class="_215b05">--%>
-<%--                                        114,521 students enrolled--%>
-<%--                                    </div>--%>
+                                        <%--                                    <div class="_215b05">--%>
+                                        <%--                                        <div class="crse_reviews mr-2">--%>
+                                        <%--                                            <i class="uil uil-star"></i>4.5--%>
+                                        <%--                                        </div>--%>
+                                        <%--                                        (81,665 ratings)--%>
+                                        <%--                                    </div>--%>
+                                        <%--                                    <div class="_215b05">--%>
+                                        <%--                                        114,521 students enrolled--%>
+                                        <%--                                    </div>--%>
                                     <div class="_215b06">
                                         <div class="_215b07">
                                             <span><i class='uil uil-comment'></i></span>
-                                            ${course.courseLanguage}
+                                                ${course.courseLanguage}
                                         </div>
                                     </div>
                                     <c:if test="${course.modifiedDate!=null}">
-                                    <div class="_215b05">
-                                        Last updated ${course.modifiedDate}
-                                    </div>
+                                        <div class="_215b05">
+                                            Last updated ${course.modifiedDate}
+                                        </div>
                                     </c:if>
                                     <ul class="_215b31">
-                                        <li><button class="btn_adcart">Add to Cart</button></li>
+                                        <li><button id="btn-add-to-card" class="btn_adcart">Add to Cart</button></li>
                                         <li><button class="btn_buy">Buy Now</button></li>
                                     </ul>
                                     <div class="_215fgt1">
@@ -217,5 +217,43 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                var courseId = '${course.courseId}';
+                var result = "";
+                $('#btn-add-to-card').click(function() {
+                    run_waitMe();
+                    var isDisable = false;
+                    $.each(courseCookies, function( i, val ) {
+                        if(val['id'] === courseId){
+                            isDisable = true;
+                        }
+                    });
+                    var dataBiding = {
+                        courseId: courseId,
+                        courseCookies: courseCookies
+                    };
+                    setTimeout(function(){
+                        if(isDisable){
+                            alert('this course is exist carts');
+                            $('.containerLoading').waitMe('hide');
+                        }else{
+                            window.location.href = "http://localhost:8080/";
+                        }
+                    }, 2000);
+                    if(!isDisable){
+                        $.ajax({
+                            url: "/api/cart/add-to-cart",
+                            method: "POST",
+                            dataType: 'json',
+                            contentType:'application/json',
+                            data: JSON.stringify(dataBiding),
+                            success: function(result) {
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

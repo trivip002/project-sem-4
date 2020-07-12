@@ -1,3 +1,4 @@
+<%@ page import="com.unisco.utils.Principal" %>
 <%@include file="/common/tag.jsp"%>
 <stripes:layout-render name="../../template/user/layout/default_2.jsp" pageTitle="Blogs">
     <stripes:layout-component name="contents">
@@ -36,43 +37,8 @@
                                     <h4>Order Details</h4>
                                     <img src="<c:url value="/static/assets/images/line.svg"/>" alt="">
                                 </div>
-                                <div class="order_dt_section">
-                                    <div class="order_title">
-                                        <div class="order_img">
-                                            <img style="width: 10%" src="https://dolphin.cmcglobal.com.vn/wp-content/uploads/2020/02/best-programming-courses-1-800x500.jpg">
-                                        </div>
-                                        <h4>The Complete Javascript Course 2020: Build Real Projects!</h4>
-                                        <div class="order_price">$5
-                                            <div style="padding-left: 10px;"></div>
-                                            <a href="#">
-                                                <i class="fa fa-times" style="color: #ed2a26;" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
+                                <div id="order_dt_section" class="order_dt_section">
 
-                                    </div>
-                                    <div class="order_title">
-                                        <div class="order_img">
-                                            <img style="width: 10%" src="https://img-a.udemycdn.com/course/750x422/2314160_8d61_6.jpg">
-                                        </div>
-                                        <h4>Complete Python Bootcamp: Go from zero to hero in Python 3</h4>
-                                        <div class="order_price">$10
-                                            <div style="padding-left: 10px;"></div>
-                                            <a href="#">
-                                                <i class="fa fa-times" style="color: #ed2a26;" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                    <div class="order_title">
-                                        <h6>Taxes(GST)</h6>
-                                        <div class="order_price">$2</div>
-                                    </div>
-                                    <div class="order_title">
-                                        <h3>Total</h3>
-                                        <div class="order_price">$17</div>
-                                    </div>
-                                    <button class="chckot_btn" type="submit">Remove All</button>
-                                    <button class="chckot_btn" type="submit" style="margin-right: 2%;">Checkout</button>
                                 </div>
 
                             </div>
@@ -81,5 +47,83 @@
                 </div>
             </div>
         </div>
+        <script>
+            var courseCookies = [];
+            $(document).ready(function (){
+                $.ajax({
+                    url: "/api/cart/get-cart",
+                    method: "GET",
+                    success: function(result) {
+                        courseCookies = $.parseJSON(result);
+                        if(courseCookies !== []){
+                            $.each(courseCookies, function( i, val ) {
+                                $('#order_dt_section').append(`
+                                     <div id='course-`+val['id']+`' class="order_title">
+                                        <div class="order_img">
+                                            <img style="width: 10%" src="`+val['image']+`">
+                                        </div>
+                                        <h4>`+val['description']+`</h4>
+                                        <div class="order_price">`+val['price']+`
+                                            <div style="padding-left: 10px;"></div>
+                                            <a href="javascript:void(0)" onclick="deleteCard('`+val['id']+`')">
+                                                <i class="fa fa-times" style="color: #ed2a26;" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                `);
+                            });
+                            $('#order_dt_section').append(`
+                                <button class="chckot_btn" onclick="deleteAllCard()" type="submit">Remove All</button>
+                            `);
+                            var userName = '<%=Principal.getPrincipal()%>';
+                            if(userName!=='anonymousUser'){
+                                $('#order_dt_section').append(`
+                                 <button class="chckot_btn" onclick="redirectCheckOutCard()" type="submit" style="margin-right: 2%;">Checkout</button>
+                            `);
+                            }
+                        }
+                    }
+                });
+            });
+            function redirectCheckOutCard() {
+                window.location.href = "/cart-checkout";
+            }
+            function deleteAllCard() {
+                $('#order_dt_section').remove();
+                $.ajax({
+                    url: "/api/cart/remove-all-cart",
+                    method: "POST",
+                    success: function(result) {
+                        console.log(result);
+                    }
+                });
+            }
+            function deleteCard(id) {
+                courseCookies.forEach(function(emp, index){
+                    if(emp.id===id){
+                        courseCookies.splice(index,1);
+                        $('#course-'+id).remove();
+                    }
+                });
+                if(courseCookies.length==0){
+                    $('#order_dt_section').remove();
+                }else{
+                    var dataBiding = {
+                        courseId: id,
+                        courseCookies: courseCookies
+                    };
+                    $.ajax({
+                        url: "/api/cart/remove-cart",
+                        method: "POST",
+                        dataType: 'json',
+                        contentType:'application/json',
+                        data: JSON.stringify(dataBiding),
+                        success: function(result) {
+                            console.log(result);
+                        }
+                    });
+                }
+            }
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

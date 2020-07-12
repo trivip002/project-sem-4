@@ -47,9 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home")
-                .hasAnyAuthority(RoleCode.ROLE_ADMIN.toString(),
-                        RoleCode.ROLE_USER.toString(),
-                        RoleCode.ROLE_INSTRUCTOR.toString())
+                .permitAll()
                 .antMatchers("/admin/**")
                 .hasAnyAuthority(RoleCode.ROLE_ADMIN.toString(),
                         RoleCode.ROLE_INSTRUCTOR.toString())

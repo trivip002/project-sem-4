@@ -39,9 +39,9 @@
                 <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i></a>
             </li>
             <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
-                <div class="menu dropdown_ms">
-                    <a href="#" class="channel_my item">
+                <a href="#" class="option_links"><i class='uil uil-cart'></i><span id="noti_count" class="noti_count">0</span></a>
+                <div id="list-card-header" class="menu dropdown_ms">
+                   <%-- <a href="#" class="channel_my item">
                         <div class="profile_link">
                             <img src="https://www.freecodecamp.org/news/content/images/2020/03/gpython.jpg" alt="">
                             <div class="pd_content">
@@ -51,38 +51,57 @@
                             </div>
                         </div>
                     </a>
-                    <a class="vbm_btn" href="/cart">View Cart <i class='uil uil-arrow-right'></i></a>
+                    <a class="vbm_btn" href="/cart">View Cart <i class='uil uil-arrow-right'></i></a>--%>
                 </div>
             </li>
             <li>
                 <a href="<c:url value="/sign_up"/>" class="option_links"><button class="Get_btn">Sign Up</button></a>
             </li>
-            <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
-                <div class="menu dropdown_ms">
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="https://www.freecodecamp.org/news/content/images/2020/03/gpython.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Python</h6>
-                                <p>The completet course of HTML,CSS,JS,REACT!</p>
-                                <span class="nm_time" style="float: right">$20</span>
+            <security:authorize access="isAuthenticated()">
+                <li class="ui dropdown">
+                    <a href="#" class="opts_account">
+                        <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                    </a>
+                    <div class="menu dropdown_account" >
+                        <div class="channel_my">
+                            <div class="profile_link">
+                                <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                                <div class="pd_content">
+                                    <div class="rhte85">
+                                        <h6>Hello <%=Principal.getPrincipal()%></h6>
+                                        <div class="mef78" title="Verify">
+                                            <i class='uil uil-check-circle'></i>
+                                        </div>
+                                    </div>
+                                    <span><%=Principal.getPrincipal()%></span>
+                                </div>
                             </div>
+                            <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                            <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <a href="<c:url value="/admin/"/>" class="dp_link_12">Manage Admin page</a>
+                            </security:authorize>
+                            <security:authorize access="hasRole('ROLE_INSTRUCTOR')">
+                                <a href="<c:url value="/admin/course/"/>" class="dp_link_12">Manage Instructor page</a>
+                            </security:authorize>
                         </div>
-                        <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
-                    </div>
-                    <div class="night_mode_switch__btn">
-                        <a href="#" id="night-mode" class="btn-night-mode">
-                            Night mode
-                            <span class="btn-night-mode-switch">
+                        <div class="night_mode_switch__btn">
+                            <a href="#" id="night-mode" class="btn-night-mode">
+                                Night mode
+                                <span class="btn-night-mode-switch">
 									<span class="uk-switch-button"></span>
 								</span>
-                        </a>
+                            </a>
+                        </div>
+                        <a href="/membership" class="item channel_item">Paid Memberships</a>
+                        <a href="/logout/" class="item channel_item">Sign Out</a>
                     </div>
-                    <a href="/membership" class="item channel_item">Paid Memberships</a>
-                    <a href="/logout/" class="item channel_item">Sign Out</a>
-                </div>
-            </li>
+                </li>
+            </security:authorize>
+            <security:authorize access="!isAuthenticated()">
+                <li>
+                    <a href="<c:url value="/login"/>" class="option_links"><button class="Get_btn">Login</button></a>
+                </li>
+            </security:authorize>
         </ul>
     </div>
 </header>
@@ -149,5 +168,39 @@
     </div>
 </nav>
 <!-- Left Sidebar End -->
+<script>
+    var courseCookies = [];
+    $(document).ready(function () {
+        $.ajax({
+            url: "/api/cart/get-cart",
+            method: "GET",
+            success: function(result) {
+                courseCookies = $.parseJSON(result);
+                if(courseCookies !== []){
+                    $('#noti_count').text(courseCookies.length);
+                    $.each(courseCookies, function( i, val ) {
+                        if(i<3){
+                            $('#list-card-header').append(`
+                              <a href="#" class="channel_my item">
+                                <div class="profile_link">
+                                    <img src="`+val['image']+`" alt="">
+                                    <div class="pd_content">
+                                        <h6>`+ val['name'] +`</h6>
+                                        <p>`+val['description']+`</p>
+                                        <span class="nm_time" style="float: right">`+val['price']+`</span>
+                                    </div>
+                                </div>
+                            </a>
+                            `);
+                        }
+                    });
+                    $('#list-card-header').append(`
+                        <a class="vbm_btn" href="/cart">View Cart <i class='uil uil-arrow-right'></i></a>
+                    `);
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -27,37 +27,51 @@
                         <li>
                             <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i></a>
                         </li>
-                        <li class="ui dropdown">
-                            <a href="#" class="opts_account">
-                                <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
-                            </a>
-                            <div class="menu dropdown_account" >
-                                <div class="channel_my">
-                                    <div class="profile_link">
-                                        <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
-                                        <div class="pd_content">
-                                            <div class="rhte85">
-                                                <h6>Hello <%=Principal.getPrincipal()%></h6>
-                                                <div class="mef78" title="Verify">
-                                                    <i class='uil uil-check-circle'></i>
+                        <security:authorize access="isAuthenticated()">
+                            <li class="ui dropdown">
+                                <a href="#" class="opts_account">
+                                    <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                                </a>
+                                <div class="menu dropdown_account" >
+                                    <div class="channel_my">
+                                        <div class="profile_link">
+                                            <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                                            <div class="pd_content">
+                                                <div class="rhte85">
+                                                    <h6>Hello <%=Principal.getPrincipal()%></h6>
+                                                    <div class="mef78" title="Verify">
+                                                        <i class='uil uil-check-circle'></i>
+                                                    </div>
                                                 </div>
+                                                <span><%=Principal.getPrincipal()%></span>
                                             </div>
-                                            <span><%=Principal.getPrincipal()%></span>
                                         </div>
+                                        <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                                        <security:authorize access="hasRole('ROLE_ADMIN')">
+                                            <a href="<c:url value="/admin/"/>" class="dp_link_12">Manage Admin page</a>
+                                        </security:authorize>
+                                        <security:authorize access="hasRole('ROLE_INSTRUCTOR')">
+                                            <a href="<c:url value="/admin/course/"/>" class="dp_link_12">Manage Instructor page</a>
+                                        </security:authorize>
                                     </div>
-                                    <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                                    <div class="night_mode_switch__btn">
+                                        <a href="#" id="night-mode" class="btn-night-mode">
+                                            Night mode
+                                            <span class="btn-night-mode-switch">
+									<span class="uk-switch-button"></span>
+								</span>
+                                        </a>
+                                    </div>
+                                    <a href="/membership" class="item channel_item">Paid Memberships</a>
+                                    <a href="/logout/" class="item channel_item">Sign Out</a>
                                 </div>
-                                <div class="night_mode_switch__btn">
-                                    <a href="#" id="night-mode" class="btn-night-mode">
-                                        Night mode
-                                        <span class="btn-night-mode-switch">
-												<span class="uk-switch-button"></span>
-											</span>
-                                    </a>
-                                </div>
-                                <a href="/logout" class="item channel_item">Sign Out</a>
-                            </div>
-                        </li>
+                            </li>
+                        </security:authorize>
+                        <security:authorize access="!isAuthenticated()">
+                            <li>
+                                <a href="<c:url value="/login"/>" class="option_links"><button class="Get_btn">Login</button></a>
+                            </li>
+                        </security:authorize>
                     </ul>
                 </div>
             </div>

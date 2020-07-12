@@ -17,7 +17,7 @@ public class UserApiController {
     @PostMapping(value = "/edit")
     public String updateUser(Long userId, String username, String fullName, String emailAddress,
                              String password, String telephone, String address, String city,
-                             String country, MultipartFile fileupload) {
+                             String country, int isActive, MultipartFile fileupload) {
         if(fileupload != null){
             FileUtils.uploadFile(fileupload);
         }
@@ -30,6 +30,7 @@ public class UserApiController {
         userEntity.setAddress(address);
         userEntity.setCity(city);
         userEntity.setCountry(country);
+        userEntity.setIsActive(isActive);
         userEntity.setUserAvatar(fileupload.getOriginalFilename());
         return userService.updateByUser(userEntity);
     }
@@ -42,11 +43,23 @@ public class UserApiController {
     @GetMapping
     public Object getEditUser(@RequestParam Long userId) {
         UserEntity userEntity = userService.getOneById(userId);
-        return  "<div class=\"ui search focus mt-40\">" +
+        String selectIsActive = "";
+        if(userEntity.getIsActive()==1){
+            selectIsActive = "<select name='isActive' style='width: 100%;' class=\"ui hj145 dropdown cntry152 prompt srch_explore\" >"+
+                    " <option selected value='1'>Active</option>"+
+                    " <option  value='0'>InActive</option>"+
+                    "</select>";
+        }else{
+            selectIsActive = "<select name='isActive' style='width: 100%;' class=\"ui hj145 dropdown cntry152 prompt srch_explore\" >"+
+                    " <option  value='1'>Active</option>"+
+                    " <option selected  value='0'>InActive</option>"+
+                    "</select>";
+        }
+        return  "<div class=\"ui search focus mt-0\">" +
                 "<div class=\"ui left icon input swdh11 swdh19\">" +
                 " <input class=\"prompt srch_explore\" type=\"hidden\" name=\"userId\" value='" + userEntity.getUserId() + "' id=\"user_id\" >" +
                 "</div></div>" +
-                "<div class=\"ui search focus mt-40\">" +
+                "<div class=\"ui search focus mt-15\">" +
                 "<div class=\"ui left icon input swdh11 swdh19\">" +
                 " <input class=\"prompt srch_explore\" type=\"text\" name=\"username\" value='" + userEntity.getUserName() + "' id=\"user_name\" required=\"\" maxlength=\"64\" placeholder=\"User Name\">" +
                 "</div></div>" +
@@ -77,6 +90,9 @@ public class UserApiController {
                 " <div class=\"ui search focus mt-15\">\n" +
                 "<div class=\"ui left icon input swdh11 swdh19\">" +
                 "<input class=\"prompt srch_explore\" type=\"text\" name=\"country\" value='" + userEntity.getCountry() + "' id=\"country\" required=\"\" maxlength=\"10\" placeholder=\"Country\">" +
+                "</div></div>" +
+                " <div class=\"ui search focus mt-15\">\n" +
+                selectIsActive +
                 "</div></div>" +
                 "<div class=\"ui search focus mt-15\">\n" +
                 "                                <div class=\"ui left icon input swdh11 swdh19\">\n" +

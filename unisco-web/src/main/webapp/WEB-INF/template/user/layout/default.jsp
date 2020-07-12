@@ -33,21 +33,40 @@
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.carousel.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
-        <link href="<c:url value='/static/assets/css/bootstrap-rating.css' />" rel="stylesheet">
-        <link href="<c:url value='/static/assets/css/theme.css' />" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />" >
+        <link href="<c:url value='/static/assets/css/waitMe.css' />" rel="stylesheet">
         <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>' ></script>
+        <script src='<c:url value="/static/assets/js/waitMe.js"/>'></script>
+        <script>
+        function run_waitMe(){
+        var maxSize = '';
+        var textPos = 'vertical';
+        $('.containerLoading').waitMe({
+        effect: 'bounce',
+        text: 'loading',
+        bg: 'rgba(255,255,255,0.7)',
+        color: '#000',
+        maxSize: maxSize,
+        waitTime: -1,
+        source: "<c:url value='/static/assets/images/img.svg'/>",
+        textPos: textPos,
+        fontSize: '18px',
+        onClose: function(el) {}
+        });
+        }
+        </script>
     </head>
     <body>
         <stripes:layout-component name="header">
             <jsp:include page="../header.jsp"/>
         </stripes:layout-component>
-
-        <div class="wrapper wrapper__minify">
+        <div class="containerLoading">
+            <div class="wrapper wrapper__minify">
             <stripes:layout-component name="contents"/>
             <stripes:layout-component name="footer">
                 <jsp:include page="../footer.jsp"/>
             </stripes:layout-component>
+            </div>
         </div>
 
         <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
@@ -56,8 +75,6 @@
         <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>' ></script>
         <script src='<c:url value="/static/assets/js/custom.js"/>'></script>
         <script src='<c:url value="/static/assets/js/night-mode.js"/>' ></script>
-        <script src='<c:url value="/static/assets/js/bootstrap-rating.js"/>' ></script>
-        <script src='<c:url value="/static/assets/js/theme.js"/>' ></script>
     </body>
     </html>
 </stripes:layout-definition>

@@ -36,9 +36,6 @@ public class OrderEntity extends BaseEntity implements Serializable {
     @Column(name = "order_code")
     private String orderCode;
 
-    @Column(name = "order_date")
-    private Date orderDate;
-
     @Column(name = "unit_price")
     private float unitPrice;
 
