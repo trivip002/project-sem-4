@@ -14,9 +14,16 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"","/home"}, method = RequestMethod.GET)
     public ModelAndView adminPage() {
         ModelAndView mav = new ModelAndView("admin/home");
+        mav.addObject("listUser", userService.getAll());
+        return mav;
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ModelAndView userPage() {
+        ModelAndView mav = new ModelAndView("admin/user");
         mav.addObject("listUser", userService.getAll());
         return mav;
     }

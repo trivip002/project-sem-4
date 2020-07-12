@@ -48,7 +48,7 @@
                                         <i class='uil uil-check-circle'></i>
                                     </div>
                                 </div>
-                                <span><%=Principal.getPrincipal()%></span>
+                                <span>${email}&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                             </div>
                         </div>
                     </div>

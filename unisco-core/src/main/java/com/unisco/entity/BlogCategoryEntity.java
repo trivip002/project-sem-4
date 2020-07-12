@@ -32,6 +32,11 @@ public class BlogCategoryEntity extends BaseEntity implements Serializable {
     private String blogCateContent;
 
     //relation between blog & blog_category
-    @OneToMany(mappedBy = "blog")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "blog")
     private Set<BlogEntity> blog = new HashSet<>();
+
+    public BlogCategoryEntity(Long blogCateId) {
+        super();
+        this.setBlogCateId(blogCateId);
+    }
 }
