@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ public class VideoEntity extends BaseEntity implements Serializable {
     @Column(name = "video_name")
     private String videoName;
 
-    @Column(name = "video_url")
+    @Column(name = "video_url", columnDefinition = "TEXT")
     private String videoUrl;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -48,9 +48,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home")
                 .hasAnyAuthority(RoleCode.ROLE_ADMIN.toString(),
-                        RoleCode.ROLE_USER.toString())
+                        RoleCode.ROLE_USER.toString(),
+                        RoleCode.ROLE_INSTRUCTOR.toString())
                 .antMatchers("/admin/**")
-                .hasAuthority(RoleCode.ROLE_ADMIN.toString())
+                .hasAnyAuthority(RoleCode.ROLE_ADMIN.toString(),
+                        RoleCode.ROLE_INSTRUCTOR.toString())
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .and().exceptionHandling().accessDeniedPage("/access_denied");

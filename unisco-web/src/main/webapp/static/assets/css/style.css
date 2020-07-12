@@ -930,6 +930,7 @@ i.icon1 {
 	width: 100%;
 	float: left;
 	position: relative;
+
 }
 
 .fcrse_img img {
@@ -4978,19 +4979,21 @@ a.rmv-btn i {
 .category-topics:after {
     content: '\f0d7';
     font-size: 14px;
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     float: right;
     margin-left: 30px;
     color: #a7a8aa;
+    font-weight: 900;
 }
 
 .category-topics.collapsed:after {
     content: '\f0da';
     font-size: 14px;
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     float: right;
     margin-left: 30px;
     color: #a7a8aa;
+    font-weight: 900;
 }
 
 .category-card li {

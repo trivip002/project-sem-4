@@ -21,6 +21,7 @@ public class BlogCategoryEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 8491876919744814710L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "blog_cate_id")
     private Long blogCateId;
 

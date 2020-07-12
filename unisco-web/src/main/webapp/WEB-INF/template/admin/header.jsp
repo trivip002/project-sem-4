@@ -17,8 +17,8 @@
         <span class="collapse_menu--label"></span>
     </button>
     <div class="main_logo" id="logo">
-        <a href="index.html"><img src="images/logo.svg" alt=""></a>
-        <a href="index.html"><img class="logo-inverse" src="images/ct_logo.svg" alt=""></a>
+        <a href="/admin/"><img src="<c:url value='/static/assets/images/logo.svg' />" alt=""></a>
+        <a href="/admin/"><img class="logo-inverse" src="<c:url value='/static/assets/images/ct_logo.svg' />" alt=""></a>
     </div>
     <div class="search120">
         <div class="ui search">
@@ -28,90 +28,16 @@
             </div>
         </div>
     </div>
-    <div class="header_right">
+    <div class="header_right" >
         <ul>
             <li>
                 <a href="create_new_course.html" class="upload_btn">Create New Course</a>
-            </li>
-            <li>
-                <a href="index.html" class="option_links"><i class='uil uil-home-alt'></i><span class="noti_count">9+</span></a>
-            </li>
-            <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-envelope-alt'></i><span class="noti_count">3</span></a>
-                <div class="menu dropdown_ms">
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-6.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Zoena Singh</h6>
-                                <p>Hi! Sir, How are you. I ask you one thing please explain it this video price.</p>
-                                <span class="nm_time">2 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-5.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Joy Dua</h6>
-                                <p>Hello, I paid you video tutorial but did not play error 404.</p>
-                                <span class="nm_time">10 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-8.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Jass</h6>
-                                <p>Thanks Sir, Such a nice video.</p>
-                                <span class="nm_time">25 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="vbm_btn" href="instructor_messages.html">View All <i class='uil uil-arrow-right'></i></a>
-                </div>
-            </li>
-            <li class="ui dropdown">
-                <a href="#" class="option_links"><i class='uil uil-bell'></i><span class="noti_count">3</span></a>
-                <div class="menu dropdown_mn">
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-1.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Rock William</h6>
-                                <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
-                                <span class="nm_time">2 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-2.jpg" alt="">
-                            <div class="pd_content">
-                                <h6>Jassica Smith</h6>
-                                <p>Added New Review In Video <strong>Full Stack PHP Developer</strong>.</p>
-                                <span class="nm_time">12 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="images/left-imgs/img-9.jpg" alt="">
-                            <div class="pd_content">
-                                <p> Your Membership Approved <strong>Upload Video</strong>.</p>
-                                <span class="nm_time">20 min ago</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="vbm_btn" href="instructor_notifications.html">View All <i class='uil uil-arrow-right'></i></a>
-                </div>
             </li>
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
                     <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                 </a>
-                <div class="menu dropdown_account">
+                <div class="menu dropdown_account" >
                     <div class="channel_my">
                         <div class="profile_link">
                             <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
@@ -129,7 +55,7 @@
                     </div>
                     <div class="night_mode_switch__btn">
                         <a href="#" id="night-mode" class="btn-night-mode">
-                            <i class="uil uil-moon"></i> Night mode
+                            Night mode
                             <span class="btn-night-mode-switch">
 									<span class="uk-switch-button"></span>
 								</span>

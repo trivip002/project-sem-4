@@ -31,6 +31,6 @@ public class ReviewEntity extends BaseEntity implements Serializable {
     @Column(name = "review_content",columnDefinition="TEXT")
     private String reviewContent;
 
-    @Column(name = "blog_comment_content")
+    @Column(name = "rating")
     private int rating;
 }

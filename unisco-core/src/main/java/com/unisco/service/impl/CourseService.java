@@ -1,5 +1,6 @@
 package com.unisco.service.impl;
 
+import com.unisco.entity.CategoryEntity;
 import com.unisco.entity.CourseEntity;
 import com.unisco.repository.CourseRepository;
 import com.unisco.service.ICourseService;
@@ -18,4 +19,30 @@ public class CourseService implements ICourseService {
     public List<CourseEntity> getAll() {
         return courseRepository.findAll();
     }
+
+    @Override
+    public CourseEntity getById(Long id) {
+        return courseRepository.findOne(id);
+    }
+
+    @Override
+    public List<CourseEntity> getCourseByCat(CategoryEntity categoryEntity) {
+        return courseRepository.findByCategory(categoryEntity);
+    }
+
+    @Override
+    public void saveOrUpdate(CourseEntity courseEntity) {
+        courseRepository.save(courseEntity);
+    }
+
+    @Override
+    public List<CourseEntity> getByNameLike(String key) {
+        return courseRepository.findByCourseNameLike(key);
+    }
+
+    @Override
+    public List<CourseEntity> getByUserName(String userName) {
+        return courseRepository.findByCreatedBy(userName);
+    }
+
 }

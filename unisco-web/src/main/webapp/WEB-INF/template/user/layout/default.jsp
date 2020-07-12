@@ -34,13 +34,14 @@
         <link href="<c:url value='/static/vendor/OwlCarousel/assets/owl.theme.default.min.css' />" rel="stylesheet">
         <link href="<c:url value='/static/vendor/bootstrap/css/bootstrap.min.css' />" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/static/vendor/semantic/semantic.min.css' />" >
+        <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>' ></script>
     </head>
     <body>
         <stripes:layout-component name="header">
             <jsp:include page="../header.jsp"/>
         </stripes:layout-component>
 
-        <div class="wrapper">
+        <div class="wrapper wrapper__minify">
             <stripes:layout-component name="contents"/>
             <stripes:layout-component name="footer">
                 <jsp:include page="../footer.jsp"/>
@@ -48,7 +49,6 @@
         </div>
 
         <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
-        <script src='<c:url value="/static/assets/js/jquery-3.3.1.min.js"/>' ></script>
         <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>' ></script>
         <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>' ></script>
         <script src='<c:url value="/static/vendor/semantic/semantic.min.js"/>' ></script>
