@@ -92,6 +92,24 @@
                             <span class="menu--label">Blog comment</span>
                         </a>
                     </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/userReport"/>" class="menu--link" title="Comment">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">User Report</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/courseReport"/>" class="menu--link" title="Comment">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Course Report</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/promotionReport"/>" class="menu--link" title="Comment">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Promotion Report</span>
+                        </a>
+                    </li>
                 </security:authorize>
                 <security:authorize access="hasRole('ROLE_INSTRUCTOR')">
                     <li class="menu--item">
