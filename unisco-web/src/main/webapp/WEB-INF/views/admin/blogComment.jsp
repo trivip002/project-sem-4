@@ -12,21 +12,8 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Blog Comment</h2>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <ul class="more_options_tt" style="float: right">
-                            <li>
-                                <div class="explore_search">
-                                    <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="col-lg-12 col-md-12">
                         <div class="table-responsive mt-30">
                             <table class="table ucp-table earning__table">
@@ -40,9 +27,9 @@
                                 <tbody>
                                 <c:forEach items="${listComment}" var="item">
                                     <tr>
-                                        <td>${item.user.userName!=null?item.user.userName:"N/A"}</td>
-                                        <td>${item.blog.blogTitle}</td>
-                                        <td>${item.blogCommentContent}</td>
+                                        <td><a href="/admin/">${item.user.userName!=null?item.user.userName:"N/A"}</a></td>
+                                        <td><a href="/admin/blog/">${item.blog.blogTitle}</a></td>
+                                        <td class=" text-truncate" style="max-width: 100px">${item.blogCommentContent}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

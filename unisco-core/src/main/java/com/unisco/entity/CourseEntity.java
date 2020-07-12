@@ -63,13 +63,6 @@ public class CourseEntity extends BaseEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "course")
     private Set<SectionEntity> section = new HashSet<>();
 
-    //relation between course and promotion
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "promotion_detail",
-            joinColumns = {@JoinColumn(name = "course_id")},
-            inverseJoinColumns = {@JoinColumn(name = "promotion_id")})
-    private Set<PromotionEntity> promotion = new HashSet<>();
-
     //relation between user & course => wishlist
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "course")
     private Set<UserEntity> user = new HashSet<>();

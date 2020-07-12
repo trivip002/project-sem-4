@@ -16,7 +16,7 @@ public class PromotionDetailEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 9036834025257970868L;
 
     @EmbeddedId
-    PromotionDetailKey id;
+    private PromotionDetailKey id;
 
     @ManyToOne
     @MapsId("course_id")

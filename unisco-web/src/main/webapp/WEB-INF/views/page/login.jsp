@@ -23,7 +23,7 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="sign_form">
                             <h2>Welcome Back</h2>
-                            <p>Log In to Your Edututs+ Account!</p>
+                            <p>Log In to Your Cursus Account!</p>
                             <button class="social_lnk_btn color_btn_fb"><i class="uil uil-facebook-f"></i>Continue with Facebook</button>
                             <button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>
                             <button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>
@@ -40,19 +40,9 @@
                                         <i class="uil uil-key-skeleton-alt icon icon2"></i>
                                     </div>
                                 </div>
-                                <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
-                                <div class="ui form mt-30 checkbox_sign">
-                                    <div class="inline field">
-                                        <div class="ui checkbox mncheck">
-                                            <input type="checkbox" tabindex="0" class="hidden">
-                                            <label>Remember Me</label>
-                                        </div>
-                                    </div>
-                                </div>
                                 <button class="login-btn" type="submit">Sign In</button>
                             </form>
-                            <p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
-                            <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+                            <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="/sign_up">Sign Up</a></p>
                         </div>
                         <div class="sign_footer"><img src="<c:url value='/static/assets/images/sign_logo.png' />"  alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>
                     </div>

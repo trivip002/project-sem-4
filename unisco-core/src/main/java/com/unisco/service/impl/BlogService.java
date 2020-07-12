@@ -1,4 +1,5 @@
 package com.unisco.service.impl;
+import com.unisco.entity.BlogCategoryEntity;
 import com.unisco.entity.BlogEntity;
 import com.unisco.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,9 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
-}
+    public List<BlogEntity> getByNameLike(String blogTitle) {
+        return blogRepository.findByBlogTitleLike(blogTitle);
+    }
+
+
+    }

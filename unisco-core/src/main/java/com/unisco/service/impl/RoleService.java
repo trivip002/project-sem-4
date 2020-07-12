@@ -32,4 +32,8 @@ public class RoleService implements IRoleService {
         return roleRepository.findOne(roleId);
     }
 
+    public List<RoleEntity> getByNameLike(String roleName) {
+        return roleRepository.findByRoleNameLike(roleName);
+    }
+
 }

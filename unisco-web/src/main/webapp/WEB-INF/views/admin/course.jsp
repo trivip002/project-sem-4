@@ -75,7 +75,6 @@
                                                 <td class="text-center"><b class="course_active">${i.isActive==1?"Active":"Inactive"}</b></td>
                                                 <td class="text-center">
                                                     <a href="/admin/course/edit?courseId=${i.courseId}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
-                                                    <a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                             </c:forEach>

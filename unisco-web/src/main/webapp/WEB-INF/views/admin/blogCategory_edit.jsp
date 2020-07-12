@@ -22,15 +22,15 @@
                 <div class="sa4d25">
                     <form class="course__form" method="post"  action="<c:url value='/admin/blogCategory/create'/>">
                         <div class="col-lg-10">
-                        <input type="hidden" name="blogCateId" value="${blogCateEdit.blogCateId}">
+                        <input type="hidden" name="blogCateId" value="${blogCateEdit.blogCateId}" >
                         <h3>Title:</h3>
                         <div class="ui form swdh339">
-                            <input type="text" class="prompt srch_explore" name="blogCateTitle" value="${blogCateEdit.blogCateTitle}"/>
+                            <input type="text" class="prompt srch_explore" name="blogCateTitle" value="${blogCateEdit.blogCateTitle}" required/>
                         </div>
                         <br/>
                         <h3>Content:</h3>
                         <div class="ui form swdh339">
-                            <input type="text" class="prompt srch_explore" name="blogCateContent" aria-setsize="2" value="${blogCateEdit.blogCateContent}" />
+                            <input type="text" class="prompt srch_explore" name="blogCateContent" aria-setsize="2" value="${blogCateEdit.blogCateContent}"  required />
                         </div>
                         <br><br>
                         <input type="submit" class="btn btn-danger" value="Add"/>

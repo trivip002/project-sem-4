@@ -35,10 +35,6 @@ public class PromotionEntity extends BaseEntity implements Serializable {
     @Column(name = "is_active", nullable = false)
     private int isActive;
 
-    //relation between promotion & course
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "promotion")
-    private Set<CourseEntity> course = new HashSet<>();
-
     @OneToMany(mappedBy = "promotion")
     private Set<PromotionDetailEntity> promotionDetails;
 }

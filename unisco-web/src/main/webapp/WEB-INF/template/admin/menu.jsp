@@ -14,13 +14,7 @@
             <ul>
                 <security:authorize access="hasRole('ROLE_ADMIN')">
                     <li class="menu--item">
-                        <a href="<c:url value="/admin/category/"/>" class="menu--link" title="Dashboard">
-                            <i class="uil uil-car-sideview menu--icon"></i>
-                            <span class="menu--label">Category</span>
-                        </a>
-                    </li>
-                    <li class="menu--item">
-                        <a href="<c:url value="#"/>" class="menu--link" title="Dashboard">
+                        <a href="/admin/dashboard/" class="menu--link" title="Dashboard">
                             <i class="uil uil-chart menu--icon"></i>
                             <span class="menu--label">Dash Board</span>
                         </a>
@@ -32,15 +26,9 @@
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="<c:url value="/admin/course/"/>" class="menu--link" title="Courses">
-                            <i class='uil uil-book-alt menu--icon'></i>
-                            <span class="menu--label">Courses</span>
-                        </a>
-                    </li>
-                    <li class="menu--item">
-                        <a href="instructor_dashboard.html" class="menu--link" title="Order">
-                            <i class="uil uil-shopping-cart-alt menu--icon"></i>
-                            <span class="menu--label">Order</span>
+                        <a href="/admin/role/" class="menu--link" title="Role">
+                            <i class="uil uil-user menu--icon"></i>
+                            <span class="menu--label">Role Management</span>
                         </a>
                     </li>
                     <li class="menu--item">
@@ -50,9 +38,15 @@
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_courses.html" class="menu--link" title="Courses">
+                        <a href="<c:url value="/admin/course/"/>" class="menu--link" title="Courses">
                             <i class='uil uil-book-alt menu--icon'></i>
-                            <span class="menu--label">Course</span>
+                            <span class="menu--label">Courses</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="/admin/order/" class="menu--link" title="Order">
+                            <i class="uil uil-shopping-cart-alt menu--icon"></i>
+                            <span class="menu--label">Order</span>
                         </a>
                     </li>
                     <li class="menu--item">

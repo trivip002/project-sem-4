@@ -13,15 +13,16 @@
 
         <div class="sa4d25">
             <div class="container-fluid">
+                <h2 class="st_title"><i class="uil uil-book-alt"></i>Role</h2>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <ul class="more_options_tt" style="float: right">
                             <li>
                                 <div class="explore_search">
-                                    <div class="ui search focus">
-                                        <div class="ui left icon input swdh11 swdh15">
-                                            <input class="prompt srch_explore" type="text" placeholder="Search field">
-                                            <i class="uil uil-search-alt icon icon8"></i>
+                                    <div class="ui search focus" >
+                                        <div class="review_search" style="width: 300px;">
+                                            <input class="rv_srch" type="text" name="searchStr" id="searchStr" placeholder="Search role title..."/>
+                                            <button type="submit" id="btnSearch" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -37,8 +38,8 @@
                                 <thead class="thead-s">
                                 <tr>
                                     <th scope="col">Id</th>
-                                    <th scope="col">Role Title</th>
-                                    <th scope="col">Role Description</th>
+                                    <th scope="col">Role Code</th>
+                                    <th scope="col">Role Name</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                                 </thead>
@@ -82,11 +83,11 @@
                             <input type="hidden" name="roleId" value="">
                              <h3>Role Title:</h3>
                             <div class="ui left icon input">
-                            <input type="text" name="roleCode" value="${roleEdit}" />
+                            <input type="text" name="roleCode" value="${roleEdit}" required />
                             </div>
                             <h3>Role Description:</h3>
                             <div class="ui left icon input">
-                            <input type="text" name="roleName" value="${roleEdit}"/>
+                            <input type="text" name="roleName" value="${roleEdit}" required/>
                             </div>
                                 <br><br>
                             <input type="submit" class="btn btn-danger" value="Add"/>
@@ -111,6 +112,14 @@
                     pageNumbers: true
                 });
             });
+        </script>
+        <script type="text/javascript">
+        var searchStr;
+        $('#btnSearch').click(function () {
+            searchStr = $('#searchStr').val();
+            window.location.href = "http://"+window.location.hostname+":8080" + "/admin/role/search?searchStr=" +searchStr;
+            console.log(searchStr);
+        });
         </script>
 
     </stripes:layout-component>

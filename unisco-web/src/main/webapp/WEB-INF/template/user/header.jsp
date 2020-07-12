@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.unisco.utils.Principal" %><%--
   Created by IntelliJ IDEA.
   User: hugh.intern
   Date: 2/12/2020
@@ -35,11 +35,8 @@
     </div>
     <div class="header_right">
         <ul>
-            <!-- <li>
-                <a href="create_new_course.html" class="upload_btn">Create New Course</a>
-            </li> -->
             <li>
-                <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i><!-- <span class="noti_count">9+</span> --></a>
+                <a href="<c:url value="/"/>" class="option_links"><i class='uil uil-home-alt'></i></a>
             </li>
             <li class="ui dropdown">
                 <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
@@ -55,6 +52,35 @@
                         </div>
                     </a>
                     <a class="vbm_btn" href="/cart">View Cart <i class='uil uil-arrow-right'></i></a>
+                </div>
+            </li>
+            <li>
+                <a href="<c:url value="/sign_up"/>" class="option_links"><button class="Get_btn">Sign Up</button></a>
+            </li>
+            <li class="ui dropdown">
+                <a href="#" class="option_links"><i class='uil uil-cart'></i><span class="noti_count">3</span></a>
+                <div class="menu dropdown_ms">
+                    <a href="#" class="channel_my item">
+                        <div class="profile_link">
+                            <img src="https://www.freecodecamp.org/news/content/images/2020/03/gpython.jpg" alt="">
+                            <div class="pd_content">
+                                <h6>Python</h6>
+                                <p>The completet course of HTML,CSS,JS,REACT!</p>
+                                <span class="nm_time" style="float: right">$20</span>
+                            </div>
+                        </div>
+                        <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                    </div>
+                    <div class="night_mode_switch__btn">
+                        <a href="#" id="night-mode" class="btn-night-mode">
+                            Night mode
+                            <span class="btn-night-mode-switch">
+									<span class="uk-switch-button"></span>
+								</span>
+                        </a>
+                    </div>
+                    <a href="/membership" class="item channel_item">Paid Memberships</a>
+                    <a href="/logout/" class="item channel_item">Sign Out</a>
                 </div>
             </li>
         </ul>

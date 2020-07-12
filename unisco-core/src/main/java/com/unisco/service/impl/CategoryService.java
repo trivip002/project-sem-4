@@ -31,4 +31,8 @@ public class CategoryService implements ICategoryService {
     public CategoryEntity save(CategoryEntity cate){
         return categoryRepository.save(cate);
     }
+
+    public List<CategoryEntity> getByNameLike(String cateName) {
+        return categoryRepository.findByCateNameLike(cateName);
+    }
 }

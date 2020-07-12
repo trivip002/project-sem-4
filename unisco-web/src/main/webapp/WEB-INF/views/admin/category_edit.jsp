@@ -25,7 +25,7 @@
             <input type="hidden" name="cateId" value="${cateEdit.cateId}">
             <h3>Category Name:</h3>
                 <div class="ui left icon input">
-            <input type="text" class="prompt srch_explore" name="cateName" value="${cateEdit.cateName}" />
+            <input type="text" class="prompt srch_explore" name="cateName" value="${cateEdit.cateName}" required/>
                 </div>
                 <br><br>
             <input type="submit" class="btn btn-danger" value="Save"/>

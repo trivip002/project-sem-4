@@ -23,11 +23,11 @@
                     <input type="hidden" name="roleId" value="${roleEdit.roleId}">
                 <h3>Role Title:</h3>
                     <div class="ui left icon input">
-                    <input type="text" name="roleCode" value="${roleEdit.roleCode}" />
+                    <input type="text" name="roleCode" value="${roleEdit.roleCode}" required />
                     </div>
                 <h3>Role Description:</h3>
                     <div class="ui left icon input">
-                    <input type="text" name="roleName" value="${roleEdit.roleName}"/><br><br>
+                    <input type="text" name="roleName" value="${roleEdit.roleName}" required/><br><br>
                     </div>
                 <br/><br/>
                     <input type="submit" class="btn btn-danger" value="Save"/>

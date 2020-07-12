@@ -6,5 +6,5 @@ import java.util.List;
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
     List<ReviewEntity> findAll();
-
+    List<ReviewEntity> findByCourse_CourseNameLike(String key);
 }

@@ -13,7 +13,7 @@ import java.util.UUID;
 @Log
 public class FileUtils {
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "F:/upload/";
+    private static String UPLOADED_FOLDER = "E:/upload/";
     public static void uploadFile(MultipartFile fileupload) {
         try{
             File directory = new File(UPLOADED_FOLDER);

@@ -75,4 +75,8 @@ public class UserService implements IUserService {
     public boolean checkRoleForUser(UserEntity userEntity, String role) {
         return !this.getRoleOfUser(userEntity).stream().filter(item -> item.equalsIgnoreCase(role)).collect(Collectors.toSet()).isEmpty();
     }
+
+    public UserEntity save(UserEntity users){
+        return userRepository.save(users);
+    }
 }

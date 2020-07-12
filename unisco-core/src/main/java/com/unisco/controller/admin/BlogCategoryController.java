@@ -46,4 +46,15 @@ public class BlogCategoryController {
         return mav;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView search(@RequestParam(value = "searchStr", required = false) String key){
+        ModelAndView view = new ModelAndView("/admin/blogCategory");
+        if (key==null){
+            view.addObject("listBlogCategory", blogCategoryService.getAll());
+        } else {
+            view.addObject("listBlogCategory", blogCategoryService.getByNameLike("%"+key+"%"));
+        }
+        return view;
+    }
+
 }
