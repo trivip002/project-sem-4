@@ -53,4 +53,23 @@ public class HomeController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/help", method = RequestMethod.GET)
+	public ModelAndView help(){
+		ModelAndView mav = new ModelAndView("web/help");
+		return mav;
+	}
+
+	@RequestMapping(value = "/term", method = RequestMethod.GET)
+	public ModelAndView term(){
+		ModelAndView mav = new ModelAndView("web/term");
+		return mav;
+	}
+
+	@RequestMapping(value = "/explore", method = RequestMethod.GET)
+	public ModelAndView explore(){
+		ModelAndView mav = new ModelAndView("web/explore");
+		mav.addObject("listCourse", courseService.getAll());
+		return mav;
+	}
+
 }

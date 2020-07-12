@@ -1,5 +1,6 @@
 package com.unisco.service.impl;
 
+import com.unisco.entity.CourseEntity;
 import com.unisco.entity.SectionEntity;
 import com.unisco.repository.SectionRepository;
 import com.unisco.service.ISectionService;
@@ -27,5 +28,10 @@ public class SectionService implements ISectionService {
     @Override
     public void saveOrUpdate(SectionEntity sectionEntity) {
         sectionRepository.save(sectionEntity);
+    }
+
+    @Override
+    public List<SectionEntity> getByCourseEntityOrderBySectionId(CourseEntity courseEntity) {
+        return sectionRepository.findByCourseOrderBySectionId(courseEntity);
     }
 }

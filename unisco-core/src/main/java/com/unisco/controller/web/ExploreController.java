@@ -1,9 +1,9 @@
 package com.unisco.controller.web;
 
-import com.unisco.service.impl.CategoryService;
-import com.unisco.service.impl.CourseService;
+import com.unisco.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,15 +16,18 @@ public class ExploreController {
     private CourseService courseService;
 
     @Autowired
-    private CategoryService categoryService;
+    private ReviewService reviewService;
 
-    @RequestMapping(value = "/explore", method = RequestMethod.GET)
-    public ModelAndView explore(@RequestParam(name = "catId", required = false) Long catId){
-        ModelAndView mav = new ModelAndView("web/explore");
-        if(catId == null){
-            mav.addObject("listCourse", courseService.getAll());
-        }else{
-            mav.addObject("listCourse", courseService.getCourseByCat(categoryService.getById(catId)));
+    @Autowired
+    private SectionService sectionService;
+
+    @RequestMapping(value = "/explore/course", method = RequestMethod.GET)
+    public ModelAndView courseDetail(@RequestParam(name = "courseId") Long courseId){
+        ModelAndView mav = new ModelAndView("web/course_detail_view");
+        if (courseId!=null){
+            mav.addObject("course", courseService.getById(courseId));
+            mav.addObject("sections", sectionService.getByCourseEntityOrderBySectionId(courseService.getById(courseId)));
+            mav.addObject("review", reviewService.getAll());
         }
         return mav;
     }

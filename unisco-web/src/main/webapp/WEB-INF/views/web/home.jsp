@@ -13,7 +13,7 @@
                                     <c:forEach items="${listCourse}" var="a">
                                     <div class="item">
                                         <div class="fcrse_1 mb-20">
-                                            <a href="course_detail_view.html" class="fcrse_img">
+                                            <a href="<c:url value="/explore/course?courseId=${a.courseId}"/>" class="fcrse_img">
                                                 <img src="${a.courseThumbnail}" alt="">
                                                 <div class="course-overlay">
                                                     <div class="badge_seller">Bestseller</div>
@@ -32,7 +32,7 @@
                                                 <div class="vdtodt">
                                                     <span class="vdt14">15 days ago</span>
                                                 </div>
-                                                <a href="course_detail_view.html" class="crse14s">${a.courseName}</a>
+                                                <a href="<c:url value="/explore/course?courseId=${a.courseId}"/>" class="crse14s">${a.courseName}</a>
                                                 <a href="#" class="crse-cate">
                                                     <c:forEach items="${a.category}" var="cat">
                                                         ${cat.cateName.concat(" |")}
@@ -57,14 +57,14 @@
                                     <c:forEach items="${listCourse}" var="i">
                                     <div class="item">
                                         <div class="fcrse_1 mb-20">
-                                            <a href="course_detail_view.html" class="fcrse_img">
+                                            <a href="<c:url value="/explore/course?courseId=${i.courseId}"/>" class="fcrse_img">
                                                 <img src="${i.courseImg}" alt="${i.courseImg}">
                                             </a>
                                             <div class="fcrse_content">
                                                 <div class="eps_dots more_dropdown">
                                                     <a href="#"><i class='uil uil-heart-alt'></i></a>
                                                 </div>
-                                                <a href="course_detail_view.html" class="crse14s">${i.courseName}</a>
+                                                <a href="<c:url value="/explore/course?courseId=${i.courseId}"/>" class="crse14s">${i.courseName}</a>
                                                 <a href="#" class="crse-cate">
                                                     <c:forEach items="${i.category}" var="ca" begin="0" end="1">
                                                     ${ca.cateName.concat(" |")}
