@@ -88,9 +88,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="ui search focus mt-30 lbel25">
-                                        <label>Expiration Year</label>
+                                        <label>Promotion Code</label>
                                         <div class="ui left icon input swdh11 swdh19">
-                                            <input class="prompt srch_explore"  type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+                                            <input value="" class="prompt srch_explore" id="promotion-code"  type="text" name="card[cvc]" placeholder="CVC">
                                         </div>
                                     </div>
                                 </div>
@@ -126,20 +126,24 @@
                     method: "GET",
                     success: function(result) {
                         courseCookies = $.parseJSON(result);
-                        var totalPrice = 0;
+                        var totalPrice = 0.0;
                         if(courseCookies !== []){
                             $.each(courseCookies, function( i, val ) {
                                 $('#course_title').append(`
-                                    <h6>`+val['name']+`)</h6>
-                                    <div class="order_price">`+val['price']+`$</div>
+                                    <h6>`+val['name']+`</h6>
+                                    <div id="order_price_`+val['id']+`" class="order_price">`+val['price']+`$</div>
                                 `);
-                                totalPrice += parseInt(val['price']);
+                                totalPrice += parseFloat(val['price']);
                             });
                             $('#total-price').text(totalPrice+'$');
                         }
                     }
                 });
                 $('#btn-do-checkout').click(function () {
+                    $('#course_title').find('.order_price').each(function (i) {
+                        courseCookies[i].price = parseFloat($(this).text().split('$')[0]);
+                    });
+                    console.log(courseCookies);
                     setTimeout(function(){
                         $.ajax({
                             url: "/api/cart/checkout",
@@ -151,9 +155,43 @@
                                 console.log(result);
                             }
                         });
-                        window.location.href = "/";
+                        alert('checkout success');
                     }, 2500);
 
+                });
+            });
+            $('#promotion-code').keyup(function () {
+                var courseIds = [];
+                var promotionCode = $(this).val();
+                $.each(courseCookies, function( i, val ) {
+                    courseIds.push(val['id'])
+                });
+                var data = {
+                    courseIds: courseIds,
+                    promotionCode: promotionCode
+                };
+                $.ajax({
+                    url: "/api/promotion-detail/get-promotion-detail",
+                    method: "POST",
+                    dataType: 'json',
+                    contentType:'application/json',
+                    data: JSON.stringify(data),
+                    success: function(result) {
+                        var totalPrice = 0.0;
+                        if(result.length!==0){
+                            for(var i = 0 ; i < result.length; i++){
+                                $('#order_price_'+result[i].courseId).text(result[i].lastPrice.toFixed(2)+"$");
+                            }
+                        }else{
+                            $.each(courseCookies, function( i, val ){
+                                $('#order_price_'+val['id']).text(val['price']+"$");
+                            });
+                        }
+                        $('#course_title').find('.order_price').each(function (e) {
+                            totalPrice += parseFloat($(this).text().split('$')[0]);
+                        });
+                        $('#total-price').text(totalPrice+'$');
+                    }
                 });
             });
         </script>

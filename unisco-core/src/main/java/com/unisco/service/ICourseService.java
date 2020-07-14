@@ -8,6 +8,8 @@ import java.util.List;
 public interface ICourseService {
     List<CourseEntity> getAll();
 
+    List<CourseEntity> getAllCourseActive();
+
     CourseEntity getById(Long id);
 
     List<CourseEntity> getCourseByCat(CategoryEntity categoryEntity);

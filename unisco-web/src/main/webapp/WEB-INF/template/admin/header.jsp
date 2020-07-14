@@ -35,12 +35,12 @@
             </li>
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
-                    <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                    <img class="user-avatar-img" src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                 </a>
                 <div class="menu dropdown_account" >
                     <div class="channel_my">
                         <div class="profile_link">
-                            <img src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
+                            <img class="user-avatar-img" src="<c:url value='/static/assets/images/hd_dp.jpg' />" alt="">
                             <div class="pd_content">
                                 <div class="rhte85">
                                     <h6>Hello <%=Principal.getPrincipal()%></h6>

@@ -52,6 +52,9 @@ public class CourseEntity extends BaseEntity implements Serializable {
     @Column(name = "is_active", nullable = false)
     private int isActive;
 
+    @Column(name = "unit_price")
+    private String unitPrice;
+
     //relation between category & course
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "cate_course",

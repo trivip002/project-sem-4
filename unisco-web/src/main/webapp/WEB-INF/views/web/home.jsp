@@ -14,7 +14,7 @@
                                     <div class="item">
                                         <div class="fcrse_1 mb-20">
                                             <a href="<c:url value="/explore/course?courseId=${a.courseId}"/>" class="fcrse_img">
-                                                <img src="${a.courseThumbnail}" alt="">
+                                                <img src="<c:url value="/upload/${a.courseThumbnail}"/>" alt="">
                                                 <div class="course-overlay">
                                                     <div class="badge_seller">Bestseller</div>
                                                     <div class="crse_reviews">
@@ -58,7 +58,7 @@
                                     <div class="item">
                                         <div class="fcrse_1 mb-20">
                                             <a href="<c:url value="/explore/course?courseId=${i.courseId}"/>" class="fcrse_img">
-                                                <img src="${i.courseImg}" alt="${i.courseImg}">
+                                                <img src="<c:url value="/upload/${i.courseThumbnail}"/>" alt="${i.courseImg}">
                                             </a>
                                             <div class="fcrse_content">
                                                 <div class="eps_dots more_dropdown">

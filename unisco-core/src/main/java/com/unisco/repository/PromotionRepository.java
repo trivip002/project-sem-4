@@ -7,4 +7,5 @@ import java.util.List;
 public interface PromotionRepository extends JpaRepository<PromotionEntity, Long> {
     List<PromotionEntity> findAll();
     List<PromotionEntity> findByPromotionCodeLike(String key);
+    PromotionEntity findOneByPromotionCode(String promotionCode);
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseService implements ICourseService {
@@ -18,6 +19,11 @@ public class CourseService implements ICourseService {
     @Override
     public List<CourseEntity> getAll() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<CourseEntity> getAllCourseActive() {
+        return courseRepository.findAll().stream().filter(item->item.getIsActive()==1).collect(Collectors.toList());
     }
 
     @Override

@@ -89,7 +89,13 @@
     </body>
 
     <script>
-    UPLOADCARE_PUBLIC_KEY = 'c952b0c21db79a8e1007';
+        $.ajax({
+            url: "/api/user/get-avatar",
+            method: "GET",
+            success: function(result) {
+                $('.user-avatar-img').attr("src",'http://localhost:8080/upload/'+result);
+            }
+        });
     </script>
 
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>

@@ -75,7 +75,13 @@ public class CartApiController {
     public Object checkout(HttpServletResponse response, @RequestBody List<courseCookie> courseCookies) {
         UserEntity userEntity = userService.getOneByUserName(Principal.getPrincipal());
         List<CourseEntity> courseEntities = new ArrayList<>();
-        courseCookies.forEach(item -> courseEntities.add(courseService.getById(item.id)));
+        courseCookies.forEach(item -> {
+            CourseEntity courseEntity = courseService.getById(item.id);
+            if(courseEntity.getCoursePrice()!=Float.parseFloat(item.price)){
+                courseEntity.setUnitPrice((item.price));
+            }
+            courseEntities.add(courseEntity);
+        });
         orderService.createOrderByUserAndCourses(userEntity, courseEntities);
         Cookie cookie = new Cookie(Principal.getPrincipal(), null);
         response.addCookie(cookie);

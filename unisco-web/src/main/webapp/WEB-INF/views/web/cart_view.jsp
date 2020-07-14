@@ -60,7 +60,7 @@
                                 $('#order_dt_section').append(`
                                      <div id='course-`+val['id']+`' class="order_title">
                                         <div class="order_img">
-                                            <img style="width: 10%" src="`+val['image']+`">
+                                            <img style="width: 10%" src="http://localhost:8080/upload/`+val['image']+`">
                                         </div>
                                         <h4>`+val['description']+`</h4>
                                         <div class="order_price">`+val['price']+`

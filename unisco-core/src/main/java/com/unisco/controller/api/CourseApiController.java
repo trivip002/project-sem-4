@@ -8,6 +8,7 @@ import com.unisco.service.impl.CategoryService;
 import com.unisco.service.impl.CourseService;
 import com.unisco.service.impl.SectionService;
 import com.unisco.service.impl.VideoService;
+import com.unisco.utils.FileUtils;
 import com.unisco.utils.Principal;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,8 +40,9 @@ public class CourseApiController {
     private VideoService videoService;
 
     @PostMapping(value = "/upload")
-    public Object uploadFile(MultipartFile courseFileThumbnail) {
-        return null;
+    public Object uploadFile(MultipartFile file) {
+        FileUtils.uploadFile(file);
+        return "success";
     }
 
     @PostMapping(value = "/edit")

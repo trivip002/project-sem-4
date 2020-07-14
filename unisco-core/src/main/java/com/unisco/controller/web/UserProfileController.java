@@ -57,7 +57,13 @@ public class UserProfileController {
     }
 
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public ModelAndView UpdateUser(@RequestParam("userEmail")String userEmail,@RequestParam("fullName")String fullName,@RequestParam("address")String address,@RequestParam("city")String city,@RequestParam("country")String country,@RequestParam("telephone")String telephone) {
+    public ModelAndView UpdateUser(@RequestParam("userEmail")String userEmail,
+                                   @RequestParam("fullName")String fullName,
+                                   @RequestParam("address")String address,
+                                   @RequestParam("city")String city,
+                                   @RequestParam("country")String country,
+                                   @RequestParam("telephone")String telephone,
+                                   @RequestParam("userAvatar")String userAvatar) {
         ModelAndView mav = new ModelAndView("web/userProfile");
             UserEntity user = userService.getOneByUserName(Principal.getPrincipal());
             user.setUserEmail(userEmail);
@@ -66,6 +72,7 @@ public class UserProfileController {
             user.setCity(city);
             user.setCountry(country);
             user.setTelephone(telephone);
+            user.setUserAvatar(userAvatar);
             if(userService.save(user)!= null)
             {
                 mav.addObject("user", userService.getOneByUserName(Principal.getPrincipal()));

@@ -34,7 +34,8 @@ public class OrderService {
             orderEntity.setUser(userEntity);
             orderEntity.setId(orderKey);
             orderEntity.setOrderCode(code);
-            orderEntity.setUnitPrice(item.getCoursePrice());
+            float unitPrice = item.getUnitPrice() == null? item.getCoursePrice():Float.parseFloat(item.getUnitPrice());
+            orderEntity.setUnitPrice(unitPrice);
             orderRepository.save(orderEntity);
         });
     }

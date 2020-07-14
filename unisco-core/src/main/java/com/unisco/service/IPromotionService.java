@@ -8,5 +8,6 @@ import java.util.List;
 public interface IPromotionService {
     PromotionDetailEntity getPromotion(Long promotionId, Long courseId);
     List<CourseEntity> getCourseByPromotionId(Long promotionId);
+    List<CourseEntity> getCourseByPromotionIdMatched(Long promotionId);
     void savePromotionDetailByPromotionIdAndCourseId(Long promotionId, Long courseId);
 }

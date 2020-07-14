@@ -24,7 +24,7 @@ public class HomeController {
 	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		mav.addObject("listCourse", courseService.getAll());
+		mav.addObject("listCourse", courseService.getAllCourseActive());
 		mav.addObject("listCate", categoryService.getAll());
 		return mav;
 	}
@@ -68,7 +68,7 @@ public class HomeController {
 	@RequestMapping(value = "/explore", method = RequestMethod.GET)
 	public ModelAndView explore(){
 		ModelAndView mav = new ModelAndView("web/explore");
-		mav.addObject("listCourse", courseService.getAll());
+		mav.addObject("listCourse", courseService.getAllCourseActive());
 		return mav;
 	}
 

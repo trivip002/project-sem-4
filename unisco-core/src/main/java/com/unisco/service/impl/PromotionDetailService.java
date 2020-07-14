@@ -46,6 +46,18 @@ public class PromotionDetailService implements IPromotionService {
     }
 
     @Override
+    public List<CourseEntity> getCourseByPromotionIdMatched(Long promotionId) {
+        List<PromotionDetailEntity> promotionDetailEntity = promotiondetailRepository.findByPromotion(promotionRepository.findOne(promotionId));
+        List<CourseEntity> courseEntities = courseRepository.findAll();
+        List<CourseEntity> coursesOfPromotion = new ArrayList<>();
+        List<Long> coursesOfPromotionId =new ArrayList<>();
+        promotionDetailEntity.forEach(item-> coursesOfPromotion.add(item.getCourse()));
+        coursesOfPromotion.forEach(item->coursesOfPromotionId.add(item.getCourseId()));
+        courseEntities.removeIf(item->!coursesOfPromotionId.contains(item.getCourseId()));
+        return courseEntities;
+    }
+
+    @Override
     public void savePromotionDetailByPromotionIdAndCourseId(Long promotionId, Long courseId) {
         PromotionEntity promotionEntity = promotionRepository.findOne(promotionId);
         CourseEntity courseEntity = courseRepository.findOne(courseId);

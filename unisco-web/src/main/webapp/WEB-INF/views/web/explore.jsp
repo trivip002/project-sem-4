@@ -29,7 +29,7 @@
                                 <div class="col-lg-3 col-md-4">
                                     <div class="fcrse_1 mt-30">
                                         <a href="<c:url value="/explore/course?courseId=${c.courseId}"/>" class="fcrse_img">
-                                            <img src="${c.courseThumbnail}" alt="">
+                                            <img src="<c:url value="/upload/${a.courseThumbnail}"/>" alt="">
                                             <div class="course-overlay">
                                                 <div class="badge_seller">Bestseller</div>
                                                 <div class="crse_reviews">

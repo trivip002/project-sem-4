@@ -10,7 +10,7 @@
                                 <div class="col-xl-4 col-lg-5 col-md-6">
                                     <div class="preview_video">
                                         <a href="#" class="fcrse_img" data-toggle="modal" data-target="#videoModal">
-                                            <img src="${course.courseImg}" alt="${course.courseImg}">
+                                            <img src="<c:url value="/upload/${course.courseThumbnail}"/>" alt="${course.courseImg}">
                                             <div class="course-overlay">
                                                 <div class="badge_seller">Bestseller</div>
                                                     <%--                                                <span class="play_btn1"><i class="uil uil-play"></i></span>--%>
@@ -151,19 +151,14 @@
                                                                             <div class="modal-header">
                                                                                 <h3 class="modal-title">${v1.videoName} - Preview</h3>
                                                                             </div>
-                                                                            <c:if test="${v1.videoUrl.contains('iframe')}">
-                                                                                <div class="modal-body">
-                                                                                        ${v1.videoUrl}
-                                                                                </div>
-                                                                            </c:if>
-
-                                                                            <c:if test="${!(v1.videoUrl.contains('iframe'))}">
-                                                                                <div class="modal-body">
-                                                                                        ${v1.videoUrl}
-                                                                                </div>
-                                                                            </c:if>
+                                                                            <div class="modal-body">
+                                                                                <video width="400" controls id="video-${v1.videoId}">
+                                                                                    <source src="<c:url value="/upload/${v1.videoUrl}"/>" type="video/mp4">
+                                                                                    Your browser does not support HTML video.
+                                                                                </video>
+                                                                            </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" id="btnPreviewBack" class="btn btn-default" data-dismiss="modal" >BACK</button>
+                                                                                <button onclick="backVideo('video-${v1.videoId}')" type="button" id="btnPreviewBack" class="btn btn-default" data-dismiss="modal" >BACK</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -254,6 +249,9 @@
                     }
                 });
             });
+            function backVideo(videoId) {
+                $('#'+videoId).get(0).pause();
+            }
         </script>
     </stripes:layout-component>
 </stripes:layout-render>

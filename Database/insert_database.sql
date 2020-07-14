@@ -1,14 +1,17 @@
 USE test;
 
 INSERT INTO role(role_code,role_name)
-VALUES ('ROLE_ADMIN','admin role'),
-('ROLE_USER','user role'),
-('ROLE_INSTRUCTOR','instructor');
+VALUES ('ROLE_ADMIN','Admin'),
+('ROLE_USER','User'),
+('ROLE_INSTRUCTOR','Instructor');
 
-INSERT INTO user(user_name,password, is_active, role_id)
-VALUES ('admin','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,1),
-	('user','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,2),
-	('trivip002','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',1,3);
+INSERT INTO user(user_name,user_email,password,full_name,address,city,country,telephone, is_active, role_id)
+VALUES ('admin','trivip002@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Admin','78 Street','New York','America','0908244455',1,1),
+    ('Tri','trivip003@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Minh Tri','29 Truong Dinh','Ho Chi Minh','VietName','0908227374',1,1),
+	('Thach','thach@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Phu Thach','29 Nam Ki','Ho Chi Minh','VietName','0908227374',1,3),
+    ('Tom','Tom003@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Tom Cruise','45 Nam Ki','Ho Chi Minh','VietName','0908997799',1,2),
+    ('David','David003@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','David Foster','30 Ho Van Hue','Ho Chi Minh','VietName','0908227364',1,2),
+    ('Tim','Tim003@gmail.com','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','Timmy Luu','29 Truong Dinh','Ho Chi Minh','VietName','0903344556',1,2);
 
 INSERT INTO category(cate_name)
 VALUES('Javascript'), ('Python'), ('PHP'), ('Java'), ('Algorithm'), ('Design Pattern'), ('C#'), ('NodeJs');
@@ -16,63 +19,63 @@ VALUES('Javascript'), ('Python'), ('PHP'), ('Java'), ('Algorithm'), ('Design Pat
 INSERT INTO course(course_description, course_subtitle, course_duration, course_img, course_language, course_name, course_price, course_thumbnail, is_active, createdDate)
 VALUES('1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTO3kM3AJe8lqw68OpFXyOcQ2I0TmtvF0R82KnaJnxxP5WOH2EV&usqp=CAU',
+        '90', 'img-1.jpg',
         'English', 'The Complete Javascript Course 2020', 20.00,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTO3kM3AJe8lqw68OpFXyOcQ2I0TmtvF0R82KnaJnxxP5WOH2EV&usqp=CAU',
+        'img-1.jpg',
         1, current_timestamp()),
         ('2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
         "The only course you need to learn web development -PHP, React, Vue and More!",
-        '80', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqclY8Jk4AU6LKSa0CDu1H7TJK_AtELBeiUKgI9u70LO25408X&usqp=CAU',
+        '80', 'img-2.jpg',
         'Japanese', 'Python 101', 45.00,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQqclY8Jk4AU6LKSa0CDu1H7TJK_AtELBeiUKgI9u70LO25408X&usqp=CAU',
+        'img-2.jpg',
         0, current_timestamp()),
         ('3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '75', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSbLZQGYbPGhG7dYL6N9KmYWuXwJpdoqs3lOg&usqp=CAU',
+        '75', 'img-3.jpg',
         'English', 'The Complete PHP7 Course 2019', 40.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSbLZQGYbPGhG7dYL6N9KmYWuXwJpdoqs3lOg&usqp=CAU',
+        'img-3.jpg',
         1, current_timestamp()),
         ('4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '120', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8pyFq-kCTSaWQNqNNReF6kGsz7YChF_KLMg&usqp=CAU',
+        '120', 'img-4.jpg',
         'Hindi', 'The Java 101 - 2019', 100.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8pyFq-kCTSaWQNqNNReF6kGsz7YChF_KLMg&usqp=CAU',
+        'img-4.jpg',
         1, current_timestamp()),
         ('5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '150', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTM5v1O_rYznvEOumKT5ZSvq5VfmOYHUYlfkg&usqp=CAU',
+        '150', 'img-5.jpg',
         'English', 'The Advanced Algorithn Course 2020', 219.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTM5v1O_rYznvEOumKT5ZSvq5VfmOYHUYlfkg&usqp=CAU',
+        'img-5.jpg',
         1, current_timestamp()),
         ('6 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRh9thrz0HdI26GSkoUvx9Y1RnMY2Tq5uwFdQ&usqp=CAU',
+        '90', 'img-6.jpg',
         'English', 'The Advanced PHP Course 2020', 209.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRh9thrz0HdI26GSkoUvx9Y1RnMY2Tq5uwFdQ&usqp=CAU',
+        'img-6.jpg',
         1, current_timestamp()),
         ('7 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '50', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5ycCgsnoWhzbdV8IaREJAd8hqjGuQ-1Lp-Q&usqp=CAU',
+        '50', 'img-7.jpg',
         'English', 'Easy Design Pattern in Your Hand', 99.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5ycCgsnoWhzbdV8IaREJAd8hqjGuQ-1Lp-Q&usqp=CAU',
+        'img-7.jpg',
         1, current_timestamp()),
         ('8 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '200', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGfR9lNMI3rGOWdL6UP9Lgw2eGUmcBpNGnQA&usqp=CAU',
+        '200', 'img-8.jpg',
         'English', 'Advanced Design Pattern in Your Hand', 199.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGfR9lNMI3rGOWdL6UP9Lgw2eGUmcBpNGnQA&usqp=CAU',
+        'img-8.jpg',
         1, current_timestamp()),
         ('9 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '150', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzDQRf7yi_aIZXANvTY-xrODr-oTLQssIQyg&usqp=CAU',
+        '150', 'img-9.jpg',
         'English', 'Entry to ASP.NET MVC Framework', 59.99,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQzDQRf7yi_aIZXANvTY-xrODr-oTLQssIQyg&usqp=CAU',
+        'img-9.jpg',
         1, current_timestamp()),
         ('10 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vel dolor id ultrices. Proin a magna at mi pretium pulvinar in eu enim.',
 		"The only course you need to learn web development - HTML, CSS, JS, Node, and More!",
-        '560', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR2Ux151Z6_Sf5rWDKfqS54uKdkV_fsxbB6mQ&usqp=CAU',
+        '560', 'img-10.jpg',
         'Spanish', 'NodeJS Never Sleep', 210,
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR2Ux151Z6_Sf5rWDKfqS54uKdkV_fsxbB6mQ&usqp=CAU',
+        'img-10.jpg',
         1, current_timestamp());
 
 INSERT INTO cate_course(course_id, cate_id)
@@ -148,3 +151,27 @@ VALUES('javascript_2020_1',
         1),
         ('javascript_2020_2', 'https://dai.ly/x6db08o', 2),
         ('python_101_1', 'https://dai.ly/x7qx5se', 3);
+
+INSERT INTO review(review_content,user_id,course_id)
+VALUES ('i kinda like this course ',2,1),('i really love this content about Java ',3,1),('i think this course not good this content about Java ',4,2);
+
+INSERT INTO promotion(promotion_code,discount_price,is_active)
+VALUES ('D123',5.55,1),('D234',6.99,0),('D345',7.59,1),('D456',5.59,1),('D67',6.67,1);
+
+INSERT INTO promotion_detail(course_id,promotion_id)
+VALUES (1,1),(1,2),(2,3),(2,2),(1,4);
+
+INSERT INTO blog_category(blog_cate_title,blog_cate_content)
+VALUES ('Technology in life','My life is a computer and CPU.'),
+('Java in life','Java life is a computer and CPUMy life hello new hello new hello new hello new.'),
+('New Query technique','Query life is a computer and Query.'),
+('My Love is CSS','CSS is a beautiful computer and Query.');
+
+INSERT INTO blog(blog_title,blog_meta_title,blog_img,blog_content,is_active,user_id,blog_cate_id)
+VALUES ('Technology in life','My life is a computer and CPU.','test1.img','a lot of content a lot of content a lot of content a lot of content',1,1,1),
+('Java in life','Java is a computer and CPU.','test2.img','Java a lot of content a lot of content a lot of content a lot of content',0,1,2),
+('Query is a life','Query is a computer and CPU.','test3.img','Query a lot of content a lot of content a lot of content a lot of content',0,1,3);
+
+INSERT INTO blog_comment(user_id,blog_id,blog_comment_content)
+VALUES (2,1,'I like this Java 1'),(3,2,'i like technology 2'),(4,2,'i think this blog is helpful');
+

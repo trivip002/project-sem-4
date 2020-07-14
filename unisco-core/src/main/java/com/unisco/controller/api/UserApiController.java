@@ -3,6 +3,7 @@ package com.unisco.controller.api;
 import com.unisco.entity.UserEntity;
 import com.unisco.service.impl.UserService;
 import com.unisco.utils.FileUtils;
+import com.unisco.utils.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +19,7 @@ public class UserApiController {
     public String updateUser(Long userId, String username, String fullName, String emailAddress,
                              String password, String telephone, String address, String city,
                              String country, int isActive, MultipartFile fileupload) {
-        if(fileupload != null){
+        if (!fileupload.getOriginalFilename().isEmpty()) {
             FileUtils.uploadFile(fileupload);
         }
         UserEntity userEntity = userService.getOneById(userId);
@@ -33,6 +34,11 @@ public class UserApiController {
         userEntity.setIsActive(isActive);
         userEntity.setUserAvatar(fileupload.getOriginalFilename());
         return userService.updateByUser(userEntity);
+    }
+
+    @GetMapping(value = "get-avatar")
+    public String getAvatar() {
+        return userService.getOneByUserName(Principal.getPrincipal()).getUserAvatar() == null ? "default.jpg" : userService.getOneByUserName(Principal.getPrincipal()).getUserAvatar();
     }
 
     @PostMapping

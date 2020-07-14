@@ -361,11 +361,7 @@
                                                                                 <option value="">Select Section</option>
                                                                                 <c:forEach items="${listSectionEdit}" var="s">
                                                                                     <c:if test="${s.course.courseId.equals(courseEdit.courseId)}">
-                                                                                        <c:forEach items="${listVideoEdit}" var="v">
-                                                                                            <c:if test="${v.section.sectionId.equals(s.sectionId)}">
-                                                                                                <option value="${s.sectionId}">${s.sectionTitle}</option>
-                                                                                            </c:if>
-                                                                                        </c:forEach>
+                                                                                        <option value="${s.sectionId}">${s.sectionTitle}</option>
                                                                                     </c:if>
                                                                                 </c:forEach>
                                                                             </select>
@@ -409,7 +405,7 @@
 
                                                                                                 <td class="cell-ta video-name">${v.videoName}</td>
                                                                                                 <td class="text-center belong-to" data-sectionId="${v.section.sectionId.equals(s.sectionId)?s.sectionId:"N/A"}">${v.section.sectionId.equals(s.sectionId)?s.sectionTitle:"N/A"}</td>
-                                                                                                <td class="text-center video-url"><a href="#" id="btnPreview" data-toggle="modal" data-target="#previewModal_${v.videoId}">${v.videoName}</a></td>
+                                                                                                <td class="text-center video-url"><a href="#" id="btnPreview" data-toggle="modal" data-target="#previewModal_${v.videoId}">${v.videoUrl}</a></td>
                                                                                                 <div class="modal" id="previewModal_${v.videoId}">
                                                                                                     <div class="modal-dialog">
                                                                                                         <div class="modal-content">
@@ -503,6 +499,8 @@
 
         <script type="text/javascript" src="//cdn.jsdelivr.net/ckeditor/4.0.1/ckeditor.js"></script>
         <script type="text/javascript">
+            var courseThumbnail = '${courseEdit.courseThumbnail}' == ''?'avatar.jpg':'${courseEdit.courseThumbnail}';
+            $('#course_thumbnail').attr('src','http://localhost:8080/upload/'+courseThumbnail);
             CKEDITOR.replace( 'edit_description_1',
                 {
                     toolbar : 'Basic',
@@ -712,8 +710,7 @@
                 $('#section-'+editSectionObj["id"]).find('.section-desc').text(editSectionObj["description"]);
             });
 
-            var courseThumbnail = "";
-            var courseFileThumbnail;
+            var listUploadFile = [];
             var openFileThumb = function(event) {
                 var input = event.target;
                 var reader = new FileReader();
@@ -722,7 +719,7 @@
                 };
                 reader.readAsDataURL(input.files[0]);
                 courseThumbnail = input.files[0].name;
-                courseFileThumbnail = input.files[0];
+                listUploadFile.push(input.files[0]);
                 $('#lblInputGroupFile04').text(input.files[0].name);
             };
 
@@ -730,6 +727,7 @@
                 var input = event.target;
                 var reader = new FileReader();
                 reader.readAsDataURL(input.files[0]);
+                listUploadFile.push(input.files[0]);
                 $('#lblInputGroupFile06').text(input.files[0].name);
             };
 
@@ -744,7 +742,6 @@
             //click on finish
             $('#finish-btn').click(function(){
                 run_waitMe();
-                var formData = new FormData();
                 var listCate = $('#course-category').val().filter(function(elem, index, self) {
                     return index === self.indexOf(elem);
                 });
@@ -770,20 +767,28 @@
                     contentType: 'application/json',
                     data: JSON.stringify(dataBiding),
                     success: function(result) {
-                        if(courseFileThumbnail){
-                            formData.append('courseFileThumbnail',courseFileThumbnail);
-                            $.ajax({
-                                url: "/api/course/upload",
-                                method: "POST",
-                                enctype: 'multipart/form-data',
-                                processData: false,
-                                contentType: false,
-                                data: formData,
-                                success: function() {
-                                    $('.containerLoading').waitMe('hide');
-                                    window.location.href = "";
-                                }
-                            });
+                        if(listUploadFile.length!==0){
+                            var count = 0;
+                            for(var i = 0; i < listUploadFile.length; i++){
+                                var formData = new FormData();
+                                formData.append('file',listUploadFile[i]);
+                                console.log(listUploadFile[i]);
+                                $.ajax({
+                                    url: "/api/course/upload",
+                                    method: "POST",
+                                    enctype: 'multipart/form-data',
+                                    processData: false,
+                                    contentType: false,
+                                    data: formData,
+                                    success: function() {
+                                        count++;
+                                        if(count===listUploadFile.length-1){
+                                            $('.containerLoading').waitMe('hide');
+                                            window.location.href = "";
+                                        }
+                                    }
+                                });
+                            }
                         }
                         $('.containerLoading').waitMe('hide');
                     }

@@ -21,4 +21,7 @@ public class PromotionService {
     public List<PromotionEntity> getByNameLike(String promotionCode) {
         return promotionRepository.findByPromotionCodeLike(promotionCode);
     }
+    public Long getPromotionIdByPromotionCode(String promotionCode){
+        return promotionRepository.findOneByPromotionCode(promotionCode).getPromotionId();
+    }
 }

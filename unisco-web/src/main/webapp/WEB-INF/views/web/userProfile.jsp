@@ -23,7 +23,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="view__img">
-                                                        <img src="<c:url value="/static/assets/images/get-img.jpg"/>" alt="">
+                                                        <img width="300px" height="300px" id="user-avatar-update" src="<c:url value="/upload/${user.userAvatar==null?'default.jpg':user.userAvatar}"/>" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -32,8 +32,8 @@
                                                     <div class="upload__input">
                                                         <div class="input-group">
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="inputGroupFile04">
-                                                                <label class="custom-file-label" for="inputGroupFile04">No Choose file</label>
+                                                                <input onchange="changeAvatar(event)" type="file" class="custom-file-input" id="inputGroupFile04">
+                                                                <label id="custom-avatar-name" class="custom-file-label" for="inputGroupFile04">${user.userAvatar==null?'No chose file': 'user.userAvatar'}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,6 +94,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                <input id="userAvatar" class="prompt srch_explore" type="hidden" name="userAvatar" value="${user.userAvatar}" >
                                             </div>
                                         </div>
                                     </div>
@@ -107,5 +108,17 @@
         </div>
     </div>
 </div>
+        <script>
+            var changeAvatar = function(event) {
+                var input = event.target;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#user-avatar-update').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+                $('#custom-avatar-name').text(input.files[0].name);
+                $('#userAvatar').val(input.files[0].name);
+            };
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

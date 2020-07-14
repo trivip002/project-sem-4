@@ -69,6 +69,16 @@
             </div>
         </div>
 
+        <script>
+            $.ajax({
+                url: "/api/user/get-avatar",
+                method: "GET",
+                success: function(result) {
+                    $('.user-avatar-img').attr("src",'http://localhost:8080/upload/'+result);
+                }
+            });
+        </script>
+
         <script src='<c:url value="/static/assets/js/vertical-responsive-menu.min.js"/>'></script>
         <script src='<c:url value="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"/>' ></script>
         <script src='<c:url value="/static/vendor/OwlCarousel/owl.carousel.js"/>' ></script>
