@@ -28,7 +28,7 @@
     <div class="search120">
         <div class="ui search">
             <div class="ui left icon input swdh10">
-                <input class="prompt srch10" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">
+                <input class="prompt srch10" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more.." id="searchStr">
                 <i class='uil uil-search-alt icon icon1'></i>
             </div>
         </div>
@@ -200,6 +200,14 @@
                 }
             }
         });
+    });
+    var input = document.getElementById("searchStr");
+    input.addEventListener("keyup", function () {
+        if (event.keyCode === 13){
+            event.preventDefault();
+            searchStr = $('#searchStr').val();
+            window.location.href = "http://"+window.location.hostname+":8080" + "/explore/search?searchStr=" +searchStr;
+        }
     });
 </script>
 </body>

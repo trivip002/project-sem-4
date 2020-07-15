@@ -31,4 +31,15 @@ public class ExploreController {
         }
         return mav;
     }
+
+    @RequestMapping(value = "/explore/search", method = RequestMethod.GET)
+    public ModelAndView explore(@RequestParam(name = "searchStr", required = false) String searchStr){
+        ModelAndView mav = new ModelAndView("web/explore");
+        if (!("".equals(searchStr))){
+            mav.addObject("listCourse", courseService.getByNameLike("%"+searchStr+"%"));
+        } else {
+            mav.addObject("listCourse", courseService.getAll());
+        }
+        return mav;
+    }
 }

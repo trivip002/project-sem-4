@@ -32,8 +32,8 @@
                                     <div class="explore_search blg152">
                                         <div class="ui search focus">
                                             <div class="ui left icon input swdh11 swdh15">
-                                                <input class="prompt srch_explore" type="text" placeholder="Search">
-                                                <i class="uil uil-search-alt icon icon2"></i>
+                                                <input class="prompt srch_explore" type="text" id="searchStr" name="searchStr" placeholder="Search" style="padding-left: 15px !important;">
+                                                <button type="submit" id="btnSearch" style="width: 35px; height: 35px;" class="rvsrch_btn"><i class="uil uil-search"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -44,22 +44,9 @@
                                         <ul class="category-card">
                                             <li>
                                                 <a href="#" class="category-item1 active">All</a>
-                                                <a href="#" class="category-item1">Students</a>
-                                                <a href="#" class="category-item1">Instructors</a>
-                                                <a href="#" class="category-item1">Ideas & Opinions</a>
-                                                <a href="#" class="category-item1">Edututs+ News</a>
-                                                <a href="#" class="category-item1">Social Innovation</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="#collapse2" class="category-topics cate-right collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse2">Archive</a>
-                                    <div class="collapse" id="collapse2" style="">
-                                        <ul class="category-card">
-                                            <li>
-                                                <a href="#" class="category-item1">January 2020</a>
-                                                <a href="#" class="category-item1">February 2020</a>
-                                                <a href="#" class="category-item1">March 2020</a>
-                                                <a href="#" class="category-item1">April 2020</a>
+                                                <c:forEach items="${listBlogCate}" var="bc">
+                                                    <a href="<c:url value="/blog/searchById?blogCateId=${bc.blogCateId}" />" class="category-item1">${bc.blogCateTitle}</a>
+                                                </c:forEach>
                                             </li>
                                         </ul>
                                     </div>
@@ -80,89 +67,47 @@
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-7">
-                        <div class="blogbg_1 mt-50">
-                            <a href="blog_single_view.html" class="hf_img">
-                                <img src="<c:url value="/static/assets/images/blog/img-1.jpg"/>" alt="">
-                                <div class="course-overlay"></div>
-                            </a>
-                            <div class="hs_content">
-                                <div class="vdtodt">
-                                    <!-- <span class="vdt14">109k views</span> -->
-                                    <span class="vdt14">March 10, 2020</span>
+                        <c:forEach items="${listBlog}" var="b">
+                            <div class="blogbg_1 mt-50">
+                                <a href="<c:url value="/blog/view?id=${b.blogId}"/>" class="hf_img">
+                                    <img src="<c:url value="/static/assets/images/blog/img-1.jpg"/>" alt="...">
+                                    <div class="course-overlay"></div>
+                                </a>
+                                <div class="hs_content">
+                                    <div class="vdtodt">
+                                        <!-- <span class="vdt14">109k views</span> -->
+                                        <span class="vdt14">${"".equals(b.createdDate)?"N/A":b.createdDate}</span>
+                                    </div>
+                                    <a href="<c:url value="/blog/view?id=${b.blogId}"/>" class="crse14s title900">${b.blogTitle}</a>
+                                    <p class="blog_des">${b.blogMetaTitle}</p>
+                                    <a href="<c:url value="/blog/view?id=${b.blogId}"/>" class="view-blog-link">Read More<i class="uil uil-arrow-right"></i></a>
                                 </div>
-                                <a href="blog_single_view.html" class="crse14s title900">Blog Title Here</a>
-                                <p class="blog_des">Donec eget arcu vel mauris lacinia vestibulum id eu elit. Nam metus odio, iaculis eu nunc et, interdum mollis arcu. Pellentesque viverra faucibus diam. In sit amet laoreet dolor, vitae fringilla quam interdum mollis arcu.</p>
-                                <a href="blog_single_view.html" class="view-blog-link">Read More<i class="uil uil-arrow-right"></i></a>
                             </div>
-                        </div>
-                        <div class="blogbg_1 mt-30">
-                            <a href="blog_single_view.html" class="hf_img">
-                                <img src="<c:url value="/static/assets/images/blog/img-2.jpg"/>" alt="">
-                                <div class="course-overlay"></div>
-                            </a>
-                            <div class="hs_content">
-                                <div class="vdtodt">
-                                    <!-- <span class="vdt14">109k views</span> -->
-                                    <span class="vdt14">March 10, 2020</span>
-                                </div>
-                                <a href="blog_single_view.html" class="crse14s title900">Blog Title Here</a>
-                                <p class="blog_des">Donec eget arcu vel mauris lacinia vestibulum id eu elit. Nam metus odio, iaculis eu nunc et, interdum mollis arcu. Pellentesque viverra faucibus diam. In sit amet laoreet dolor interdum mollis arcu interdum mollis arcu.</p>
-                                <a href="blog_single_view.html" class="view-blog-link">Read More<i class="uil uil-arrow-right"></i></a>
+                        </c:forEach>
+
+                        <c:if test="${listBlog.size() == 0}">
+                            <div class="title129 mt-35 mb-35">
+                                <h2>No blog matches the selected category</h2>
                             </div>
-                        </div>
-                        <div class="blogbg_1 mt-30">
-                            <a href="blog_single_view.html" class="hf_img">
-                                <img src="<c:url value="/static/assets/images/blog/img-3.jpg"/>" alt="">
-                                <div class="course-overlay"></div>
-                            </a>
-                            <div class="hs_content">
-                                <div class="vdtodt">
-                                    <!-- <span class="vdt14">109k views</span> -->
-                                    <span class="vdt14">March 10, 2020</span>
-                                </div>
-                                <a href="blog_single_view.html" class="crse14s title900">Blog Title Here</a>
-                                <p class="blog_des">Donec eget arcu vel mauris lacinia vestibulum id eu elit. Nam metus odio, iaculis eu nunc et, interdum mollis arcu. Pellentesque viverra faucibus diam. In sit amet laoreet dolor interdum mollis arcu.</p>
-                                <a href="blog_single_view.html" class="view-blog-link">Read More<i class="uil uil-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="blogbg_1 mt-30">
-                            <a href="blog_single_view.html" class="hf_img">
-                                <img src="images/blog/img-4.jpg" alt="">
-                                <div class="course-overlay"></div>
-                            </a>
-                            <div class="hs_content">
-                                <div class="vdtodt">
-                                    <!-- <span class="vdt14">109k views</span> -->
-                                    <span class="vdt14">March 10, 2020</span>
-                                </div>
-                                <a href="blog_single_view.html" class="crse14s title900">Blog Title Here</a>
-                                <p class="blog_des">Donec eget arcu vel mauris lacinia vestibulum id eu elit. Nam metus odio, iaculis eu nunc et, interdum mollis arcu. Pellentesque viverra faucibus diam. In sit amet laoreet dolor interdum mollis arcu.</p>
-                                <a href="blog_single_view.html" class="view-blog-link">Read More<i class="uil uil-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="main-p-pagination">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            PREV
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">24</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            NEXT
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            $('#btnSearch').click(function () {
+                searchStr = $('#searchStr').val();
+                window.location.href = "http://"+window.location.hostname+":8080" + "/blog/searchByTitle?blogTitle=" +searchStr;
+                console.log(searchStr);
+            });
+            var input = document.getElementById("searchStr");
+            input.addEventListener("keyup", function () {
+                if (event.keyCode === 13){
+                    event.preventDefault();
+                    document.getElementById("btnSearch").click();
+                }
+            });
+        </script>
     </stripes:layout-component>
 </stripes:layout-render>

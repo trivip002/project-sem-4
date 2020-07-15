@@ -35,12 +35,6 @@ public class HomeController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/blog", method = RequestMethod.GET)
-	public ModelAndView blog(){
-		ModelAndView mav = new ModelAndView("web/blog");
-		return mav;
-	}
-
 	@RequestMapping(value = "/company", method = RequestMethod.GET)
 	public ModelAndView company(){
 		ModelAndView mav = new ModelAndView("web/company");

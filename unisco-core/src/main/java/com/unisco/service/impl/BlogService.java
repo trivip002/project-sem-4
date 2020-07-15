@@ -27,5 +27,5 @@ public class BlogService {
         return blogRepository.findByBlogTitleLike(blogTitle);
     }
 
-
+    public List<BlogEntity> getByBlog(BlogCategoryEntity blogCategoryEntity){ return blogRepository.findByBlog(blogCategoryEntity); }
     }
