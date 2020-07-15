@@ -1,9 +1,11 @@
 package com.unisco.controller.admin;
 
 import com.unisco.entity.CourseEntity;
+import com.unisco.entity.OrderEntity;
 import com.unisco.entity.PromotionEntity;
 import com.unisco.entity.UserEntity;
 import com.unisco.service.impl.CourseService;
+import com.unisco.service.impl.OrderService;
 import com.unisco.service.impl.PromotionService;
 import com.unisco.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class ReportController {
 
     @Autowired
     private PromotionService promotionService;
+
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value="/userReport", method= RequestMethod.GET)
     public ModelAndView userListReport(HttpServletRequest req, HttpServletResponse res){
@@ -85,6 +90,26 @@ public class ReportController {
         }
 
         mav.addObject("promoList", list);
+
+        return mav;
+    }
+
+    @RequestMapping(value="/orderReport", method= RequestMethod.GET)
+    public ModelAndView orderListReport(HttpServletRequest req, HttpServletResponse res){
+
+        ModelAndView mav = new ModelAndView("admin/orderReport");
+
+        String typeReport = req.getParameter("type");
+
+        List<OrderEntity> list = orderService.getAll();
+
+        if(typeReport != null && typeReport.equals("xls")){
+            return new ModelAndView(new ExcelOrderReportView(), "orderList", list);
+        } else if(typeReport != null && typeReport.equals("pdf")){
+            return new ModelAndView(new PDFOrderReportView(), "orderList", list);
+        }
+
+        mav.addObject("orderList", list);
 
         return mav;
     }

@@ -104,6 +104,12 @@
                             <span class="menu--label">Promotion Report</span>
                         </a>
                     </li>
+                    <li class="menu--item">
+                        <a href="<c:url value="/admin/orderReport"/>" class="menu--link" title="Comment">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Order Report</span>
+                        </a>
+                    </li>
                 </security:authorize>
                 <security:authorize access="hasRole('ROLE_INSTRUCTOR')">
                     <li class="menu--item">
