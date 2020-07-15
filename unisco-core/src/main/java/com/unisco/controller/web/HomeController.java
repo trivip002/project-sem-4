@@ -1,15 +1,19 @@
 package com.unisco.controller.web;
 
 import com.unisco.entity.CourseEntity;
+import com.unisco.entity.UserEntity;
 import com.unisco.service.impl.CategoryService;
 import com.unisco.service.impl.CourseService;
+import com.unisco.service.impl.OrderService;
+import com.unisco.service.impl.UserService;
+import com.unisco.utils.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller(value = "homeControllerOfWeb")
@@ -17,6 +21,12 @@ public class HomeController {
 
 	@Autowired
 	private CourseService courseService;
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private OrderService orderService;
 
 	@Autowired
     private CategoryService categoryService;
@@ -63,6 +73,20 @@ public class HomeController {
 	public ModelAndView explore(){
 		ModelAndView mav = new ModelAndView("web/explore");
 		mav.addObject("listCourse", courseService.getAllCourseActive());
+		return mav;
+	}
+
+
+	@RequestMapping(value = "/my-course", method = RequestMethod.GET)
+	public ModelAndView courseDetail(){
+		ModelAndView mav = new ModelAndView("web/my_course");
+		try{
+			UserEntity userEntity = userService.getOneByUserName(Principal.getPrincipal());
+			List<CourseEntity> courseEntities = orderService.getCoursesByUser(userEntity);
+			mav.addObject("listCourse", courseEntities);
+		}catch (Exception e){
+			mav.addObject("listCourse", new ArrayList<>());
+		}
 		return mav;
 	}
 

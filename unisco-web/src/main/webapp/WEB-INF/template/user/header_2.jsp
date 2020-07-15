@@ -47,6 +47,7 @@
                                             </div>
                                         </div>
                                         <a href="<c:url value="/userProfile"/>" class="dp_link_12">View User Profile</a>
+                                        <a href="<c:url value="/my-course"/>" class="dp_link_12">View My Course</a>
                                         <security:authorize access="hasRole('ROLE_ADMIN')">
                                             <a href="<c:url value="/admin/"/>" class="dp_link_12">Manage Admin page</a>
                                         </security:authorize>

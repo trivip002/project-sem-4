@@ -82,37 +82,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <form:form action="sendMail" method="get" modelAttribute="sender" >
-                        <div class="apply_form" id="apply-form-dt">
-                            <h4>Submit Your Message</h4>
-                            <div class="ui search focus mt-30">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="fullname" value="" id="id_fullname" required="" maxlength="64" placeholder="Full Name">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="email" name="emailaddress" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-15">
-                                <div class="ui left icon input swdh11 swdh19">
-                                    <input class="prompt srch_explore" type="text" name="phone" value="" id="id_phone" required="" maxlength="12" placeholder="Phone Number">
-                                </div>
-                            </div>
-                            <div class="ui search focus mt-30">
-                                <div class="ui form swdh30">
-                                    <div class="field">
-                                        <textarea rows="6" name="message" id="id_about" placeholder="Please give us your thought."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="save_btn" style="width: 100%" type="submit">Send</button>
-                        </div>
-                        </form:form>
-                    </div>
-
                 </div>
             </div>
         </div>

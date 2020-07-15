@@ -168,9 +168,9 @@ VALUES ('Technology in life','My life is a computer and CPU.'),
 ('My Love is CSS','CSS is a beautiful computer and Query.');
 
 INSERT INTO blog(blog_title,blog_meta_title,blog_img,blog_content,is_active,user_id,blog_cate_id)
-VALUES ('Technology in life','My life is a computer and CPU.','test1.img','a lot of content a lot of content a lot of content a lot of content',1,1,1),
-('Java in life','Java is a computer and CPU.','test2.img','Java a lot of content a lot of content a lot of content a lot of content',0,1,2),
-('Query is a life','Query is a computer and CPU.','test3.img','Query a lot of content a lot of content a lot of content a lot of content',0,1,3);
+VALUES ('Technology in life','My life is a computer and CPU.','test1.jpg','a lot of content a lot of content a lot of content a lot of content',1,1,1),
+('Java in life','Java is a computer and CPU.','test2.jpg','Java a lot of content a lot of content a lot of content a lot of content',0,1,2),
+('Query is a life','Query is a computer and CPU.','test3.jpg','Query a lot of content a lot of content a lot of content a lot of content',0,1,3);
 
 INSERT INTO blog_comment(user_id,blog_id,blog_comment_content)
 VALUES (2,1,'I like this Java 1'),(3,2,'i like technology 2'),(4,2,'i think this blog is helpful');

@@ -8,6 +8,7 @@ import com.unisco.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,5 +39,11 @@ public class OrderService {
             orderEntity.setUnitPrice(unitPrice);
             orderRepository.save(orderEntity);
         });
+    }
+    public List<CourseEntity> getCoursesByUser(UserEntity userEntity){
+        List<CourseEntity> courseEntities = new ArrayList<>();
+        List<OrderEntity> orderEntities = orderRepository.findByUser(userEntity);
+        orderEntities.forEach(item->courseEntities.add(item.getCourse()));
+        return courseEntities;
     }
 }

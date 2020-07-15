@@ -53,8 +53,10 @@
                                         </div>
                                     </c:if>
                                     <ul class="_215b31">
-                                        <li><button id="btn-add-to-card" class="btn_adcart">Add to Cart</button></li>
-                                        <li><button class="btn_buy">Buy Now</button></li>
+                                        <c:if test="${!isWatchVideo}">
+                                            <li><button id="btn-add-to-card" class="btn_adcart">Add to Cart</button></li>
+                                        </c:if>
+                                        <%--<li><button class="btn_buy">Buy Now</button></li>--%>
                                     </ul>
                                     <div class="_215fgt1">
                                         30-Day Money-Back Guarantee
@@ -144,7 +146,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="details">
-                                                                <a href="#" data-toggle="modal" data-target="#viv-preview-${v1.videoId}" class="preview-text">Preview</a>
+                                                                <c:if test="${isWatchVideo}">
+                                                                    <a href="#" data-toggle="modal" data-target="#viv-preview-${v1.videoId}" class="preview-text">Preview</a>
+                                                                </c:if>
+
                                                                 <div class="modal" id="viv-preview-${v1.videoId}">
                                                                     <div class="modal-dialog">
                                                                         <div class="modal-content">
@@ -192,7 +197,7 @@
                                                     <c:forEach items="${review}" var="r">
                                                         <div class="review_item">
                                                             <div class="review_usr_dt">
-                                                                <img src="<c:url value="${r.user.userAvatar!=null?r.user.userAvatar:'/static/assets/images/left-imgs/img-1.jpg'}"/>" alt="...">
+                                                                <img src="<c:url value="/upload/${editorAvatar}"/>" alt="...">
                                                                 <div class="rv1458">
                                                                     <h4 class="tutor_name1">${r.createdBy.toUpperCase()}</h4>
                                                                     <span class="time_145">${r.createdDate.toLocaleString()}</span>

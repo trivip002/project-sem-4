@@ -61,6 +61,7 @@
                         </a>
                     </div>
                     <a href="/admin/dashboard/" class="item channel_item">Cursus Dashboard</a>
+                    <a href="/" class="item channel_item">Back to home</a>
                     <a href="/logout/" class="item channel_item">Sign Out</a>
                 </div>
             </li>

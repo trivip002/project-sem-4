@@ -51,7 +51,7 @@
                                         <td>${item.roleName!=null?item.roleName:"N/A"}</td>
                                         <td>
                                             <a href="<c:url value="/admin/role/edit/${item.roleId}"/>"><button type="button" class="upload_btn"><i class="uil uil-edit"></i></button></a>
-                                            <a href="<c:url value="/admin/role/delete/${item.roleId}"/>" ><button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button></a>
+                                          <%--  <a href="<c:url value="/admin/role/delete/${item.roleId}"/>" ><button type="button" class="upload_btn"><i class="uil uil-trash-alt"></i></button></a>--%>
                                         </td>
                                     </tr>
                                 </c:forEach>

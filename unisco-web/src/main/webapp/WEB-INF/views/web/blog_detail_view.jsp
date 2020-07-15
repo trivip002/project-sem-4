@@ -33,7 +33,7 @@
                 <div class="row justify-content-md-center">
                     <div class="col-md-8">
                         <div class="bg_blog2">
-                            <img src="<c:url value="/upload/${blog.blogImg}"/>" alt="<c:url value="/upload/${blog.blogImg}"/>">
+                            <img width="200px" height="200px" src="<c:url value="/upload/${blog.blogImg}"/>" alt="<c:url value="/upload/${blog.blogImg}"/>">
                         </div>
                         <div class="vew120 frc123">
                             <div class="vdtodt55">
